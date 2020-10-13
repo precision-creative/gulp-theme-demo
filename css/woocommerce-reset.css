@@ -1,0 +1,163 @@
+:root {
+	/* Make this the accent color of the site */
+	--woo-accent: var(--secondary-font-color);
+
+	--border-radius: 0px;
+    
+    /* Input field options */
+    --woo-borderRadius: 24px;
+    --woo-inputBackground: white;
+    --woo-inputBorder: 1px solid var(--woo-accent);
+    --woo-inputOutlineFocus: none;
+    --woo-inputPadding: 0.3rem 0.9rem;
+}
+
+/* 
+==========================
+Base body and text styling
+========================== */
+
+#right-sidebar {
+	display: none;
+}
+
+#woocommerce-wrapper .woocommerce-message {
+	border-top: none;
+    background: var(--woo-accent);
+    color: black;
+}
+
+#woocommerce-wrapper .woocommerce-message a.button {
+	background-color: white !important;
+}
+
+#woocommerce-wrapper .woocommerce-message:before {
+	color: black;
+}
+
+/* END Base Styling */
+
+
+
+/* 
+==========================
+Buttons
+========================== */
+
+#woocommerce-wrapper select, #woocommerce-wrapper input {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	padding: 3px 8px;
+    border-radius: var(--border-radius);
+}
+
+#woocommerce-wrapper .btn-outline-primary, #woocommerce-wrapper button, #woocommerce-wrapper input[type="submit"], #woocommerce-wrapper a.button {
+	border-color: var(--woo-accent) !important;
+    background-color: var(--woo-accent) !important;
+    color: black !important;
+    border-radius: var(--border-radius) !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;
+    padding: 10px 40px !important;
+}
+
+#woocommerce-wrapper .btn-outline-primary:hover {
+	background-color: var(--woo-accent);
+    color: black;
+}
+
+#woocommerce-wrapper .btn:focus, #woocommerce-wrapper select:focus, #woocommerce-wrapper input:focus, #woocommerce-wrapper a.button:focus {
+	-webkit-box-shadow: unset;
+    box-shadow: unset;
+    outline: unset;
+}
+
+/* END Buttons */
+
+
+
+/*
+==========================
+Products
+========================== */
+
+#woocommerce-wrapper ul.products {
+	display: flex;
+    flex-flow: row wrap;
+}
+
+#woocommerce-wrapper li.product {
+	float: none;
+    margin: 0 0 2rem;
+    padding: 0.8rem;
+    flex-basis: 33.3%;
+}
+
+#woocommerce-wrapper .price {
+	color: var(--woo-accent);
+}
+
+/* END Products */
+
+
+
+/*
+==========================
+Single product page
+========================== */
+
+#woocommerce-wrapper .woocommerce-tabs p {
+	font-size: 1.2rem;
+    color: white;
+}
+
+#woocommerce-wrapper ul.tabs li {
+	color: var(--woo-accent);
+    border: none;
+    border-radius: 0;
+    margin: 0 -6px 0 0;
+}
+
+#woocommerce-wrapper ul.tabs li:not(:last-child) {
+	border-right: 2px solid rgba(0,0,0,0.2);
+}
+
+#woocommerce-wrapper ul.tabs li:before {
+	display: none;
+}
+
+#woocommerce-wrapper ul.tabs li:after {
+	display: none;
+}
+
+#woocommerce-wrapper ul.tabs li.active {
+	background-color: var(--woo-accent);
+    color: black;
+}
+
+/* END single product page */
+
+/*
+==========================
+Comments
+========================== */
+
+
+/* END comments */
+
+/* Media Quieries */
+
+@media screen and (max-width: 991px) {
+	#woocommerce-wrapper li.product {
+        padding: 0.6rem;
+        flex-basis: 50%;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	#woocommerce-wrapper li.product {
+        padding: 0.6rem;
+        flex-basis: 100%;
+	}
+}
