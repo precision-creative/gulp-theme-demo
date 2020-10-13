@@ -110,8 +110,88 @@ if (!function_exists('widgets_init')) {
   }
 }
 
-add_action('customize_register', 'cd_customizer_settings');
-function cd_customizer_settings($wp_customize)
+// Add social links options to the customizer
+add_action('customize_register', 'socials_customizer_settings');
+function socials_customizer_settings($wp_customize) {
+  $wp_customize->add_section('social_links', array(
+    'title'      => 'Social Links',
+    'priority'   => 160,
+    'description' => 'Allows you to add social links throughout the site.',
+  ));
+
+  // Facebook
+  $wp_customize->add_setting('facebook_link', array(
+    'transport'   => 'refresh',
+  ));
+
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'facebook_link',
+      array(
+        'label' => 'Facebook',
+        'section' => 'social_links',
+        'type' => 'text',
+      )
+    )
+  );
+
+  // Twitter
+  $wp_customize->add_setting('twitter_link', array(
+    'transport'   => 'refresh',
+  ));
+
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'twitter_link',
+      array(
+        'label' => 'Twitter',
+        'section' => 'social_links',
+        'type' => 'text',
+      )
+    )
+  );
+  
+  // Instagram
+  $wp_customize->add_setting('instagram_link', array(
+    'transport'   => 'refresh',
+  ));
+  
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'instagram_link',
+      array(
+        'label' => 'Instagram',
+        'section' => 'social_links',
+        'type' => 'text',
+      )
+    )
+  );
+
+  // Linkedin
+  $wp_customize->add_setting('linkedin_link', array(
+    'transport'   => 'refresh',
+  ));
+  
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'linkedin_link',
+      array(
+        'label' => 'Linkedin',
+        'section' => 'social_links',
+        'type' => 'text',
+      )
+    )
+  );
+}
+
+
+// Adds Precision options to the customizer
+add_action('customize_register', 'precision_customizer_settings');
+function precision_customizer_settings($wp_customize)
 {
   $wp_customize->add_section('precision_options', array(
     'title'      => 'Precision Options',
@@ -272,6 +352,8 @@ function cd_customizer_settings($wp_customize)
     'type'   => 'text',
   )));
 }
+
+
 
 /**
  * Prints HTML with meta information for the current post-date/time and author.
