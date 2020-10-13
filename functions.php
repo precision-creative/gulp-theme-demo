@@ -48,8 +48,12 @@ function theme_enqueue_styles()
   // Should now be called with the official Fontawesome plugin, 
   // which prevents conflicts between plugins and therefore reduces pageload time
 
-  // Pushy 
-  wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array(), false, true);
+  // Pushy or Accordion
+  if (get_theme_mod('mobile_menu_type') === 'pushy') {
+    wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array(), false, true);
+  } else if (get_theme_mod('mobile_menu_type') === 'accordion') {
+    wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
+  }
 
   // Precision
   wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css');
@@ -140,6 +144,58 @@ function cd_customizer_settings($wp_customize)
     )
   );
 
+  // Mobile Menu Type 
+  $wp_customize->add_setting('mobile_menu_type', array(
+    'default'     => 'pushy',
+    'transport'   => 'refresh',
+  ));
+
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'mobile_menu_type',
+      array(
+        'label'      => __('Mobile Menu Type', ''),
+        'description' => 'Decide what kind of mobile menu a site should have.',
+        'section'    => 'precision_options',
+        'settings'   => 'mobile_menu_type',
+        'type'      => 'select',
+        'choices' => array(
+          'accordion' => 'Accordion',
+          'pushy' => 'Pushy',
+        ),
+        'priority' => 10,
+      )
+    )
+  );
+
+  // Desktop Nav Collapse
+  $wp_customize->add_setting('desktop_nav_collapse', array(
+    'default'     => 'lg',
+    'transport'   => 'refresh',
+  ));
+
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'desktop_nav_collapse',
+      array(
+        'label'      => __('Desktop Navbar Collapse', ''),
+        'description' => 'Decide when the desktop navbar should switch to mobile.',
+        'section'    => 'precision_options',
+        'settings'   => 'desktop_nav_collapse',
+        'type'      => 'select',
+        'choices' => array(
+          'xl' => 'Extra Large',
+          'lg' => 'Large',
+          'md' => 'Medium',
+          'sm' => 'Small',
+        ),
+        'priority' => 10,
+      )
+    )
+  );
+
   // Footer logo
   $wp_customize->add_setting('footer_logo', array(
     'default'     => '',
@@ -218,10 +274,11 @@ function cd_customizer_settings($wp_customize)
 }
 
 /**
-* Prints HTML with meta information for the current post-date/time and author.
-*/
-if ( ! function_exists ( 'posted_on' ) ) {
-	function posted_on() {
-		echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
-	}
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
+if (!function_exists('posted_on')) {
+  function posted_on()
+  {
+    echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
+  }
 }

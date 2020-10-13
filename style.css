@@ -1,11 +1,10 @@
-/*------------------------------------------------------------------
-[Master Stylesheet]
-
-Project:        Site Name Here
-Version:        1.0
-Last change:    
-Assigned to:    
--------------------------------------------------------------------*/
+/*
+Theme Name: Precision Creative
+Author: Precision Creative Dev Team
+Description: WordPress theme template
+Version: 1.0.0
+Tags: precision
+*/
 
 /*-----------------------
 Global Variables
@@ -298,17 +297,17 @@ Navbar
   margin-left: auto;
 }
 
-.pushy__hamburger {
+#hamburger {
   padding: 16px;
   margin-left: auto;
   cursor: pointer;
 }
 
-.pushy__icon {
+#hamburger svg {
   vertical-align: bottom;
 }
 
-.pushy__icon path {
+#hamburger svg path {
   fill: currentColor;
   fill-opacity: 1;
 }
@@ -325,7 +324,7 @@ Navbar
 }
 
 @media screen and (min-width: 464px) {
-  .navbar-expand-sm .pushy__hamburger {
+  .navbar-expand-sm #hamburger {
     display: none;
   }
 
@@ -335,7 +334,7 @@ Navbar
 }
 
 @media screen and (min-width: 768px) {
-  .navbar-expand-md .pushy__hamburger {
+  .navbar-expand-md #hamburger {
     display: none;
   }
 
@@ -345,7 +344,7 @@ Navbar
 }
 
 @media screen and (min-width: 992px) {
-  .navbar-expand-lg .pushy__hamburger {
+  .navbar-expand-lg #hamburger {
     display: none;
   }
 
@@ -355,7 +354,7 @@ Navbar
 }
 
 @media screen and (min-width: 1200px) {
-  .navbar-expand-xl .pushy__hamburger {
+  .navbar-expand-xl #hamburger {
     display: none;
   }
 
@@ -374,25 +373,21 @@ Pushy
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
+  height: 100%;
   z-index: 1025;
   overflow: hidden;
   -webkit-overflow-scrolling: touch; /* enables momentum scrolling in iOS overflow elements */
   color: var(--text-dark);
   background-color: #fff;
   transition: transform 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99);
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .pushy__header {
   display: flex;
   padding: 12px;
   border-bottom: 2px solid #ddd;
-}
-
-.navbar-nav {
-  overflow-y: auto;
 }
 
 .pushyClose__wrapper svg {
@@ -406,6 +401,7 @@ Pushy
 
 .pushyLinks__container {
   overflow-y: auto;
+  flex-grow: 1;
 }
 
 .pushy__footer {
@@ -501,6 +497,27 @@ Pushy
   100% {
     opacity: 1;
   }
+}
+
+/*-----------------------
+Accordion
+-----------------------*/
+
+#accordion {
+  transition: height 200ms ease-in-out;
+  overflow: hidden;
+}
+
+.accordion--closed {
+  height: 0;
+}
+
+.accordion--open {
+
+}
+
+#accordion .menu-item {
+  margin-bottom: 1em;
 }
 
 /*-----------------------
