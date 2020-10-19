@@ -59,6 +59,10 @@ function theme_enqueue_styles()
   wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css');
   wp_enqueue_script('precision-scripts', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array('jquery'), false, true);
 
+  // Parallax 
+  // https://github.com/pixelcog/parallax.js
+  wp_enqueue_script('parallax', get_stylesheet_directory_uri() . '/js/parallax.min.js', array('jquery'), false, true);
+
   // Splide slider
   // Releases found here https://github.com/Splidejs/splide/releases
 

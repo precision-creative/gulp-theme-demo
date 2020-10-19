@@ -21,4 +21,12 @@ function closePushy(e) {
 $(".pushyClose__wrapper").click(closePushy);
 $(".pushy__overlay").click(closePushy);
 
+// Function that takes an element to scroll to smoothly
+
+function pcScroll(el, duration = 600, callback) {  
+  jQuery([document.documentElement, document.body]).animate({  
+    scrollTop: jQuery(el).offset().top
+  }, duration, 'swing', callback || null)
+}
+
 // Yell at Grayson if this code stops working
