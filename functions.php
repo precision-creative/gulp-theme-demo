@@ -74,6 +74,7 @@ function theme_enqueue_styles()
   }
 }
 
+// Add menu locations for the theme
 add_action('after_setup_theme', 'add_menu_locations');
 function add_menu_locations()
 {
@@ -84,39 +85,10 @@ function add_menu_locations()
   ));
 }
 
-function fallback_menu()
-{
-?>
-  <ul class="navbar-nav ml-auto">
-    <li><a href="#">Fallback menu</a></li>
-    <li><a href="#">Fallback menu</a></li>
-  </ul>
-<?php
-}
-
-// add_action('widgets_init', 'widgets_init');
-if (!function_exists('widgets_init')) {
-  /**
-   * Initializes themes widgets.
-   */
-  function widgets_init()
-  {
-
-    register_sidebar(array(
-      'name' => __('Footer One', 'understrap'),
-      'id' => 'footer-one',
-      'description' => __('footer One widget area', 'understrap'),
-      'before_widget' => '<div class="footer_common footer_one">',
-      'after_widget' => '</ul></div>',
-      'before_title' => '<h4 class="text-uppercase text-left">',
-      'after_title' => '</h4><ul class="text-uppercase">',
-    ));
-  }
-}
-
 // Add social links options to the customizer
 add_action('customize_register', 'socials_customizer_settings');
-function socials_customizer_settings($wp_customize) {
+function socials_customizer_settings($wp_customize)
+{
   $wp_customize->add_section('social_links', array(
     'title'      => 'Social Links',
     'priority'   => 160,
@@ -156,12 +128,12 @@ function socials_customizer_settings($wp_customize) {
       )
     )
   );
-  
+
   // Instagram
   $wp_customize->add_setting('instagram_link', array(
     'transport'   => 'refresh',
   ));
-  
+
   $wp_customize->add_control(
     new WP_Customize_Control(
       $wp_customize,
@@ -178,7 +150,7 @@ function socials_customizer_settings($wp_customize) {
   $wp_customize->add_setting('linkedin_link', array(
     'transport'   => 'refresh',
   ));
-  
+
   $wp_customize->add_control(
     new WP_Customize_Control(
       $wp_customize,
@@ -357,14 +329,19 @@ function precision_customizer_settings($wp_customize)
   )));
 }
 
-
-
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
+// Prints HTML with meta information for the current post-date/time and author.
 if (!function_exists('posted_on')) {
   function posted_on()
   {
     echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
+  }
+}
+
+// Adds phone number parsing 
+function parse_phone_number($number)
+{
+  if (preg_match('/^(\d{3})(\d{3})(\d{4})$/', $number,  $matches)) {
+    $result = $matches[1] . ' . ' . $matches[2] . ' . ' . $matches[3];
+    return $result;
   }
 }
