@@ -13,7 +13,7 @@ Global Variables
 :root {
   --text-dark: #131313;
   --text-light: #969696;
-  --primary-accent: #1049B5;
+  --primary-accent: #1049b5;
 }
 
 /*-----------------------
@@ -138,7 +138,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
@@ -221,9 +221,9 @@ a {
   body {
     font-size: 16px;
   }
-	.container{
-		max-width: 1200px;
-	}
+  .container {
+    max-width: 1200px;
+  }
 }
 
 /*-----------------------
@@ -247,7 +247,7 @@ Buttons
 }
 
 .pcButton__wrapper,
-input[type=submit] {
+input[type='submit'] {
   display: inline-block;
   width: auto;
   padding: 14px 25px;
@@ -263,7 +263,7 @@ input[type=submit] {
 }
 
 .pcButton__wrapper:hover,
-input[type=submit]:hover {
+input[type='submit']:hover {
   filter: brightness(1.1);
 }
 
@@ -277,7 +277,7 @@ Navbar
 }
 
 .navbar__container {
-  padding: 1rem 15px;  
+  padding: 1rem 15px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -301,6 +301,9 @@ Navbar
   padding: 16px;
   margin-left: auto;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: auto;
 }
 
 #hamburger svg {
@@ -513,7 +516,6 @@ Accordion
 }
 
 .accordion--open {
-
 }
 
 #accordion .menu-item {
@@ -643,6 +645,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }

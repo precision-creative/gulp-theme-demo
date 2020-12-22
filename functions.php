@@ -151,6 +151,23 @@ function socials_customizer_settings($wp_customize)
     )
   );
 
+  // YouTube
+  $wp_customize->add_setting('youtube_link', array(
+    'transport'   => 'refresh',
+  ));
+
+  $wp_customize->add_control(
+    new WP_Customize_Control(
+      $wp_customize,
+      'youtube_link',
+      array(
+        'label' => 'YouTube',
+        'section' => 'social_links',
+        'type' => 'text',
+      )
+    )
+  );
+
   // Linkedin
   $wp_customize->add_setting('linkedin_link', array(
     'transport'   => 'refresh',
@@ -168,7 +185,6 @@ function socials_customizer_settings($wp_customize)
     )
   );
 }
-
 
 // Adds Precision options to the customizer
 add_action('customize_register', 'precision_customizer_settings');
