@@ -42,8 +42,8 @@ if ($mobile_menu_type === 'pushy') {
   <nav class="navbar <?php echo $nav_breakpoint; ?>">
     <div class="navbar__container container">
       <!-- Site Logo -->
-      <a class="navLogo__link" href="/">
-        <img class="navLogo" src="<?php echo $custom_logo_url; ?>" alt="Test">
+      <a class="navLogo__link" href="<?php echo site_url(); ?>">
+        <img class="navLogo" src="<?php echo $custom_logo_url; ?>" alt="<?php echo get_theme_mod('company'); ?> Logo">
       </a>
 
       <!-- Start main menu -->

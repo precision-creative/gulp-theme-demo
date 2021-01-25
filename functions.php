@@ -342,6 +342,15 @@ function precision_customizer_settings($wp_customize)
   )));
 }
 
+/**
+ * Add support for core custom logo.
+ *
+ * @link https://codex.wordpress.org/Theme_Logo
+ */
+add_theme_support(
+  'custom-logo'
+);
+
 // Prints HTML with meta information for the current post-date/time and author.
 if (!function_exists('posted_on')) {
   function posted_on()
