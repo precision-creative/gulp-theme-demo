@@ -10,23 +10,17 @@
  * Created: September 23, 2020
  */
 
-const $ = jQuery;
+const closePushyEl = document.querySelector('.pushyClose__wrapper')
+const pushyOverlayEl = document.querySelector('.pushy__overlay')
+
+closePushyEl.addEventListener('click', closePushy)
+pushyOverlayEl.addEventListener('click', closePushy)
 
 function closePushy(e) {
-  e.preventDefault();
-  jQuery("body").removeClass("pushy-open-right");
-  jQuery("body").removeClass("pushy-open-left");
-}
+  e.preventDefault()
 
-$(".pushyClose__wrapper").click(closePushy);
-$(".pushy__overlay").click(closePushy);
-
-// Function that takes an element to scroll to smoothly
-
-function pcScroll(el, duration = 600, callback) {  
-  jQuery([document.documentElement, document.body]).animate({  
-    scrollTop: jQuery(el).offset().top
-  }, duration, 'swing', callback || null)
+  document.body.classList.remove('pushy-open-right')
+  document.body.classList.remove('pushy-open-left')
 }
 
 // Yell at Grayson if this code stops working

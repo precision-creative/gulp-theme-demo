@@ -15,58 +15,72 @@ foreach ($includes as $file) {
   require_once $filepath;
 }
 
-// Enqueue styles and scripts
+
+/*
+* Let WordPress manage the document title.
+* This theme does not use a hard-coded <title> tag in the document head,
+* WordPress will provide it for us.
+*/
+add_theme_support('title-tag');
+
+/*
+* Enable support for Post Thumbnails on posts and pages.
+*
+* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+*/
+add_theme_support('post-thumbnails');
+set_post_thumbnail_size(1568, 9999);
+
+/*
+* Add menu locations for the theme
+*/
+register_nav_menus(
+  array(
+    'desktop_menu' => __('Desktop Menu', 'Desktop links'),
+    'mobile_menu' => __('Mobile Navigation', 'Mobile pushy links'),
+    'footer_menu' => __('Footer Navigation', 'Footer links'),
+  )
+);
+
+/*
+* Enqueue scripts and styles
+*/
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 function theme_enqueue_styles()
 {
-  // Get the theme data
+  // https://developer.wordpress.org/reference/functions/wp_enqueue_style/
+  // wp_enqueue_style( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, string $media = 'all' );
 
   // https://developer.wordpress.org/reference/functions/wp_enqueue_script/
   // wp_enqueue_script( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, bool $in_footer = false );
-
-  // https://developer.wordpress.org/reference/functions/wp_enqueue_style/
-  // wp_enqueue_style( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, string $media = 'all' );
 
   // Conditional Enqueueing 
   // Good for page speed scores and keeping CSS organized
   if (is_page_template(array('front-page.php'))) {
     wp_enqueue_style('front-page', get_stylesheet_directory_uri() . '/css/pages/front-page.css', array());
-  } else if (is_page_template(array('page-templates/parallax-demo.php'))) {
-    // Parallax Demo
-    // https://github.com/pixelcog/parallax.js
-    wp_enqueue_script('parallax', get_stylesheet_directory_uri() . '/js/parallax.min.js', array('jquery'), false, true);
-  } else if (is_page_template(array('page-templates/blog.php'))) {
+  }
+
+  if (is_page_template(array('page-templates/blog.php'))) {
     wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/pages/blog-page.css', array());
-  } else if (is_single()) {
+  }
+
+  if (is_single()) {
     wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/pages/single.css', array());
   }
 
-  // Bootstrap
-  wp_enqueue_style('bootstrap-grid-styles', get_stylesheet_directory_uri() . '/css/bootstrap-grid.min.css', array());
-  wp_enqueue_script('bootstrap-scripts', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', array('jquery'), false, true);
-
   // Pushy or Accordion
   if (get_theme_mod('mobile_menu_type') === 'pushy') {
-    wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array(), false, true);
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array('jquery'), false, true);
   } else if (get_theme_mod('mobile_menu_type') === 'accordion') {
     wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
   }
 
   // Precision
-  wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css');
-  wp_enqueue_script('precision-scripts', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array('jquery'), false, true);
+  wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css', array(), '1.0.0', 'all');
+  wp_enqueue_script('precision-scripts', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), '1.0.0', true);
 }
 
-// Add menu locations for the theme
-add_action('after_setup_theme', 'add_menu_locations');
-function add_menu_locations()
-{
-  register_nav_menus(array(
-    'desktop_menu' => __('Desktop Menu', 'Desktop links'),
-    'mobile_menu' => __('Mobile Navigation', 'Mobile pushy links'),
-    'footer_menu' => __('Footer Navigation', 'Footer links'),
-  ));
-}
 
 // Add social links options to the customizer
 add_action('customize_register', 'socials_customizer_settings');
