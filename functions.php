@@ -4,20 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 $includes = array(
-  '/theme-settings.php',                  // Initialize theme default settings.
-  '/setup.php',                           // Theme setup and custom theme supports.
-  '/widgets.php',                         // Register widget area.
-  // '/enqueue.php',                         // Enqueue scripts and styles.
-  '/template-tags.php',                   // Custom template tags for this theme.
-  '/pagination.php',                      // Custom pagination for this theme.
-  '/hooks.php',                           // Custom hooks.
-  '/extras.php',                          // Custom functions that act independently of the theme templates.
-  '/customizer.php',                      // Customizer additions.
-  '/custom-comments.php',                 // Custom Comments file.
-  '/jetpack.php',                         // Load Jetpack compatibility file.
   '/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-  // '/woocommerce.php',                     // Load WooCommerce functions.
-  '/editor.php',                          // Load Editor functions.
 );
 
 foreach ($includes as $file) {
@@ -58,10 +45,6 @@ function theme_enqueue_styles()
   wp_enqueue_style('bootstrap-grid-styles', get_stylesheet_directory_uri() . '/css/bootstrap-grid.min.css', array());
   wp_enqueue_script('bootstrap-scripts', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', array('jquery'), false, true);
 
-  // Fontawesome 
-  // Should now be called with the official Fontawesome plugin, 
-  // which prevents conflicts between plugins and therefore reduces pageload time
-
   // Pushy or Accordion
   if (get_theme_mod('mobile_menu_type') === 'pushy') {
     wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array(), false, true);
@@ -72,11 +55,6 @@ function theme_enqueue_styles()
   // Precision
   wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css');
   wp_enqueue_script('precision-scripts', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array('jquery'), false, true);
-
-  // Load comments script if comments are available
-  if (is_singular() && comments_open() && get_option('thread_comments')) {
-    wp_enqueue_script('comment-reply');
-  }
 }
 
 // Add menu locations for the theme
