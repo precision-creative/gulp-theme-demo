@@ -16,6 +16,8 @@ $container = get_theme_mod('understrap_container_type');
 
 <?php
 $footer_logo = get_theme_mod('footer_logo');
+$custom_logo_id = get_theme_mod('custom_logo');
+$custom_logo_url = wp_get_attachment_image_src($custom_logo_id, 'full')[0];
 $address = get_theme_mod('address');
 $phone = get_theme_mod('phone');
 $email = get_theme_mod('email');
@@ -29,7 +31,7 @@ $company = get_theme_mod('company');
     <div class="row footer__row">
       <div class="col footer__col">
         <a class="footerLogo__link" href="<?php echo site_url(); ?>">
-          <img class="footerLogo" src="<?php echo $footer_logo; ?>" alt="<?php echo $company . ' Logo'; ?>">
+          <img class="footerLogo" src="<?php echo ($footer_logo ? $footer_logo : $custom_logo_url); ?>" alt="<?php echo $company . ' Logo'; ?>">
         </a>
         <?php wp_nav_menu(
           array(
