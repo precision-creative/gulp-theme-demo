@@ -56,8 +56,8 @@ if ($mobile_menu_type === 'pushy') {
           'menu_id'         => 'navLinks__menu',
           'menu_class'      => 'navLinks__menu',
           'fallback_cb'     => 'fallback_menu',
-          'depth'           => 1,
-          'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
+          'depth'           => 2,
+          'walker'          => new PC_Navwalker(),
         )
       )
       ?>
@@ -111,8 +111,8 @@ if ($mobile_menu_type === 'pushy') {
         'menu_id'         => 'pushyLinks__menu',
         'menu_class'      => 'pushyLinks__menu',
         'fallback_cb'     => 'fallback_menu',
-        'depth'           => 1,
-        'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
+        'depth'           => 2,
+        'walker'          => new PC_Navwalker(),
       )) ?>
       <div class="pushy__footer">
         <a class="pushyFooter__link" href="#" aria-label="View our Facebook" target="_blank" rel="noreferrer">

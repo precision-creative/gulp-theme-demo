@@ -5,16 +5,12 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package understrap
+ * @package precisioncreative
  */
 
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-$container = get_theme_mod('understrap_container_type');
-?>
-
-<?php
 $footer_logo = get_theme_mod('footer_logo');
 $custom_logo_id = get_theme_mod('custom_logo');
 $custom_logo_url = wp_get_attachment_image_src($custom_logo_id, 'full')[0];
