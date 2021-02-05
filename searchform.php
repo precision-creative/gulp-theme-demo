@@ -1,23 +1,20 @@
 <?php
+
 /**
- * The template for displaying search forms in Underscores.me
+ * The template for displaying search forms
  *
  * @package PrecisionCreative
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 ?>
 
-<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-	<label class="sr-only" for="s"><?php esc_html_e( 'Search', 'understrap' ); ?></label>
+<form method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>" role="search">
+	<label class="sr-only" for="s">Search</label>
 	<div class="input-group">
-		<input class="field form-control" id="s" name="s" type="text"
-			placeholder="<?php esc_attr_e( 'Search &hellip;', 'understrap' ); ?>" value="<?php the_search_query(); ?>">
-		<span class="input-group-append">
-			<input class="submit btn btn-primary" id="searchsubmit" name="submit" type="submit"
-			value="<?php esc_attr_e( 'Search', 'understrap' ); ?>">
-	</span>
+		<input class="field form-control" id="s" name="s" type="text" placeholder="Search..." value="<?php the_search_query(); ?>">
+		<input id="searchsubmit" name="submit" type="submit" />
 	</div>
 </form>
