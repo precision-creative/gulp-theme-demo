@@ -19,6 +19,7 @@ Global Variables
 /*-----------------------
 CSS Reset
 See http://meyerweb.com/eric/tools/css/reset/ 
+Used to help standardize elements across different browsers
 -----------------------*/
 
 html,
@@ -151,7 +152,7 @@ Typography
 -----------------------*/
 
 body {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.4;
   font-weight: normal;
   color: var(--text-dark);
@@ -187,66 +188,23 @@ a {
   text-decoration: none;
 }
 
-.text-dark,
-.text-dark p,
-.text-dark h1,
-.text-dark h2,
-.text-dark h3,
-.text-dark h4,
-.text-dark h5,
-.text-dark h6,
-.text-dark a {
-  color: var(--text-dark);
-}
+/*-----------------------
+Layout
+-----------------------*/
 
-.text-light,
-.text-light p,
-.text-light h1,
-.text-light h2,
-.text-light h3,
-.text-light h4,
-.text-light h5,
-.text-light h6,
-.text-light a {
-  color: var(--text-light);
-}
-
-@media screen and (min-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  body {
-    font-size: 16px;
-  }
-  .container {
-    max-width: 1200px;
-  }
+.container {
+  max-width: calc(1110px - 3rem);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*-----------------------
 Buttons
 -----------------------*/
 
-.pcButton__wrapper {
-  text-align: center;
-}
-
-.pcButton__wrapper--left {
-  text-align: left;
-}
-
-.pcButton__wrapper--center {
-  text-align: center;
-}
-
-.pcButton__wrapper--right {
-  text-align: right;
-}
-
-.pcButton__wrapper,
+.pcButton,
 input[type='submit'] {
   display: inline-block;
   width: auto;
@@ -262,7 +220,7 @@ input[type='submit'] {
   cursor: pointer;
 }
 
-.pcButton__wrapper:hover,
+.pcButton:hover,
 input[type='submit']:hover {
   filter: brightness(1.1);
 }
