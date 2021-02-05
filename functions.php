@@ -51,9 +51,11 @@ function theme_enqueue_styles()
 {
   // https://developer.wordpress.org/reference/functions/wp_enqueue_style/
   // wp_enqueue_style( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, string $media = 'all' );
+  // wp_enqueue_style( $handle, $src, $deps, $ver, $media);
 
   // https://developer.wordpress.org/reference/functions/wp_enqueue_script/
   // wp_enqueue_script( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, bool $in_footer = false );
+  // wp_enqueue_style( $handle, $src, $deps, $ver, $in_footer);
 
   // Conditional Enqueueing 
   // Good for page speed scores and keeping CSS organized
@@ -69,6 +71,13 @@ function theme_enqueue_styles()
     wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/pages/single.css', array());
   }
 
+
+
+  if (is_page_template(array('page-templates/blog.php'))) {
+    wp_enqueue_style('aos', get_stylesheet_directory_uri() . '/css/aos.css');
+    wp_enqueue_script('aos', get_stylesheet_directory_uri() . '/js/aos.js', array(), null, true);
+  }
+
   // Pushy or Accordion
   if (get_theme_mod('mobile_menu_type') === 'pushy') {
     wp_enqueue_script('jquery');
@@ -78,7 +87,7 @@ function theme_enqueue_styles()
   }
 
   // Precision
-  wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css', array(), '1.0.0', 'all');
+  wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css');
   wp_enqueue_script('precision-scripts', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), '1.0.0', true);
 }
 

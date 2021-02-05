@@ -10,6 +10,11 @@
  * Created: September 23, 2020
  */
 
+// Init Animate On Scroll (if it exists)
+if (window.AOS) {
+  AOS.init()
+}
+
 // Close pushy handlers
 const closePushyEl = document.querySelector('.pushyClose__wrapper')
 const pushyOverlayEl = document.querySelector('.pushy__overlay')
