@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 get_header();
-$container   = get_theme_mod('container_width');
+$container = get_theme_mod('container_width');
 ?>
 
 <main id="search">
@@ -25,10 +25,10 @@ $container   = get_theme_mod('container_width');
 		<?php
 			while (have_posts()) {
 				the_post();
-				get_template_part('loop-templates/content', 'search');
+				get_template_part('template-parts/content/content', 'search');
 			}
 		} else {
-			get_template_part('loop-templates/content', 'none');
+			get_template_part('template-parts/content/content', 'none');
 		} ?>
 	</div>
 </main>

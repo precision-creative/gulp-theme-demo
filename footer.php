@@ -20,7 +20,8 @@ $email = get_theme_mod('email');
 $company = get_theme_mod('company');
 ?>
 
-<?php get_template_part('sidebar-templates/sidebar', 'footerfull'); ?>
+<?php // get_template_part('sidebar-templates/sidebar', 'footerfull'); 
+?>
 
 <footer class="footer">
   <div class="footer__content container">

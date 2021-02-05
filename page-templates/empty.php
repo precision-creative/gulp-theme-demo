@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Empty Page Template
  *
@@ -8,14 +9,14 @@
  * @package PrecisionCreative
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
 get_header();
 
-while ( have_posts() ) : the_post();
-	get_template_part( 'loop-templates/content', 'empty' );
+while (have_posts()) : the_post();
+	get_template_part('template-parts/content/content', 'none');
 endwhile;
 
 get_footer();
