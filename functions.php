@@ -83,7 +83,11 @@ function theme_enqueue_styles()
 }
 
 
-// Add social links options to the customizer
+
+/*
+* Add social links into the customizer
+* These can be retrieved with `get_theme_mod(slug);`
+*/
 add_action('customize_register', 'socials_customizer_settings');
 function socials_customizer_settings($wp_customize)
 {
@@ -93,90 +97,31 @@ function socials_customizer_settings($wp_customize)
     'description' => 'Allows you to add social links throughout the site.',
   ));
 
-  // Facebook
-  $wp_customize->add_setting('facebook_link', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'facebook_link',
-      array(
-        'label' => 'Facebook',
-        'section' => 'social_links',
-        'type' => 'text',
-      )
-    )
+  $socials = array(
+    'facebook' => 'Facebook',
+    'instagram' => 'Instagram',
+    'twitter' => 'Twitter',
   );
 
-  // Twitter
-  $wp_customize->add_setting('twitter_link', array(
-    'transport'   => 'refresh',
-  ));
+  foreach ($socials as $social => $social_display_name) {
+    $social_slug = $social . '_url';
 
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'twitter_link',
-      array(
-        'label' => 'Twitter',
-        'section' => 'social_links',
-        'type' => 'text',
+    $wp_customize->add_setting($social_slug, array(
+      'transport'   => 'refresh',
+    ));
+
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        $social_slug,
+        array(
+          'label' => $social_display_name,
+          'section' => 'social_links',
+          'type' => 'text',
+        )
       )
-    )
-  );
-
-  // Instagram
-  $wp_customize->add_setting('instagram_link', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'instagram_link',
-      array(
-        'label' => 'Instagram',
-        'section' => 'social_links',
-        'type' => 'text',
-      )
-    )
-  );
-
-  // YouTube
-  $wp_customize->add_setting('youtube_link', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'youtube_link',
-      array(
-        'label' => 'YouTube',
-        'section' => 'social_links',
-        'type' => 'text',
-      )
-    )
-  );
-
-  // Linkedin
-  $wp_customize->add_setting('linkedin_link', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'linkedin_link',
-      array(
-        'label' => 'Linkedin',
-        'section' => 'social_links',
-        'type' => 'text',
-      )
-    )
-  );
+    );
+  }
 }
 
 // Adds Precision options to the customizer
@@ -186,12 +131,11 @@ function precision_customizer_settings($wp_customize)
   $wp_customize->add_section('precision_options', array(
     'title'      => 'Precision Options',
     'priority'   => 150,
-    'description' => __('Allows you to customize various site settings', ''),
+    'description' => 'Allows you to customize various site settings',
   ));
 
   // Container Width 
   $wp_customize->add_setting('container_width', array(
-    'default'     => 'Box Width',
     'transport'   => 'refresh',
   ));
 
@@ -200,8 +144,8 @@ function precision_customizer_settings($wp_customize)
       $wp_customize,
       'container_width',
       array(
-        'label'      => __('Container Width', ''),
-        'description' => 'Whether the site is always full width or if it has a max width.',
+        'label'      => 'Container Width',
+        'description' => 'Whether or not to contain content on pages that support it',
         'section'    => 'precision_options',
         'settings'   => 'container_width',
         'type'      => 'select',
@@ -216,7 +160,6 @@ function precision_customizer_settings($wp_customize)
 
   // Mobile Menu Type 
   $wp_customize->add_setting('mobile_menu_type', array(
-    'default'     => 'pushy',
     'transport'   => 'refresh',
   ));
 
@@ -241,7 +184,6 @@ function precision_customizer_settings($wp_customize)
 
   // Desktop Nav Collapse
   $wp_customize->add_setting('desktop_nav_collapse', array(
-    'default'     => 'lg',
     'transport'   => 'refresh',
   ));
 
@@ -250,7 +192,7 @@ function precision_customizer_settings($wp_customize)
       $wp_customize,
       'desktop_nav_collapse',
       array(
-        'label'      => __('Desktop Navbar Collapse', ''),
+        'label'      => 'Desktop Navbar Collapse',
         'description' => 'Decide when the desktop navbar should switch to mobile.',
         'section'    => 'precision_options',
         'settings'   => 'desktop_nav_collapse',
@@ -268,7 +210,6 @@ function precision_customizer_settings($wp_customize)
 
   // Footer logo
   $wp_customize->add_setting('footer_logo', array(
-    'default'     => '',
     'transport'   => 'refresh',
   ));
 
@@ -277,7 +218,7 @@ function precision_customizer_settings($wp_customize)
       $wp_customize,
       'footer_logo',
       array(
-        'label'      => __('Footer Logo', ''),
+        'label'      => 'Footer Logo',
         'description' => 'Applied in the footer in cases where the footer logo needs to be a different color or shade',
         'section'    => 'precision_options',
         'settings'   => 'footer_logo',
@@ -288,7 +229,6 @@ function precision_customizer_settings($wp_customize)
 
   // Main Address
   $wp_customize->add_setting('address', array(
-    'default'     => '',
     'transport'   => 'refresh',
   ));
 
