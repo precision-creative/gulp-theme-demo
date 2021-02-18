@@ -5,7 +5,7 @@
  *
  * Contains the closing of the #content div and all content after
  *
- * @package precisioncreative
+ * @package PrecisionCreative
  */
 
 // Exit if accessed directly.
@@ -18,9 +18,6 @@ $address = get_theme_mod('address');
 $phone = get_theme_mod('phone');
 $email = get_theme_mod('email');
 $company = get_theme_mod('company');
-?>
-
-<?php // get_template_part('sidebar-templates/sidebar', 'footerfull'); 
 ?>
 
 <footer class="footer">

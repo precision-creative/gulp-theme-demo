@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Content empty partial template.
  *
- * @package understrap
+ * @package PrecisionCreative
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 

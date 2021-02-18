@@ -5,7 +5,7 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package understrap
+ * @package PrecisionCreative
  */
 
 if (!defined('ABSPATH')) {
@@ -20,7 +20,6 @@ if (!defined('ABSPATH')) {
 
 	<div class="page-content">
 		<?php if (is_search()) : ?>
-
 			<p>Sorry, but nothing matched your search. Please try again with diffent wording.</p>
 		<?php
 			get_search_form();

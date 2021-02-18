@@ -21,12 +21,6 @@
     <?php
     the_content();
     ?>
-  </div><!-- .entry-content -->
+  </div>
 
-  <footer class="entry-footer default-max-width">
-    <?php
-    // entry_meta(); 
-    ?>
-  </footer><!-- .entry-footer -->
-
-</article><!-- #post-<?php the_ID(); ?> -->
+</article>

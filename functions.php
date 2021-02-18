@@ -66,7 +66,7 @@ function theme_enqueue_styles()
   }
 
   if (is_404()) {
-    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/404.css');
+    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/404.css', array('precision-styles'));
   }
 
   if (is_page_template(array('page-templates/blog.php'))) {

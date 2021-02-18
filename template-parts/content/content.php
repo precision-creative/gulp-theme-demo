@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package precisioncreative
+ * @package PrecisionCreative
  */
 
 ?>
@@ -23,15 +23,12 @@
 
   <div class="entry-content">
     <?php
-    the_content(
-      twenty_twenty_one_continue_reading_text()
-    );
+    the_content();
 
     wp_link_pages(
       array(
         'before'   => '<nav class="page-links" aria-label="' . esc_attr__('Page', 'twentytwentyone') . '">',
         'after'    => '</nav>',
-        /* translators: %: page number. */
         'pagelink' => esc_html__('Page %', 'twentytwentyone'),
       )
     );

@@ -5,7 +5,7 @@
  *
  * Learn more: https://codex.wordpress.org/Author_Templates
  *
- * @package understrap
+ * @package PrecisionCreative
  */
 
 if (!defined('ABSPATH')) {
