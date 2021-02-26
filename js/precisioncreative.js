@@ -16,11 +16,13 @@ if (window.AOS) {
 }
 
 // Close pushy handlers
-const closePushyEl = document.querySelector('.pushyClose__wrapper')
+const closePushyEl = document.querySelector('.pushy__close')
 const pushyOverlayEl = document.querySelector('.pushy__overlay')
 
-closePushyEl.addEventListener('click', closePushy)
-pushyOverlayEl.addEventListener('click', closePushy)
+if (closePushyEl) {
+  closePushyEl.addEventListener('click', closePushy)
+  pushyOverlayEl.addEventListener('click', closePushy)
+}
 
 function closePushy(e) {
   e.preventDefault()

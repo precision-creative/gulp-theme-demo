@@ -21,117 +21,94 @@
   align-items: center;
 }
 
-.navLogo__link {
-}
-
-.navLogo {
-  max-width: 312px;
-  width: 100%;
+.navbar__logo {
+  max-width: 100%;
   height: auto;
 }
 
-.navLinks__container {
+.navbar__menu {
   display: none;
   margin-left: auto;
 }
 
-.navLinks__menu {
+.navbar__links {
   display: flex;
   align-items: baseline;
+
+  .menu-item {
+    a {
+      margin: 0 0.5rem;
+      padding: 0.5rem;
+      display: block;
+    }
+
+    &.menu-item-has-children {
+      position: relative;
+
+      svg {
+        margin-left: 0.5rem;
+      }
+
+      .sub-menu {
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        display: none;
+        position: absolute;
+        top: 100%;
+        width: 180px;
+        background: #fff;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
+          -4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+
+        .menu-item a {
+          margin: 0;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+        }
+      }
+
+      &:hover {
+        .sub-menu {
+          display: block;
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
-.navLinks__menu .menu-item {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.navLinks__menu .menu-item a {
-  padding: 0.5rem;
-  display: block;
-}
-
-.navbar li.menu-item-has-children {
-  position: relative;
-}
-
-.navbar li.menu-item-has-children svg {
-  margin-left: 0.5rem;
-}
-
-.navbar li.menu-item-has-children .sub-menu {
-  opacity: 0;
-  display: none;
-  position: absolute;
-  top: 100%;
-  width: 180px;
-  background: #fff;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
-    -4px 4px 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar li.menu-item-has-children .sub-menu .menu-item {
-  margin: 0;
-}
-
-.navbar li.menu-item-has-children:hover .sub-menu {
-  display: block;
-  opacity: 1;
-}
-
-#hamburger {
-  padding: 16px;
+.navbar__hamburger {
   margin-left: auto;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  width: auto;
-}
 
-#hamburger svg {
-  vertical-align: bottom;
-}
+  button {
+    padding: 0.75rem;
+    border: none;
+    width: auto;
+    background-color: transparent;
+    cursor: pointer;
 
-#hamburger svg path {
-  fill: currentColor;
-  fill-opacity: 1;
-}
-
-@media screen and (min-width: 464px) {
-  .navbar-expand-sm #hamburger {
-    display: none;
-  }
-
-  .navbar-expand-sm .navLinks__container {
-    display: block;
+    svg {
+      vertical-align: bottom;
+    }
   }
 }
 
-@media screen and (min-width: 768px) {
-  .navbar-expand-md #hamburger {
-    display: none;
-  }
+// Mobile breakpoint
+$breakpoints: ('sm', 'md', 'lg', 'xl');
 
-  .navbar-expand-md .navLinks__container {
-    display: block;
-  }
-}
+@each $break in $breakpoints {
+  .navbar-expand-#{$break} {
+    @include mq(#{$break}) {
+      .navbar__hamburger {
+        display: none;
+      }
 
-@media screen and (min-width: 992px) {
-  .navbar-expand-lg #hamburger {
-    display: none;
-  }
-
-  .navbar-expand-lg .navLinks__container {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .navbar-expand-xl #hamburger {
-    display: none;
-  }
-
-  .navbar-expand-xl .navLinks__container {
-    display: block;
+      .navbar__menu {
+        display: block;
+      }
+    }
   }
 }
