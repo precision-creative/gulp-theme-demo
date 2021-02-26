@@ -1,0 +1,137 @@
+.navbar {
+  color: $dark;
+  background-color: #fff;
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.navbar__container {
+  @include container;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.navLogo__link {
+}
+
+.navLogo {
+  max-width: 312px;
+  width: 100%;
+  height: auto;
+}
+
+.navLinks__container {
+  display: none;
+  margin-left: auto;
+}
+
+.navLinks__menu {
+  display: flex;
+  align-items: baseline;
+}
+
+.navLinks__menu .menu-item {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.navLinks__menu .menu-item a {
+  padding: 0.5rem;
+  display: block;
+}
+
+.navbar li.menu-item-has-children {
+  position: relative;
+}
+
+.navbar li.menu-item-has-children svg {
+  margin-left: 0.5rem;
+}
+
+.navbar li.menu-item-has-children .sub-menu {
+  opacity: 0;
+  display: none;
+  position: absolute;
+  top: 100%;
+  width: 180px;
+  background: #fff;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
+    -4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar li.menu-item-has-children .sub-menu .menu-item {
+  margin: 0;
+}
+
+.navbar li.menu-item-has-children:hover .sub-menu {
+  display: block;
+  opacity: 1;
+}
+
+#hamburger {
+  padding: 16px;
+  margin-left: auto;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  width: auto;
+}
+
+#hamburger svg {
+  vertical-align: bottom;
+}
+
+#hamburger svg path {
+  fill: currentColor;
+  fill-opacity: 1;
+}
+
+@media screen and (min-width: 464px) {
+  .navbar-expand-sm #hamburger {
+    display: none;
+  }
+
+  .navbar-expand-sm .navLinks__container {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar-expand-md #hamburger {
+    display: none;
+  }
+
+  .navbar-expand-md .navLinks__container {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .navbar-expand-lg #hamburger {
+    display: none;
+  }
+
+  .navbar-expand-lg .navLinks__container {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar-expand-xl #hamburger {
+    display: none;
+  }
+
+  .navbar-expand-xl .navLinks__container {
+    display: block;
+  }
+}

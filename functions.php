@@ -57,6 +57,11 @@ function theme_enqueue_styles()
   // wp_enqueue_script( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, bool $in_footer = false );
   // wp_enqueue_style( $handle, $src, $deps, $ver, $in_footer);
 
+  // Precision
+  wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/style.css');
+  wp_enqueue_style('precision', get_stylesheet_directory_uri() . '/css/index.css');
+  wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);
+
   // Conditional Enqueueing 
   // Good for site speed and keeping CSS organized
 
@@ -94,10 +99,6 @@ function theme_enqueue_styles()
   } else if (get_theme_mod('mobile_menu_type') === 'accordion') {
     wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
   }
-
-  // Precision
-  wp_enqueue_style('precision-styles', get_stylesheet_directory_uri() . '/style.css');
-  wp_enqueue_script('precision-scripts', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);
 }
 
 

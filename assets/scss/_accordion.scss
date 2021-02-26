@@ -1,0 +1,15 @@
+#accordion {
+  transition: height 200ms ease-in-out;
+  overflow: hidden;
+}
+
+.accordion--closed {
+  height: 0;
+}
+
+.accordion--open {
+}
+
+#accordion .menu-item {
+  margin-bottom: 1em;
+}

@@ -1,0 +1,49 @@
+// Media query breakpoints
+// @param $size = string: size of the breakpoint
+// @param $width = 'min' | 'max': breakpoint width type
+@mixin mq($size: md, $type: min) {
+  $breakpoints: (
+    'sm': 480px,
+    'md': 768px,
+    'lg': 976px,
+    'xl': 1440px,
+  );
+
+  @if map-get($breakpoints, $size) == null {
+    @error 'The media query mixin paramater $size requires a valid key from the mixin\'s $breakpoints map!';
+  }
+
+  @if $type != min and $type != max {
+    @error 'The media query mixin paramater $size must be either min or max!';
+  }
+
+  $width: map-get($breakpoints, $size);
+
+  @if $width == min {
+    $width: $width - 1px;
+  }
+
+  @media screen and (#{$type}-width: $width) {
+    @content;
+  }
+}
+
+// Container mixin
+// @param $size = string: size of container
+@mixin container($size: md) {
+  $sizes: (
+    'sm': 900px,
+    'md': 1110px,
+    'lg': 1360px,
+  );
+
+  $width: map-get($sizes, $size);
+
+  @if $width == null {
+    @error 'The container mixin paramater $size requires a valid key from the mixin\'s $sizes map!';
+  }
+
+  max-width: clamp(16rem, 90vw, $width);
+  margin-left: auto;
+  margin-right: auto;
+}
