@@ -233,7 +233,7 @@ function precision_customizer_settings($wp_customize)
   ));
 
   $wp_customize->add_control(
-    new WP_Customize_Image_Control(
+    new WP_Customize_Media_Control(
       $wp_customize,
       'footer_logo',
       array(

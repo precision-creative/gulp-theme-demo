@@ -285,6 +285,10 @@ template {
 *, ::before, ::after {
   box-sizing: border-box;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
@@ -319,6 +323,10 @@ h5 {
 }
 h6 {
   font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+p {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -580,7 +588,6 @@ a {
 }
 .footer {
   padding-top: 1rem;
-  padding-bottom: 1rem;
   text-align: center;
   color: #fff;
   background-color: #333;
@@ -593,45 +600,44 @@ a {
 .footer a {
   text-decoration: none;
 }
-.footerLogo__link {
-  display: inline-block;
+.footer__container {
+  max-width: clamp(16rem, 90vw, 1110px);
+  margin-left: auto;
+  margin-right: auto;
+}
+.footer__logo {
   margin-bottom: 1em;
 }
-.footerLogo {
-  max-width: 260px;
-  width: 100%;
-  height: auto;
-  vertical-align: bottom;
+.footer__links li {
+  margin-bottom: 0.5rem;
 }
-.footer .footerLinks__menu {
-  display: flex;
-  flex-direction: column;
+.footer__links a {
+  font-size: 1.125rem;
 }
-.footerLinks__menu li {
-  line-height: 1.5;
-  margin-bottom: 1em;
+.footer__copyright {
+  font-size: 0.875rem;
+  background-color: #555;
 }
-.copyright__container {
-  padding-top: 0.4em;
-  padding-bottom: 0.4em;
-  background: #111;
-  color: var(--text-light);
+.footer__copyright__flex {
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
-.copyright__col {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.footer__copyright__flex a {
+  font-weight: bold;
 }
-@media screen and (min-width: 465px) {
-  .copyright__col {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: baseline;
+.footer__copyright__flex a:hover {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+@media screen and (min-width: 768px) {
+  .footer__copyright__flex {
+    display: flex;
   }
-  .copyright__col .copyright__p {
-    margin: 0 0.4em;
+  .footer__copyright__flex p + p {
+    margin-left: 1rem;
   }
-  .copyright__col .copyright__p--precision {
+  .footer__copyright__flex p + p:last-child {
     margin-left: auto;
   }
 }
