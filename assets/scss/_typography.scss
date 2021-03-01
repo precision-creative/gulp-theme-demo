@@ -26,14 +26,7 @@ body {
 @for $i from 1 through 6 {
   h#{$i} {
     font-size: map-get($font-sizes, 2xl);
-    margin-top: 0;
-    margin-bottom: 0;
   }
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 a {
