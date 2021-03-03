@@ -5,20 +5,21 @@
  *
  * This template can be used to override the default template and sidebar setup
  *
- * @package understrap
+ * @package PrecisionCreative
  */
 
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
+
 get_header();
-$container = get_theme_mod('understrap_container_type');
 ?>
 
 <!-- The page content -->
 
 <div class="container" id="content">
-  <h1 style="text-align: center; color: var(--primary-font-color); margin-bottom: 3rem;">Blog</h1>
+  <h1>Blog</h1>
   <?php
+
   $args = array(
     'post_type' => 'post',
     'posts_per_page' => 10
