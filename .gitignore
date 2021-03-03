@@ -1,6 +1,4 @@
 .DS_Store
 
 # These will be generated with WP-SCSS
-css/pages/
-css/index.css
-css/index.css.map
+/css

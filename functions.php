@@ -64,14 +64,8 @@ function theme_enqueue_styles()
 
   // Conditional Enqueueing 
   // Good for site speed and keeping CSS organized
-
-  // Pages
-  if (is_page_template(array('front-page.php'))) {
-    wp_enqueue_style('front-page', get_stylesheet_directory_uri() . '/css/pages/front-page.css', array());
-  }
-
   if (is_404()) {
-    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/404.css', array('precision-styles'));
+    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/404.css', array('precision'));
   }
 
   if (is_page_template(array('page-templates/blog.php'))) {
