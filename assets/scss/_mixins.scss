@@ -37,7 +37,7 @@ $sizes: (
   'lg': 1360px,
 );
 
-@mixin container($size: md) {
+@mixin container($size: base) {
   $width: map-get($sizes, $size);
 
   @if $width == null {
