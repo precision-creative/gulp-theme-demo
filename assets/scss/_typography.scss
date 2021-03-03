@@ -1,22 +1,20 @@
 $font-sizes: (
-  'xs': 0.75rem,
-  'sm': 0.875rem,
-  'base': 1rem,
-  'lg': 1.125rem,
-  'xl': 1.25rem,
-  '2xl': 1.5rem,
-  '3xl': 1.875rem,
-  '4xl': 2.25rem,
-  '5xl': 3rem,
-  '6xl': 3.75rem,
-  '7xl': 4.5rem,
-  '8xl': 6rem,
-  '9xl': 8rem,
+  'xs': 12px,
+  'sm': 14px,
+  'base': 16px,
+  'lg': 20px,
+  'xl': 25px,
+  '2xl': 30px,
+  '3xl': 38px,
+  '4xl': 46px,
 );
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: map-get($font-sizes, base);
+  @include font-size(
+    $min-font: map-get($font-sizes, base) - 2px,
+    $max-font: map-get($font-sizes, base)
+  );
   font-weight: normal;
   line-height: 1.6;
   color: $dark;
@@ -25,7 +23,7 @@ body {
 // Reset all of the header tags
 @for $i from 1 through 6 {
   h#{$i} {
-    font-size: map-get($font-sizes, 2xl);
+    @include header($size: 2xl);
   }
 }
 

@@ -1,0 +1,27 @@
+// Header mixin
+// To keep consistent headers throughout the site and handle mobile response
+// @param $size: Key from the $font-sizes map
+// @param $color: Color of the text
+// @param $uppercase: Boolean
+// @param $weight: Weight of the text
+// @param $letter-spacing: Letter spacing of text
+@mixin header(
+  $size: 3xl,
+  $color: #000,
+  $uppercase: true,
+  $weight: bold,
+  $letter-spacing: 0.1em
+) {
+  @include font-size(
+    $min-font: map-get($font-sizes, $size) * 0.85,
+    $max-font: map-get($font-sizes, $size)
+  );
+
+  font-weight: $weight;
+  color: $color;
+  letter-spacing: $letter-spacing;
+
+  @if $uppercase == true {
+    text-transform: uppercase;
+  }
+}

@@ -27,37 +27,3 @@
     @content;
   }
 }
-
-// Container mixin
-// @param $size = string: size of container
-$sizes: (
-  'sm': 900px,
-  'base': 1110px,
-  'md': 1200px,
-  'lg': 1360px,
-);
-
-@mixin container($size: base) {
-  $width: map-get($sizes, $size);
-
-  @if $width == null {
-    @error 'The container mixin paramater $size requires a valid key from the mixin\'s $sizes map!';
-  }
-
-  max-width: clamp(16rem, 90vw, $width);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-// Generate a container class for each size
-@each $key, $value in $sizes {
-  @if ($key == base) {
-    .container {
-      @include container($size: $key);
-    }
-  } @else {
-    .container-#{$key} {
-      @include container($size: $key);
-    }
-  }
-}

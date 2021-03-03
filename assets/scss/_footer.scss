@@ -29,12 +29,14 @@
   }
 
   a {
-    font-size: map-get($font-sizes, lg);
+    @include font-size(
+      $min-font: map-get($font-sizes, lg) - 4px,
+      $max-font: map-get($font-sizes, lg)
+    );
   }
 }
 
 .footer__copyright {
-  font-size: map-get($font-sizes, sm);
   background-color: #555;
 }
 

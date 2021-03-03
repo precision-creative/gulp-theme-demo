@@ -1,5 +1,4 @@
 @import 'normalize';
-@import 'mixins';
 
 // Globals
 *,
@@ -14,6 +13,12 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+// Mixins
+@import 'mixins/media-query';
+@import 'mixins/container';
+@import 'mixins/fluid-font-size';
+@import 'mixins/header';
 
 // Site-wide styles
 @import 'colors';
