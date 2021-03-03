@@ -69,11 +69,11 @@ function theme_enqueue_styles()
   }
 
   if (is_page_template(array('page-templates/blog.php'))) {
-    wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/pages/blog-page.css', array());
+    wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/blog.css', array());
   }
 
   if (is_single()) {
-    wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/pages/single.css', array());
+    wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/single.css', array());
   }
 
 
