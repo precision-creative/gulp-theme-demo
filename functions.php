@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 $includes = array(
   '/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
   '/class-pc-navwalker.php',    // Load custom nav walker.
+  '/pc-posts-navigation.php',    // Load custom nav walker.
 );
 
 foreach ($includes as $file) {

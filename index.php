@@ -14,15 +14,15 @@
 
 get_header();
 
-if (have_posts()) :
-	while (have_posts()) :
-		the_post();
-		get_template_part('template-parts/content/content');
-	// twenty_twenty_one_the_posts_navigation();  
-
-	endwhile;
-else :
+if (have_posts()) : ?>
+	<div class="container">
+		<?php while (have_posts()) :
+			the_post();
+			get_template_part('template-parts/content/content');
+		endwhile;
+		pc_posts_naviation(); ?>
+	</div>
+<?php else :
 	get_template_part('template-parts/content/content', 'none');
 endif;
-
 get_footer();
