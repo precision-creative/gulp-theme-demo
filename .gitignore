@@ -1,4 +1,4 @@
 .DS_Store
 
-# These will be generated with WP-SCSS
-/css
+# These CSS files will be generated with WP-SCSS
+/css/*
