@@ -65,15 +65,15 @@ function theme_enqueue_styles()
   // Conditional Enqueueing 
   // Good for site speed and keeping CSS organized
   if (is_404()) {
-    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/404.css', array('precision'));
+    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/page-404.css');
   }
 
   if (is_page_template(array('page-templates/blog.php'))) {
-    wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/blog.css', array());
+    wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/page-blog.css');
   }
 
   if (is_single()) {
-    wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/single.css', array());
+    wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/page-single.css');
   }
 
 

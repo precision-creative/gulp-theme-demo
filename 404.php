@@ -6,13 +6,13 @@ get_header();
 $container = get_theme_mod('container_width');
 ?>
 
-<main id="page-404">
-  <div class="<?php echo $container; ?>">
-    <section>
+<main class="not-found">
+  <div class="not-found__container">
+    <section class="not-found__section">
       <h1>404</h1>
       <h3>The page you are looking for wasn't found.</h3>
-      <p class="pcButton__wrapper pcButton__wrapper--center">
-        <a href="/" class="pcButton">Return to Safety</a>
+      <p>
+        <a href="/">Homepage</a>
       </p>
     </section>
   </div>

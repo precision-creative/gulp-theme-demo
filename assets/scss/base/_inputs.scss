@@ -1,5 +1,5 @@
 @import 'functions/color';
-@import 'abstracts/placeholders';
+@import 'mixins/button';
 
 $outline: 2px dashed color(gray, lighter);
 $outline-offset: 4px;
@@ -43,27 +43,6 @@ form {
   }
 
   button {
-    @extend %button-reset;
-
-    padding: 1rem 2rem;
-
-    background: color(red);
-    color: color(white);
-
-    transition: background 250ms ease-in-out, transform 150ms ease;
-
-    &:hover,
-    &:focus {
-      background: color(red, dark);
-    }
-
-    &:focus {
-      outline: $outline;
-      outline-offset: $outline-offset;
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
+    @include button();
   }
 }

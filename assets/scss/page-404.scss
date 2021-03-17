@@ -1,0 +1,44 @@
+@import 'mixins/header';
+@import 'mixins/container';
+@import 'mixins/font-size';
+@import 'mixins/button';
+@import 'functions/color';
+
+.not-found__section {
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  text-align: center;
+}
+
+.not-found__container {
+  @include container;
+}
+
+.not-found h1 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+
+  @include header($color: color(gray, lightest));
+  @include font-size($size: huge, $reducer: 100px);
+
+  text-align: center;
+  z-index: -1;
+}
+
+.not-found h3 {
+  @include header(
+    $uppercase: false,
+    $size: 2xl,
+    $color: color(red),
+    $weight: normal
+  );
+  margin-bottom: 24px;
+}
+
+.not-found a {
+  @include button();
+}

@@ -1,0 +1,42 @@
+@import 'functions/color';
+
+/// Adds buttons, for <a> and <button> tags
+@mixin button() {
+  $outline: 2px dashed color(gray, lighter);
+  $outline-offset: 4px;
+
+  // Resets
+  display: inline-block;
+  margin: 0;
+  border: none;
+  background: none;
+  text-align: center;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  // Styling
+  padding: 1rem 2rem;
+  background-color: color(red);
+  color: color(white);
+
+  transition: background 250ms ease-in-out, transform 150ms ease;
+
+  &:hover,
+  &:focus {
+    background: color(red, dark);
+  }
+
+  &:focus {
+    outline: $outline;
+    outline-offset: $outline-offset;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
