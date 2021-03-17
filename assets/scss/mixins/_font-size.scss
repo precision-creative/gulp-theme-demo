@@ -1,0 +1,24 @@
+@import 'abstracts/typography';
+
+/// Fluid responsive font sizes
+/// @param {string} $size [base] - Largest font size, from 'abstracts/typography' $font-sizes map
+/// @param {length} $reducer [2px] - Size to subtract from the $size param on smaller screens
+/// @param {length} $min-vp [500px] - Smallest size of viewport when the fluid effect starts taking place
+/// @param {length} $max-vp [1200px] - Largest size of viewport when the fluid effect stops taking place
+@mixin font-size($size: base, $reducer: 2px, $min-vp: 480px, $max-vp: 1200px) {
+  $max-font: map-get($font-sizes, $size);
+  $min-font: $max-font - $reducer;
+
+  $slope: ($min-font - $max-font) / ($min-vp - $max-vp);
+  $base: $max-font - $slope * $max-vp;
+
+  font-size: $min-font;
+
+  @media (min-width: $min-vp) {
+    font-size: calc(#{$base} + 100vw * #{$slope});
+  }
+
+  @media (min-width: $max-vp) {
+    font-size: $max-font;
+  }
+}

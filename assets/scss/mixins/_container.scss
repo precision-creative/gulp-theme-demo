@@ -1,5 +1,5 @@
-// Container mixin
-// @param $size = string: size of container
+/// Adds container styles based on viewport size
+/// @param {string} $size [base] - Size of container from the $sizes map
 $sizes: (
   'sm': 900px,
   'base': 1110px,
@@ -17,17 +17,4 @@ $sizes: (
   max-width: clamp(16rem, 90vw, $width);
   margin-left: auto;
   margin-right: auto;
-}
-
-// Generate a container utlity class for each size
-@each $key, $value in $sizes {
-  @if ($key == base) {
-    .container {
-      @include container($size: $key);
-    }
-  } @else {
-    .container-#{$key} {
-      @include container($size: $key);
-    }
-  }
 }

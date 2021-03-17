@@ -1,6 +1,6 @@
-// Media query breakpoints
-// @param $size = string: size of the breakpoint
-// @param $width = 'min' | 'max': breakpoint width type
+/// Adds a breakpoint
+/// @param {string} $size [md] - The size of the breakpoint from the $breakpoints map
+/// @param {string} $type [min] - Breakpoint width type, either min or max
 @mixin mq($size: md, $type: min) {
   $breakpoints: (
     'sm': 480px,

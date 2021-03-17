@@ -1,0 +1,69 @@
+@import 'functions/color';
+@import 'abstracts/placeholders';
+
+$outline: 2px dashed color(gray, lighter);
+$outline-offset: 4px;
+
+form {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  input,
+  select,
+  textarea {
+    // Resets
+    background: none;
+    border: none;
+
+    // Styles
+    margin: 0;
+    padding: 12px 24px;
+
+    line-height: 1.6;
+    font-weight: normal;
+    border: 2px solid color(gray, darker);
+    border-radius: 6px;
+
+    &:focus {
+      outline: $outline;
+      outline-offset: $outline-offset;
+    }
+
+    &::placeholder {
+      // Firefox Fix
+      opacity: 0.5;
+      color: inherit;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button {
+    @extend %button-reset;
+
+    padding: 1rem 2rem;
+
+    background: color(red);
+    color: color(white);
+
+    transition: background 250ms ease-in-out, transform 150ms ease;
+
+    &:hover,
+    &:focus {
+      background: color(red, dark);
+    }
+
+    &:focus {
+      outline: $outline;
+      outline-offset: $outline-offset;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

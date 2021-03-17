@@ -1,18 +1,23 @@
+@import 'abstracts/typography';
+@import 'mixins/container';
+@import 'mixins/breakpoint';
+
 .footer {
   padding-top: 1rem;
   text-align: center;
-  color: #fff;
-  background-color: $dark;
+  color: color(white);
+  background-color: color(gray, darker);
+}
 
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  a {
-    text-decoration: none;
-  }
+.footer a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .footer__container {
@@ -23,21 +28,21 @@
   margin-bottom: 1em;
 }
 
-.footer__links {
-  li {
-    margin-bottom: 0.5rem;
-  }
+.footer__logo img {
+  vertical-align: bottom;
+}
 
-  a {
-    @include font-size(
-      $min-font: map-get($font-sizes, lg) - 4px,
-      $max-font: map-get($font-sizes, lg)
-    );
-  }
+.footer__links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer__links a {
 }
 
 .footer__copyright {
-  background-color: #555;
+  background-color: color(gray, darkest);
+  color: color(gray, lightest);
+  font-size: map-get($font-sizes, sm);
 }
 
 .footer__copyright__flex {

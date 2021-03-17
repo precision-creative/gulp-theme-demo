@@ -1,25 +1,24 @@
-// Header mixin
-// To keep consistent headers throughout the site and handle mobile response
-// @param $size: Key from the $font-sizes map
-// @param $color: Color of the text
-// @param $uppercase: Boolean
-// @param $weight: Weight of the text
-// @param $letter-spacing: Letter spacing of text
+@import 'abstracts/typography';
+@import 'mixins/font-size';
+
+/// To keep consistent headers throughout the site and handle mobile response
+/// @param {length} $size [2xl] - key from the $font-sizes map
+/// @param {color} $color [inherit] - color of the text
+/// @param {boolean} $uppercase [true] - to uppercase the header or not
+/// @param {string} $weight [bold] - key from the $font-weights map
+/// @param {string} $spacing [small] - letter spacing of text
 @mixin header(
-  $size: 3xl,
-  $color: #000,
+  $size: 2xl,
+  $color: inherit,
   $uppercase: true,
   $weight: bold,
-  $letter-spacing: 0.1em
+  $spacing: small
 ) {
-  @include font-size(
-    $min-font: map-get($font-sizes, $size) * 0.85,
-    $max-font: map-get($font-sizes, $size)
-  );
+  @include font-size($size: $size, $reducer: map-get($font-sizes, $size) * 0.2);
 
-  font-weight: $weight;
+  font-weight: map-get($font-weights, $weight);
+  letter-spacing: map-get($kerning, $spacing);
   color: $color;
-  letter-spacing: $letter-spacing;
 
   @if $uppercase == true {
     text-transform: uppercase;

@@ -1,0 +1,38 @@
+$font-families: (
+  'sans': (
+    'Helvetica',
+    'Open Sans',
+    sans-serif,
+  ),
+  'serif': (
+    'Lora',
+    'Times New Roman',
+    serif,
+  ),
+);
+
+$font-sizes: (
+  'xs': 12px,
+  'sm': 14px,
+  'base': 16px,
+  'lg': 20px,
+  'xl': 26px,
+  '2xl': 32px,
+  '3xl': 42px,
+);
+
+$font-weights: (
+  'lighter': 300,
+  'normal': 400,
+  'bold': 700,
+  'bolder': 900,
+);
+
+$leading: (
+  'base': 1.6,
+);
+
+$kerning: (
+  'none': 0px,
+  'small': 0.05em,
+);

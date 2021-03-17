@@ -1,3 +1,6 @@
+@import 'abstracts/placeholders';
+@import 'functions/color';
+
 .pushy {
   display: flex;
   flex-flow: column nowrap;
@@ -10,8 +13,8 @@
   z-index: 1025;
   overflow: hidden;
   -webkit-overflow-scrolling: touch; /* enables momentum scrolling in iOS overflow elements */
-  color: $dark;
-  background-color: #fff;
+  color: color(gray, darkest);
+  background-color: color(white);
   transition: transform 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99);
 
   ul {
@@ -38,7 +41,7 @@
 .pushy__header {
   display: flex;
   padding: 0.75rem;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid color(gray, lightest);
 }
 
 .pushy__menu {
@@ -47,7 +50,7 @@
 
   .menu-item-has-children {
     .sub-menu {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: color(gray, lightest);
       transition: height 300ms ease-in-out;
       overflow: hidden;
     }
@@ -78,7 +81,7 @@
 }
 
 .pushy__close {
-  cursor: pointer;
+  @extend %button-reset;
 
   svg {
     vertical-align: bottom;
@@ -87,12 +90,13 @@
 
 .pushy__footer {
   text-align: center;
-  letter-spacing: 1rem;
+  letter-spacing: 2rem;
   padding: 1rem 0.5rem;
-  border-top: 2px solid #ddd;
+  border-top: 2px solid color(gray, lightest);
 
   a {
     display: inline-block;
+    color: color(red);
   }
 
   svg {

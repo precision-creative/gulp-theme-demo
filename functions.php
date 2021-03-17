@@ -60,7 +60,7 @@ function theme_enqueue_styles()
 
   // Precision Styles
   wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/style.css');
-  wp_enqueue_style('precision', get_stylesheet_directory_uri() . '/css/index.css');
+  wp_enqueue_style('main', get_stylesheet_directory_uri() . '/css/main.css');
 
   // Conditional Enqueueing 
   // Good for site speed and keeping CSS organized

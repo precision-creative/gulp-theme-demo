@@ -1,0 +1,24 @@
+$palettes: (
+  white: (
+    base: hsl(0, 0%, 100%),
+  ),
+  black: (
+    base: hsl(0, 0%, 0%),
+  ),
+  red: (
+    lighter: hsl(358, 85%, 72%),
+    light: hsl(358, 85%, 62%),
+    base: hsl(358, 85%, 52%),
+    dark: hsl(358, 85%, 42%),
+    darker: hsl(358, 85%, 32%),
+  ),
+  gray: (
+    lightest: hsl(0, 0%, 90%),
+    lighter: hsl(0, 0%, 80%),
+    light: hsl(0, 0%, 65%),
+    base: hsl(0, 0%, 50%),
+    dark: hsl(0, 0%, 35%),
+    darker: hsl(0, 0%, 20%),
+    darkest: hsl(0, 0%, 10%),
+  ),
+);

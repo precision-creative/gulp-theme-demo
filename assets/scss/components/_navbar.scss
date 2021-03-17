@@ -1,14 +1,22 @@
+@import 'abstracts/shadows';
+@import 'mixins/container';
+@import 'mixins/breakpoint';
+@import 'functions/color';
+
 .navbar {
-  color: $dark;
-  background-color: #fff;
+  color: hsl(0, 0%, 80%);
+  background-color: color(white);
+  color: color(gray, darkest);
+  box-shadow: map-get($shadows, sm);
+}
 
-  ul {
-    list-style: none;
-  }
+.navbar ul {
+  list-style: none;
+}
 
-  a {
-    text-decoration: none;
-  }
+.navbar a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .navbar__container {
@@ -22,9 +30,11 @@
 }
 
 .navbar__logo {
-  max-width: 100%;
-  height: auto;
   margin-right: 1rem;
+}
+
+.navbar__logo img {
+  vertical-align: bottom;
 }
 
 .navbar__menu {
@@ -35,6 +45,7 @@
 .navbar__links {
   display: flex;
   align-items: baseline;
+  white-space: nowrap;
 
   .menu-item {
     a {
@@ -83,21 +94,21 @@
 
 .navbar__hamburger {
   margin-left: auto;
-
-  button {
-    padding: 0.75rem;
-    border: none;
-    width: auto;
-    background-color: transparent;
-    cursor: pointer;
-
-    svg {
-      vertical-align: bottom;
-    }
-  }
 }
 
-// Mobile breakpoint
+.navbar__hamburger button {
+  padding: 0.75rem;
+  border: none;
+  width: auto;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.navbar__hamburger svg {
+  vertical-align: bottom;
+}
+
+// Create customizable mobile breakpoints for customizer
 $breakpoints: ('sm', 'md', 'lg', 'xl');
 
 @each $break in $breakpoints {

@@ -1,0 +1,21 @@
+@import 'abstracts/typography';
+@import 'functions/color';
+@import 'mixins/font-size';
+@import 'mixins/header';
+
+body {
+  font-family: map-get($font-families, sans);
+  font-weight: map-get($font-weights, normal);
+  @include font-size();
+  line-height: map-get($leading, base);
+  letter-spacing: map-get($kerning, none);
+  color: color(gray, darkest);
+}
+
+// Generate default heading fonts
+// Feel free to remove this if it gets in the way
+@for $i from 1 through 6 {
+  h#{$i} {
+    @include header($weight: normal, $color: color(red), $uppercase: false);
+  }
+}

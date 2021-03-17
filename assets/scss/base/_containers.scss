@@ -1,0 +1,13 @@
+@import 'mixins/container';
+
+@each $key, $value in $sizes {
+  @if ($key == base) {
+    .container {
+      @include container($size: $key);
+    }
+  } @else {
+    .container-#{$key} {
+      @include container($size: $key);
+    }
+  }
+}
