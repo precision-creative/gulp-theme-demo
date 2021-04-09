@@ -55,10 +55,10 @@ if ($mobile_menu_type === 'pushy') {
       wp_nav_menu(
         array(
           'theme_location'  => 'desktop_menu',
-          'container_id'    => '',
+          'container_id'    => 'navbar-menu-container',
           'container_class' => 'navbar__menu',
           'menu_id'         => '',
-          'menu_class'      => 'navbar__links',
+          'menu_class'      => 'navbar__links no-js',
           'fallback_cb'     => 'fallback_menu',
           'depth'           => 2,
           'walker'          => new PC_Navwalker(),

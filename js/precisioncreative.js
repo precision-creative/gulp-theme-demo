@@ -64,4 +64,133 @@ for (item of itemsWithChildren) {
   submenuEl.style.height = '0px'
 }
 
+/*
+This code is responsible for the desktop clicky menus
+*/
+
+const Menu = function (menu) {
+  let currentMenuButton,
+    container = menu.parentElement
+
+  this.init = function () {
+    menuSetup()
+
+    document.addEventListener('click', closeOpenMenu)
+  }
+
+  // Menu opening and closing
+
+  function toggleOnButtonClick(e) {
+    const button = e.currentTarget
+
+    if (currentMenuButton && button !== currentMenuButton) {
+      toggleSubmenu(currentMenuButton)
+    }
+
+    toggleSubmenu(button)
+  }
+
+  function toggleSubmenu(button) {
+    const submenu = document.getElementById(
+      button.getAttribute('aria-controls')
+    )
+
+    if ('true' === button.getAttribute('aria-expanded')) {
+      button.setAttribute('aria-expanded', false)
+      submenu.setAttribute('aria-hidden', true)
+
+      currentMenuButton = false
+    } else {
+      button.setAttribute('aria-expanded', true)
+      submenu.setAttribute('aria-hidden', false)
+
+      currentMenuButton = button
+    }
+  }
+
+  function closeOpenMenu(e) {
+    if (currentMenuButton && !e.target.closest(`#${container.id}`)) {
+      toggleSubmenu(currentMenuButton)
+    }
+  }
+
+  function closeOnEscKey(e) {
+    if (27 === e.keyCode) {
+      if (null !== e.target.closest('ul[aria-hidden="false"]')) {
+        currentMenuButton.focus()
+        toggleSubmenu(currentMenuButton)
+      } else if ('true' === e.target.getAttribute('aria-expanded')) {
+        toggleSubmenu(currentMenuButton)
+      }
+    }
+  }
+
+  // Menu setup functions
+
+  function menuSetup() {
+    menu.classList.remove('no-js')
+
+    menu.querySelectorAll('ul').forEach(submenu => {
+      const submenuParent = submenu.parentElement
+      let button = convertLinkToButton(submenuParent)
+
+      setupAria(submenu, button)
+
+      button.addEventListener('click', toggleOnButtonClick)
+
+      menu.addEventListener('keyup', closeOnEscKey)
+    })
+  }
+
+  function convertLinkToButton(submenuParent) {
+    const link = submenuParent.getElementsByTagName('a')[0],
+      linkHTML = link.innerHTML,
+      linkAtts = link.attributes,
+      button = document.createElement('button')
+
+    if (null !== link) {
+      button.innerHTML = linkHTML.trim()
+
+      for (let i = 0, len = linkAtts.length; i < len; i++) {
+        let attr = linkAtts[i]
+
+        if ('href' !== attr.name) {
+          button.setAttribute(attr.name, attr.value)
+        }
+      }
+
+      submenuParent.replaceChild(button, link)
+    }
+
+    return button
+  }
+
+  function setupAria(submenu, button) {
+    const submenuID = submenu.getAttribute('id')
+    let id
+
+    if (null === submenuID) {
+      id =
+        button.textContent.trim().replace(/\s+/g, '-').toLowerCase() +
+        '-submenu'
+    } else {
+      id = submenuID + '-submenu'
+    }
+
+    button.setAttribute('aria-controls', id)
+    button.setAttribute('aria-expanded', false)
+
+    submenu.setAttribute('id', id)
+    submenu.setAttribute('aria-hidden', true)
+  }
+}
+
+const menus = document.querySelectorAll('.navbar__links')
+
+menus.forEach(menu => {
+  const menuInstance = new Menu(menu)
+
+  menuInstance.init()
+})
+
 // Yell at Grayson if this code stops working

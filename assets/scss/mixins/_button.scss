@@ -2,9 +2,6 @@
 
 /// Adds buttons, for <a> and <button> tags
 @mixin button() {
-  $outline: 2px dashed color(gray, lighter);
-  $outline-offset: 4px;
-
   // Resets
   display: inline-block;
   margin: 0;
@@ -15,6 +12,7 @@
   text-align: center;
   text-decoration: none;
   padding: 1rem;
+  border-radius: 3px;
 
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -32,8 +30,9 @@
   }
 
   &:focus {
-    outline: $outline;
-    outline-offset: $outline-offset;
+    outline: none;
+
+    box-shadow: 0 0 0 4px color(red, light);
   }
 
   &:active {

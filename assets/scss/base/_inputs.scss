@@ -24,12 +24,7 @@ form {
     line-height: 1.6;
     font-weight: normal;
     border: 2px solid color(gray, darker);
-    border-radius: 6px;
-
-    &:focus {
-      outline: $outline;
-      outline-offset: $outline-offset;
-    }
+    border-radius: 0px;
 
     &::placeholder {
       // Firefox Fix

@@ -1,8 +1,11 @@
 @import 'abstracts/shadows';
+
 @import 'mixins/container';
 @import 'mixins/breakpoint';
+
 @import 'functions/color';
 
+// Base styling
 .navbar {
   color: hsl(0, 0%, 80%);
   background-color: color(white);
@@ -29,6 +32,7 @@
   align-items: center;
 }
 
+// Logo
 .navbar__logo {
   margin-right: 1rem;
 }
@@ -37,6 +41,7 @@
   vertical-align: bottom;
 }
 
+// Menu
 .navbar__menu {
   display: none;
   margin-left: auto;
@@ -47,51 +52,82 @@
   align-items: baseline;
   white-space: nowrap;
 
-  .menu-item {
-    a {
-      margin: 0 0.5rem;
-      padding: 0.5rem;
-      display: block;
-    }
+  // Menu-wide link styling
+  a,
+  button {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
 
-    &.menu-item-has-children {
-      position: relative;
+  // Menu button styling
+  button {
+    background: none;
+    border: none;
+    appearance: none;
+    border-radius: 0;
+    line-height: inherit;
+    cursor: pointer;
+  }
 
-      svg {
-        margin-left: 0.5rem;
-      }
-
-      .sub-menu {
-        margin: 0;
-        padding: 0;
-        opacity: 0;
-        display: none;
-        position: absolute;
-        top: 100%;
-        width: 180px;
-        background: #fff;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1),
-          -4px 4px 4px 4px rgba(0, 0, 0, 0.1);
-
-        .menu-item a {
-          margin: 0;
-
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-          }
-        }
-      }
-
-      &:hover {
-        .sub-menu {
-          display: block;
-          opacity: 1;
-        }
-      }
-    }
+  // Top-level links and buttons
+  > .menu-item > a,
+  > .menu-item > button {
+    margin: 0 0.5rem;
+    padding: 0.5rem;
   }
 }
 
+.navbar__links.no-js .menu-item-has-children:hover > .sub-menu,
+.navbar__links.no-js .menu-item-has-children:focus-within > .sub-menu {
+  // No Javascript Fallback
+  visibility: visible;
+}
+
+.navbar__links .menu-item-has-children {
+  position: relative;
+}
+
+.navbar__links .sub-menu {
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  width: 180px;
+  background-color: color(white);
+  box-shadow: map-get($shadows, sm);
+
+  &[aria-hidden='false'] {
+    visibility: visible;
+  }
+}
+
+.navbar__links .sub-menu a {
+  // Submenu links
+  display: block;
+  padding: 0.25rem 0.5rem;
+
+  + a {
+    margin-bottom: 0.25rem;
+  }
+
+  &:hover {
+    background-color: rgba(color(black), 0.05);
+  }
+}
+
+.navbar__links .menu-item-has-children svg {
+  margin-left: 0.5rem;
+
+  transition: transform 300ms ease;
+}
+
+.navbar__links .menu-item-has-children button[aria-expanded='true'] svg {
+  transform: rotate(-180deg);
+}
+
+// Hamburger
 .navbar__hamburger {
   margin-left: auto;
 }

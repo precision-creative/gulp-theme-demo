@@ -4,9 +4,9 @@
 @import 'mixins/header';
 
 body {
+  @include font-size();
   font-family: map-get($font-families, sans);
   font-weight: map-get($font-weights, normal);
-  @include font-size();
   line-height: map-get($leading, base);
   letter-spacing: map-get($kerning, none);
   color: color(gray, darkest);
