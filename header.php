@@ -20,7 +20,7 @@ $facebook_url = get_theme_mod('facebook_url');
 $instagram_url = get_theme_mod('instagram_url');
 
 if ($mobile_menu_type === 'pushy') {
-  $hamburger_class = 'pushy__hamburger';
+  $hamburger_class = 'hamburger hamburger--pushy';
 } else if ($mobile_menu_type === 'accordion') {
   $hamburger_class = 'accordion__hamburger';
 }
@@ -101,7 +101,7 @@ if ($mobile_menu_type === 'pushy') {
 
   <?php if ($mobile_menu_type === 'pushy') : ?>
     <!-- The Pushy -->
-    <aside class="pushy pushy-right">
+    <aside id="pushy" class="pushy pushy-right">
       <!-- Pushy Header -->
       <div class="pushy__header">
         <button class="pushy__close">
@@ -115,7 +115,7 @@ if ($mobile_menu_type === 'pushy') {
       <?php
       wp_nav_menu(array(
         'theme_location'  => 'mobile_menu',
-        'container_id'    => '',
+        'container_id'    => 'pushy-menu-container',
         'container_class' => 'pushy__menu',
         'menu_id'         => '',
         'menu_class'      => 'pushy__links',
@@ -143,6 +143,4 @@ if ($mobile_menu_type === 'pushy') {
         </a>
       </div>
     </aside>
-    <!-- The dropdown -->
-    <div class="pushy__overlay"></div>
   <?php endif; ?>

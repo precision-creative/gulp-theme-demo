@@ -88,12 +88,11 @@ function theme_enqueue_styles()
 
   // Pushy or Accordion
   if (get_theme_mod('mobile_menu_type') === 'pushy') {
-    wp_enqueue_script('jquery');
-    wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array('jquery'), false, true);
+    // wp_enqueue_script('jquery');
+    // wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array('jquery'), false, true);
   } else if (get_theme_mod('mobile_menu_type') === 'accordion') {
     wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
   }
-
 
   // Precision Scripts
   wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);

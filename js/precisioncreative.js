@@ -15,57 +15,8 @@ if (window.AOS) {
   AOS.init()
 }
 
-// Close pushy handlers
-const closePushyEl = document.querySelector('.pushy__close')
-const pushyOverlayEl = document.querySelector('.pushy__overlay')
-
-if (closePushyEl) {
-  closePushyEl.addEventListener('click', closePushy)
-  pushyOverlayEl.addEventListener('click', closePushy)
-}
-
-function closePushy(e) {
-  e.preventDefault()
-
-  document.body.classList.remove('pushy-open-right')
-  document.body.classList.remove('pushy-open-left')
-}
-
-// Open pushy sub-menu handlers
-const itemsWithChildren = document.querySelectorAll(
-  '.pushy .menu-item-has-children'
-)
-
-function toggleItemOpen(itemEl, submenuEl, height) {
-  if (itemEl.dataset.opened === 'true') {
-    itemEl.dataset.opened = 'false'
-    itemEl.classList.remove('is-open')
-    submenuEl.style.height = '0px'
-  } else {
-    itemEl.dataset.opened = 'true'
-    itemEl.classList.add('is-open')
-    submenuEl.style.height = height + 'px'
-  }
-}
-
-for (item of itemsWithChildren) {
-  const submenuEl = item.querySelector('.sub-menu')
-  const submenuHeight = submenuEl.offsetHeight
-
-  const link = item.querySelector('a')
-
-  link.addEventListener('click', e => {
-    e.preventDefault()
-    toggleItemOpen(item, submenuEl, submenuHeight)
-  })
-
-  // Close items on init
-  item.dataset.opened = 'false'
-  submenuEl.style.height = '0px'
-}
-
 /*
-This code is responsible for the desktop clicky menus
+This code is responsible for the desktop and pushy clicky menus
 */
 
 const Menu = function (menu) {
@@ -91,9 +42,7 @@ const Menu = function (menu) {
   }
 
   function toggleSubmenu(button) {
-    const submenu = document.getElementById(
-      button.getAttribute('aria-controls')
-    )
+    const submenu = document.querySelector(button.getAttribute('aria-controls'))
 
     if ('true' === button.getAttribute('aria-expanded')) {
       button.setAttribute('aria-expanded', false)
@@ -177,7 +126,11 @@ const Menu = function (menu) {
       id = submenuID + '-submenu'
     }
 
-    button.setAttribute('aria-controls', id)
+    if (button.closest('#pushy')) {
+      id += '-pushy'
+    }
+
+    button.setAttribute('aria-controls', `#${id}`)
     button.setAttribute('aria-expanded', false)
 
     submenu.setAttribute('id', id)
@@ -185,12 +138,71 @@ const Menu = function (menu) {
   }
 }
 
-const menus = document.querySelectorAll('.navbar__links')
+const menus = document.querySelectorAll('.navbar__links, .pushy__links')
 
 menus.forEach(menu => {
   const menuInstance = new Menu(menu)
 
   menuInstance.init()
+})
+
+/*
+This code is responsible for the pushy menu
+*/
+
+const PushyMenu = function (hamburger) {
+  const pushy = document.getElementById('pushy'),
+    closePushy = pushy.querySelector('.pushy__close')
+
+  this.init = function () {
+    pushySetup()
+    setupAria()
+
+    document.addEventListener('click', closeOpenPushy)
+  }
+
+  // Open / close functions
+
+  function togglePushy() {
+    if ('true' === hamburger.getAttribute('aria-expanded')) {
+      hamburger.setAttribute('aria-expanded', false)
+      pushy.setAttribute('aria-hidden', true)
+    } else {
+      hamburger.setAttribute('aria-expanded', true)
+      pushy.setAttribute('aria-hidden', false)
+    }
+  }
+
+  function closeOpenPushy(e) {
+    if (
+      !e.target.closest(`#${pushy.id}`) &&
+      !hamburger.parentElement.contains(e.target)
+    ) {
+      hamburger.setAttribute('aria-expanded', false)
+      pushy.setAttribute('aria-hidden', true)
+    }
+  }
+
+  // Setup functions
+
+  function pushySetup() {
+    hamburger.addEventListener('click', togglePushy)
+    closePushy.addEventListener('click', togglePushy)
+  }
+
+  function setupAria() {
+    hamburger.setAttribute('aria-controls', `#${pushy.id}`)
+    hamburger.setAttribute('aria-expanded', false)
+
+    pushy.setAttribute('aria-hidden', true)
+  }
+}
+
+const hamburgers = document.querySelectorAll('.hamburger--pushy')
+
+hamburgers.forEach(hamburger => {
+  const hamburgerInstance = new PushyMenu(hamburger)
+  hamburgerInstance.init()
 })
 
 // Yell at Grayson if this code stops working

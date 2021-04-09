@@ -10,3 +10,8 @@ textarea:focus {
   outline: none;
   box-shadow: 0 0 0 2px color(gray, dark);
 }
+
+.pushy a:focus {
+  outline: 1px solid currentColor;
+  outline-offset: 0px;
+}
