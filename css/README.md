@@ -1,6 +1,6 @@
 # Compile this folder with WP-SCSS
 
-This CSS should be compiled with the WP-SCSS plugin. Install the plugin, then set up the following settings (under Settings > WP-SCSS):
+This CSS should be compiled with the WP-SCSS plugin. Install the plugin (WP-SCSS), then set up the following settings (under Settings > WP-SCSS):
 
 - Base Location: **Current Theme**
 - SCSS Location: `/assets/scss`
