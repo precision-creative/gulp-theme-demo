@@ -68,7 +68,8 @@ function theme_enqueue_styles()
     wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/page-404.css');
   }
 
-  if (is_page_template(array('page-templates/blog.php'))) {
+  if (is_post_type_archive()) {
+    echo 'Post type';
     wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/page-blog.css');
   }
 
@@ -79,9 +80,10 @@ function theme_enqueue_styles()
 
 
   // Animate On Scroll (AOS) enqueuing
-  if (is_page_template(array(
-    'page-templates/blog.php'
-  ))) {
+  // Add page or post IDs to the array to enqueue AOS to them
+  $aos_page_ids = array(30);
+
+  if (in_array(get_the_ID(), $aos_page_ids)) {
     wp_enqueue_style('aos', get_stylesheet_directory_uri() . '/assets/css/aos.css');
     wp_enqueue_script('aos', get_stylesheet_directory_uri() . '/assets/js/aos.js', array(), null, true);
   }
@@ -94,7 +96,7 @@ function theme_enqueue_styles()
     wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
   }
 
-  // Precision Scripts
+  // Always enqueue Precision Scripts
   wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);
 }
 
@@ -316,7 +318,9 @@ if (!function_exists('posted_on')) {
   }
 }
 
-// Adds phone number parsing 
+/**
+ * Adds function for parsing phone numbers
+ */
 function parse_phone_number($number)
 {
   if (preg_match('/^(\d{3})(\d{3})(\d{4})$/', $number,  $matches)) {
@@ -324,3 +328,31 @@ function parse_phone_number($number)
     return $result;
   }
 }
+
+/**
+ * Filter the excerpt lenth to X words
+ * 
+ * @param int $length Excerpt length
+ * 
+ */
+function pc_custom_excerpt_length($length)
+{
+  return 10;
+}
+add_filter('excerpt_length', 'pc_custom_excerpt_length', 999);
+
+
+/**
+ * Changes the default [...] post excerpt suffix
+ * You could make this a read more link using get_the_permalink()
+ * 
+ * @link https://developer.wordpress.org/reference/functions/the_excerpt/
+ * 
+ * @param string $more The default excerpt string
+ */
+
+function pc_excerpt_more($more)
+{
+  return '...';
+}
+add_filter('excerpt_more', 'pc_excerpt_more');
