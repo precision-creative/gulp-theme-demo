@@ -68,8 +68,7 @@ function theme_enqueue_styles()
     wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/page-404.css');
   }
 
-  if (is_post_type_archive()) {
-    echo 'Post type';
+  if (is_home() && !is_front_page()) {
     wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/page-blog.css');
   }
 

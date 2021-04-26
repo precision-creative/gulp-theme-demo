@@ -38,4 +38,4 @@
       <?php // twenty_twenty_one_entry_meta_footer(); 
       ?>
     </footer> -->
-</article><!-- #post-<?php the_ID(); ?> -->
+</article>
