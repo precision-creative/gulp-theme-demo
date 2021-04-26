@@ -10,17 +10,17 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-  <header class="entry-header alignwide">
-    <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-    <?php the_post_thumbnail(); ?>
-  </header>
-
-  <div class="entry-content">
-    <?php
-    the_content();
-    ?>
-  </div>
-
-</article>
+<main class="single__container">
+  <article id="post-<?php the_ID(); ?>" <?php post_class('single__article'); ?>>
+    <header class="single__header">
+      <?php the_title('<h1 class="single__title">', '</h1>'); ?>
+      <p class="single__date">
+        <?php the_date(); ?>
+      </p>
+      <?php the_post_thumbnail('full', array('class' => 'single__thumbnail')); ?>
+    </header>
+    <div class="single__content">
+      <?php the_content(); ?>
+    </div>
+  </article>
+</main>

@@ -1,0 +1,28 @@
+@import 'functions/color';
+
+.pagination {
+  margin-top: 2rem;
+}
+
+.pagination a {
+  color: rgba(color(black), 0.5);
+
+  text-decoration: none;
+}
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+
+  list-style: none;
+}
+
+.pagination ul li {
+  + li {
+    margin-left: 0.5rem;
+  }
+}
+
+.pagination ul li.active a {
+  color: color(black);
+}

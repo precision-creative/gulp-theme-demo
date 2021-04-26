@@ -1,36 +1,52 @@
-.entry__title {
-  text-align: left !important;
+@import 'mixins/container';
+@import 'mixins/font-size';
+
+.single__container {
+  @include container(sm);
+  margin-top: 6rem;
+  margin-bottom: 6rem;
 }
 
-#author {
-  opacity: 0.75;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
+.single__article {
 }
 
-.wp-post-image {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-bottom: 4rem;
+.single__header {
 }
 
-#main {
-  margin-bottom: 8rem;
+.single__date {
+  @include font-size($size: xs);
 }
 
-#main p {
-  margin-bottom: 1.5rem;
+.single__date + .single__thumbnail {
+  margin-top: 1.5rem;
 }
 
-#main p,
-#main {
-  font-size: 1rem;
-}
-
-#main h2,
-#main h3,
-#main h4 {
+.single__header + .single__content {
   margin-top: 3rem;
-  margin-bottom: 1rem;
+}
+
+.single__thumbnail {
+  width: 100%;
+  height: auto;
+}
+
+.single__content {
+  > * + h2,
+  > * + h3,
+  > * + h4,
+  > * + h5,
+  > * + h6 {
+    margin-top: 3rem;
+  }
+
+  > * + p,
+  > * + ol,
+  > * + ul {
+    margin-top: 1.5rem;
+  }
+
+  > ul,
+  > ol {
+    padding-left: 1.5rem;
+  }
 }
