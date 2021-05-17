@@ -1,6 +1,11 @@
 @import 'mixins/button';
 @import 'mixins/container';
 
+@import 'components/woo/global/notices';
+@import 'components/woo/global/forms';
+@import 'components/woo/global/table';
+@import 'components/woo/global/breadcrumb';
+
 .woo-container {
   @include container;
   margin-top: 2rem;

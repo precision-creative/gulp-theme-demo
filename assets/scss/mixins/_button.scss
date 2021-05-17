@@ -24,6 +24,10 @@
 
   transition: background 250ms ease-in-out, transform 150ms ease;
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &:hover,
   &:focus {
     background: color(red, dark);

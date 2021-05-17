@@ -21,4 +21,13 @@ $palettes: (
     darker: hsl(0, 0%, 20%),
     darkest: hsl(0, 0%, 10%),
   ),
+  success: (
+    base: hsl(120, 80%, 42%),
+  ),
+  error: (
+    base: hsl(0, 84%, 47%),
+  ),
+  info: (
+    base: hsl(190, 84%, 47%),
+  ),
 );

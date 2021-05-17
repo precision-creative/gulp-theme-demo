@@ -1,0 +1,23 @@
+@import 'mixins/breakpoint';
+
+header h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cart__row {
+  display: grid;
+  grid-gap: 2rem 6rem;
+
+  @include mq {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.wc-proceed-to-checkout {
+  margin-top: 1rem;
+
+  .button {
+    width: 100%;
+  }
+}

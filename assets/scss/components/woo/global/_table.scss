@@ -1,0 +1,59 @@
+@import '../../../functions/color';
+
+$border-style: 1px solid color(gray, lighter);
+
+.shop_table {
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+  font-weight: normal;
+  width: 100%;
+
+  thead th {
+    border-bottom-width: 2px;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+  }
+
+  th {
+    font-weight: normal;
+  }
+
+  th,
+  td {
+    padding: 0.5em 1em;
+    border-bottom: $border-style;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  .amount {
+    font-weight: bold;
+  }
+
+  .product-thumbnail img {
+    vertical-align: bottom;
+  }
+
+  .remove {
+    $size: 34px;
+
+    display: inline-block;
+    width: $size;
+    height: $size;
+    border-radius: $size / 2;
+    padding: 0;
+    border: 2px solid currentColor;
+    color: color(gray);
+    text-align: center;
+    line-height: $size - 4px;
+  }
+
+  .cart__actions {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}

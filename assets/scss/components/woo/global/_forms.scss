@@ -1,0 +1,35 @@
+.woo-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  .form-row {
+    grid-column: span 2;
+  }
+
+  .form-row-first,
+  .form-row-last {
+    grid-column: span 1;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='tel'],
+  textarea {
+    width: 100%;
+    display: block;
+  }
+
+  button[type='submit'] {
+    margin-top: 1rem;
+  }
+
+  .clear {
+    display: none;
+  }
+
+  * + p {
+    margin-top: 0;
+  }
+}

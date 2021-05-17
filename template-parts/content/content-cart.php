@@ -13,7 +13,7 @@
 <div>
   <div class="woo-container">
     <header>
-      <h1>Cart</h1>
+      <h1>Shopping Cart</h1>
     </header>
     <?php the_content(); ?>
   </div>

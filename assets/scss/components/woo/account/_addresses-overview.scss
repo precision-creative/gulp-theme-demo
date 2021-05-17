@@ -1,0 +1,11 @@
+@import '../../../mixins/breakpoint';
+
+.account-addresses__row {
+  margin-top: 2rem;
+  display: grid;
+  grid-gap: 1rem;
+
+  @include mq {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
