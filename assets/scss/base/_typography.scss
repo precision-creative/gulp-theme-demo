@@ -12,10 +12,36 @@ body {
   color: color(gray, darkest);
 }
 
+a {
+  color: color(red);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+* + p,
+* + ol,
+* + ul {
+  margin-top: 1rem;
+}
+
+li {
+  margin-top: 1rem;
+  margin-left: 1.25rem;
+  margin-bottom: -0.5rem;
+}
+
 // Generate default heading fonts
 // Feel free to remove this if it gets in the way
 @for $i from 1 through 6 {
   h#{$i} {
     @include header($weight: normal, $color: color(red), $uppercase: false);
+    margin-bottom: 1rem;
+  }
+
+  * + h#{$i} {
+    margin-top: 3rem;
   }
 }

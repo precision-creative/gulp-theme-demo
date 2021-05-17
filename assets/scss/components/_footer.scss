@@ -33,6 +33,7 @@
 }
 
 .footer__links li {
+  margin: 0;
 }
 
 .footer__links a {
@@ -54,6 +55,10 @@
   margin-top: 1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+
+  p {
+    margin: 0;
+  }
 
   a {
     font-weight: bold;

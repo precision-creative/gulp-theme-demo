@@ -1,0 +1,19 @@
+.loop-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2rem;
+
+  list-style: none;
+}
+
+.loop-product {
+  margin: 0;
+}
+
+.product img {
+  vertical-align: bottom;
+}
+
+.product__text {
+  padding: 0.5rem 0 1rem;
+}

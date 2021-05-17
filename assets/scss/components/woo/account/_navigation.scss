@@ -1,0 +1,70 @@
+@import '../../../functions/color';
+
+@import '../../../mixins/breakpoint';
+
+.account-nav__wrapper {
+  @include mq {
+    border-right: 1px solid color(gray);
+  }
+}
+
+.account-nav__list {
+  list-style: none;
+}
+
+.account-nav__list-item {
+  position: relative;
+  margin: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 3px;
+    height: 100%;
+    background-color: color(red);
+    opacity: 0;
+
+    transition: opacity 300ms ease;
+  }
+
+  & + & {
+    border-top: 1px solid color(gray);
+  }
+}
+
+.account-nav__list-link {
+  padding: 0.5rem 0;
+  display: block;
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.account-nav__list-item.is-active .account-nav__list-link {
+  font-weight: bold;
+  color: color(red);
+}
+
+// Handle hovers
+.account-nav__list-item.is-active::after {
+  opacity: 1;
+}
+
+.account-nav__list:hover {
+  .account-nav__list-item.is-active::after {
+    opacity: 0;
+  }
+
+  .account-nav__list-item:hover::after {
+    opacity: 1;
+  }
+}

@@ -29,6 +29,7 @@ if (!class_exists('PC_WooCommerce')) {
     {
       $this->add_woo_theme_support();
       $this->remove_woo_styles();
+      $this->init_frontend_hooks();
     }
 
     /**
@@ -72,12 +73,20 @@ if (!class_exists('PC_WooCommerce')) {
         wp_enqueue_style('pc-woocommerce', get_stylesheet_directory_uri() . '/css/woocommerce-base.css');
       }
 
+      if (is_shop()) {
+        wp_enqueue_style('shop', get_stylesheet_directory_uri() . '/css/woocommerce-shop.css');
+      }
+
+      if (is_product()) {
+        wp_enqueue_style('product', get_stylesheet_directory_uri() . '/css/woocommerce-single.css');
+      }
+
       if (is_cart()) {
         wp_enqueue_style('cart', get_stylesheet_directory_uri() . '/css/page-cart.css');
       }
 
       if (is_account_page()) {
-        wp_enqueue_style('account', get_stylesheet_directory_uri() . '/css/page-account.css');
+        wp_enqueue_style('account', get_stylesheet_directory_uri() . '/css/woocommerce-account.css');
       }
     }
 
@@ -117,6 +126,50 @@ if (!class_exists('PC_WooCommerce')) {
       add_theme_support('wc-product-gallery-zoom');
       add_theme_support('wc-product-gallery-lightbox');
       add_theme_support('wc-product-gallery-slider');
+    }
+
+    /**
+     * 
+     * Adds front-end hooks
+     * 
+     */
+    public function init_frontend_hooks()
+    {
+      remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+      remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
+      remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);
+      remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
+
+      add_action('woocommerce_shop_loop_item_title', array($this, 'display_product_title_link'), 10);
+      add_action('woocommerce_before_shop_loop_item_title', array($this, 'display_product_image_link_open'), 9);
+      add_action('woocommerce_before_shop_loop_item_title', array($this, 'display_product_image_link_close'), 11);
+    }
+
+    /**
+     * Display the product title in loops
+     */
+    public function display_product_title_link()
+    {
+      echo '<div class="product__title ' . esc_attr(apply_filters('woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title')) . '">';
+      echo '<a class="product__title-link" href="' . get_the_permalink() . '">';
+      echo  get_the_title();
+      echo '</a></div>';
+    }
+
+    /**
+     * Adds an opening link tag before the product thumbnail in loops
+     */
+    public function display_product_image_link_open()
+    {
+      echo '<a class="product__thumbnail-link" href="' . get_the_permalink() . '">';
+    }
+
+    /**
+     * Adds an closing link tag before the product thumbnail in loops
+     */
+    public function display_product_image_link_close()
+    {
+      echo '</a>';
     }
   }
 }

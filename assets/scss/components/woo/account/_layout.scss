@@ -1,0 +1,10 @@
+@import '../../../mixins/breakpoint';
+
+.account__row {
+  display: grid;
+  grid-gap: 2rem;
+
+  @include mq {
+    grid-template-columns: 3fr 9fr;
+  }
+}
