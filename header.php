@@ -46,7 +46,7 @@ if ($mobile_menu_type === 'pushy') {
       <!-- Site Logo -->
       <div class="navbar__logo">
         <a href="<?php echo site_url(); ?>">
-          <?php echo wp_get_attachment_image($custom_logo_id, array(300), false, array('loading' => false)); ?>
+          <?php echo wp_get_attachment_image($custom_logo_id, array(300, 69), false, array('loading' => false)); ?>
         </a>
       </div>
 

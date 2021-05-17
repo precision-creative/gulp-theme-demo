@@ -22,7 +22,7 @@ $logo = $footer_logo ? $footer_logo : $site_logo;
   <div class="footer__container">
     <p class="footer__logo">
       <a href="<?php echo site_url(); ?>">
-        <?php echo wp_get_attachment_image($logo, array(300), false, array('loading' => false)); ?>
+        <?php echo wp_get_attachment_image($logo, array(300, 300), false, array('loading' => false)); ?>
       </a>
     </p>
     <?php wp_nav_menu(
