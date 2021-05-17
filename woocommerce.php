@@ -10,7 +10,7 @@
 
 get_header(); ?>
 
-<div class="woo-content">
+<div class="woo-container">
   <?php woocommerce_content(); ?>
 </div>
 

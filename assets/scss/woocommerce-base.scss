@@ -1,0 +1,12 @@
+@import 'mixins/button';
+@import 'mixins/container';
+
+.woo-container {
+  @include container;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+a.button {
+  @include button;
+}

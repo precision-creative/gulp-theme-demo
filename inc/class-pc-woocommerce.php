@@ -29,7 +29,6 @@ if (!class_exists('PC_WooCommerce')) {
     {
       $this->add_woo_theme_support();
       $this->remove_woo_styles();
-      $this->enqueue_styles();
     }
 
     /**
@@ -41,6 +40,9 @@ if (!class_exists('PC_WooCommerce')) {
     {
       // Adds theme support
       add_action('after_setup_theme', array($this, 'add_woo_theme_support'));
+
+      // Load conditional styles
+      add_action('wp_enqueue_scripts', array($this, 'enqueue_styles'));
     }
 
     /**
@@ -66,6 +68,10 @@ if (!class_exists('PC_WooCommerce')) {
      */
     public function enqueue_styles()
     {
+      if (is_woocommerce() || is_account_page() || is_cart()) {
+        wp_enqueue_style('pc-woocommerce', get_stylesheet_directory_uri() . '/css/woocommerce-base.css');
+      }
+
       if (is_cart()) {
         wp_enqueue_style('cart', get_stylesheet_directory_uri() . '/css/page-cart.css');
       }
