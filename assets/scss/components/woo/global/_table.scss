@@ -9,6 +9,11 @@ $border-style: 1px solid color(gray, lighter);
   font-weight: normal;
   width: 100%;
 
+  .button {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
   thead th {
     border-bottom-width: 2px;
     color: rgba(0, 0, 0, 0.5);

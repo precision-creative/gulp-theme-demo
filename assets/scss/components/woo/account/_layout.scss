@@ -8,3 +8,13 @@
     grid-template-columns: 3fr 9fr;
   }
 }
+
+.order__row {
+  display: grid;
+  grid-gap: 2rem;
+  margin-top: 1rem;
+
+  @include mq {
+    grid-template-columns: 8fr 4fr;
+  }
+}
