@@ -88,6 +88,10 @@ if (!class_exists('PC_WooCommerce')) {
       if (is_account_page()) {
         wp_enqueue_style('account', get_stylesheet_directory_uri() . '/css/woocommerce-account.css');
       }
+
+      if (is_checkout()) {
+        wp_enqueue_style('checkout', get_stylesheet_directory_uri() . '/css/woocommerce-checkout.css');
+      }
     }
 
     /**
