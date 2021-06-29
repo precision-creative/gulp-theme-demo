@@ -23,7 +23,7 @@
     $width: $width - 1px;
   }
 
-  @media screen and (#{$type}-width: $width) {
+  @media screen and (#{$type}-width: #{$width}) {
     @content;
   }
 }
