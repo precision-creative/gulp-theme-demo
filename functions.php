@@ -102,41 +102,59 @@ function theme_enqueue_styles()
 
 
 
-/*
-* Add social links into the customizer
-* These can be retrieved with `get_theme_mod(slug);`
-*/
+/**
+ * Add social links into the customizer
+ * These can be retrieved with `get_theme_mod(slug);`
+ * 
+ * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
+ */
 add_action('customize_register', 'socials_customizer_settings');
 function socials_customizer_settings($wp_customize)
-{
+{  
+  // The socials which generate customizer options
+  $socials = array(
+    array(
+      'label' => 'Facebook',
+      'handle' => 'facebook_url',
+      'default' => 'https://facebook.com/'
+    ),
+    array(
+      'label' => 'Instagram',
+      'handle' => 'instagram_url',
+      'default' => 'https://instagram.com/'
+    ),
+    array(
+      'label' => 'Twitter',
+      'handle' => 'twitter_url',
+      'default' => 'https://twitter.com/'
+    ),
+  );
+
+  // Add section, which contains controls
   $wp_customize->add_section('social_links', array(
     'title'      => 'Social Links',
     'priority'   => 160,
-    'description' => 'Allows you to add social links throughout the site.',
+    'description' => 'Allows you to add social links which can be used throughout the site',
   ));
-
-  $socials = array(
-    'facebook' => 'Facebook',
-    'instagram' => 'Instagram',
-    'twitter' => 'Twitter',
-  );
-
-  foreach ($socials as $social => $social_display_name) {
-    $social_slug = $social . '_url';
-
-    $wp_customize->add_setting($social_slug, array(
+  
+  // Generate a setting and control for each social
+  foreach ($socials as $social) {
+    // Add the social's setting to the customizer
+    $wp_customize->add_setting($social['handle'], array(
       'transport'   => 'refresh',
+      'default' => isset($social['default']) ? $social['default'] : ''
     ));
-
+    
+    // Add the social's control to the customizer
     $wp_customize->add_control(
-      new WP_Customize_Control(
-        $wp_customize,
-        $social_slug,
-        array(
-          'label' => $social_display_name,
-          'section' => 'social_links',
-          'type' => 'text',
-        )
+      $social['handle'],
+      array(
+        'label' => $social['label'],
+        'section' => 'social_links',
+        'type' => 'url',
+        'input_attrs' => array(
+          'placeholder' => 'https://your-url-here.com/',
+        ),
       )
     );
   }
