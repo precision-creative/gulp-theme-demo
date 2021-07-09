@@ -4,6 +4,9 @@ if (!defined('ABSPATH')) {
 }
 
 $includes = array(
+  // Enqueue proper scripts and styles for the site
+  '/enqueue.php',
+
   // Load the general controls into the customizer
   '/class-pc-customizer.php',
 
@@ -19,8 +22,8 @@ $includes = array(
   // Load custom nav walker
   '/class-pc-navwalker.php',
 
-  // Load WooCommerce scripts and hooks 
-  '/class-pc-woocommerce.php',
+  // Load WooCommerce scripts and hooks (disabled by default)
+  // '/class-pc-woocommerce.php',
 
   // Load custom nav walker
   '/pc-posts-navigation.php',
@@ -71,51 +74,6 @@ register_nav_menus(
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
 function theme_enqueue_styles()
 {
-  // https://developer.wordpress.org/reference/functions/wp_enqueue_style/
-  // wp_enqueue_style( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, string $media = 'all' );
-  // wp_enqueue_style( $handle, $src, $deps, $ver, $media);
-
-  // https://developer.wordpress.org/reference/functions/wp_enqueue_script/
-  // wp_enqueue_script( string $handle, string $src = '', string[] $deps = array(), string|bool|null $ver = false, bool $in_footer = false );
-  // wp_enqueue_style( $handle, $src, $deps, $ver, $in_footer);
-
-  // Precision Styles
-  wp_enqueue_style('main', get_stylesheet_directory_uri() . '/css/main.css');
-
-  // Conditional Enqueueing 
-  // Good for site speed and keeping CSS organized
-  if (is_404()) {
-    wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/page-404.css');
-  }
-
-  if (is_home() && !is_front_page()) {
-    wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/page-blog.css');
-  }
-
-  if (is_single()) {
-    wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/page-single.css');
-  }
-
-  // Animate On Scroll (AOS) enqueuing
-  // Add page IDs or post IDs to the array to enqueue AOS to them
-  $aos_page_ids = array(30);
-
-  if (in_array(get_the_ID(), $aos_page_ids)) {
-    wp_enqueue_style('aos', get_stylesheet_directory_uri() . '/vendor/css/aos.css');
-    wp_enqueue_script('aos', get_stylesheet_directory_uri() . '/vendor/js/aos.js', array(), null, true);
-  }
-
-  // Pushy or Accordion
-  if (get_theme_mod('mobile_menu_type') === 'pushy') {
-    // wp_enqueue_script('jquery');
-    // wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/vendor/js/pushy.min.js', array('jquery'), false, true);
-  } else if (get_theme_mod('mobile_menu_type') === 'accordion') {
-    wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
-  }
-
-  // Always enqueue Precision Scripts
-  wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);
-
   // Dequeue Block Library
   wp_dequeue_style('wp-block-library');
   wp_deregister_script('wp-embed');

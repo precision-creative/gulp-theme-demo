@@ -11,10 +11,8 @@
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-$custom_logo_id = get_theme_mod('custom_logo');
-
 $mobile_menu_type = get_theme_mod('mobile_menu_type', 'pushy');
-$nav_breakpoint = 'navbar-expand-' . get_theme_mod('desktop_nav_collapse');
+$nav_breakpoint = 'navbar-expand-' . get_theme_mod('desktop_nav_collapse', 'xl');
 
 $facebook_url = get_theme_mod('facebook_url');
 $instagram_url = get_theme_mod('instagram_url');
@@ -46,7 +44,7 @@ if ($mobile_menu_type === 'pushy') {
       <!-- Site Logo -->
       <div class="navbar__logo">
         <a href="<?php echo site_url(); ?>">
-          <?php echo wp_get_attachment_image($custom_logo_id, array(300, 69), false, array('loading' => false)); ?>
+          <?php echo wp_get_attachment_image(get_theme_mod('custom_logo'), array(300, 69), false, array('loading' => false)); ?>
         </a>
       </div>
 
