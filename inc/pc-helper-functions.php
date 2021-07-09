@@ -69,3 +69,11 @@ function parse_acf_link($link)
     'url' => esc_url($link['url'])
   );
 }
+
+/**
+ * Prints HTML with meta information for the current post-date/time
+ */
+function posted_on()
+{
+  echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
+}
