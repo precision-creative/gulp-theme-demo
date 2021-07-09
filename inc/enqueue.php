@@ -3,12 +3,12 @@
 defined('ABSPATH') || exit;
 
 /**
- * Enqueue the scripts for the theme
+ * Enqueue the scripts and styles
  * 
  * @link https://developer.wordpress.org/reference/functions/wp_enqueue_style/
  * @link https://developer.wordpress.org/reference/functions/wp_enqueue_script/
  */
-function precision_scripts()
+function pc_enqueues()
 {
   // Sitewide
   wp_enqueue_style('main', get_stylesheet_directory_uri() . '/css/main.css');
@@ -34,4 +34,17 @@ function precision_scripts()
     wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/page-single.css');
   }
 }
-add_action('wp_enqueue_scripts', 'precision_scripts');
+add_action('wp_enqueue_scripts', 'pc_enqueues');
+
+/**
+ * Dequeue scripts and styles
+ * 
+ * @link https://developer.wordpress.org/reference/functions/wp_dequeue_style/
+ * @link https://developer.wordpress.org/reference/functions/wp_deregister_script/
+ */
+function pc_dequeues()
+{
+  wp_dequeue_style('wp-block-library');
+  wp_deregister_script('wp-embed');
+}
+add_action('wp_enqueue_scripts', 'pc_dequeues');

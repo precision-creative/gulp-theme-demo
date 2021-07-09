@@ -1,11 +1,16 @@
 <?php
+
+// Exit if accessed directly.
 if (!defined('ABSPATH')) {
-  exit; // Exit if accessed directly.
+  exit;
 }
 
 $includes = array(
-  // Enqueue proper scripts and styles for the site
+  // Enqueue proper scripts and styles
   '/enqueue.php',
+
+  // Register hooks 
+  '/hooks.php',
 
   // Load the general controls into the customizer
   '/class-pc-customizer.php',
@@ -16,7 +21,7 @@ $includes = array(
   // Load the company controls into the customizer
   '/class-pc-customizer-company.php',
 
-  // Load custom WordPress nav walker.
+  // Load custom WordPress nav walker
   '/class-wp-bootstrap-navwalker.php',
 
   // Load custom nav walker
@@ -68,23 +73,8 @@ register_nav_menus(
   )
 );
 
-/*
-* Enqueue scripts and styles
-*/
-add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
-function theme_enqueue_styles()
-{
-  // Dequeue Block Library
-  wp_dequeue_style('wp-block-library');
-  wp_deregister_script('wp-embed');
-}
-
-// Removes the WP Emoji scripts
-remove_action('wp_head', 'print_emoji_detection_script', 7);
-remove_action('wp_print_styles', 'print_emoji_styles');
-
 /**
- * Add support for core custom logo.
+ * Add support for core custom logo
  *
  * @link https://codex.wordpress.org/Theme_Logo
  */
@@ -99,31 +89,3 @@ if (!function_exists('posted_on')) {
     echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
   }
 }
-
-/**
- * Filter the excerpt lenth to X words
- * 
- * @param int $length Excerpt length
- * 
- */
-function pc_custom_excerpt_length($length)
-{
-  return 10;
-}
-add_filter('excerpt_length', 'pc_custom_excerpt_length', 999);
-
-
-/**
- * Changes the default [...] post excerpt suffix
- * You could make this a read more link using get_the_permalink()
- * 
- * @link https://developer.wordpress.org/reference/functions/the_excerpt/
- * 
- * @param string $more The default excerpt string
- */
-
-function pc_excerpt_more($more)
-{
-  return '...';
-}
-add_filter('excerpt_more', 'pc_excerpt_more');
