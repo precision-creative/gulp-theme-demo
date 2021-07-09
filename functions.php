@@ -4,20 +4,22 @@ if (!defined('ABSPATH')) {
 }
 
 $includes = array(
+  '/class-pc-customizer-socials.php',    // Load the social controls into the customizer
   '/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-  '/class-pc-woocommerce.php',    // Load WooCommerce scripts and hooks.
   '/class-pc-navwalker.php',    // Load custom nav walker.
+  '/class-pc-woocommerce.php',    // Load WooCommerce scripts and hooks.
   '/pc-posts-navigation.php',    // Load custom nav walker.
 );
 
 foreach ($includes as $file) {
   $filepath = locate_template('/inc' . $file);
+
   if (!$filepath) {
     trigger_error(sprintf('Error locating /inc%s for inclusion', $file), E_USER_ERROR);
   }
+
   require_once $filepath;
 }
-
 
 /*
 * Let WordPress manage the document title.
@@ -98,66 +100,6 @@ function theme_enqueue_styles()
 
   // Always enqueue Precision Scripts
   wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);
-}
-
-
-
-/**
- * Add social links into the customizer
- * These can be retrieved with `get_theme_mod(slug);`
- * 
- * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/
- */
-add_action('customize_register', 'socials_customizer_settings');
-function socials_customizer_settings($wp_customize)
-{  
-  // The socials which generate customizer options
-  $socials = array(
-    array(
-      'label' => 'Facebook',
-      'handle' => 'facebook_url',
-      'default' => 'https://facebook.com/'
-    ),
-    array(
-      'label' => 'Instagram',
-      'handle' => 'instagram_url',
-      'default' => 'https://instagram.com/'
-    ),
-    array(
-      'label' => 'Twitter',
-      'handle' => 'twitter_url',
-      'default' => 'https://twitter.com/'
-    ),
-  );
-
-  // Add section, which contains controls
-  $wp_customize->add_section('social_links', array(
-    'title'      => 'Social Links',
-    'priority'   => 160,
-    'description' => 'Allows you to add social links which can be used throughout the site',
-  ));
-  
-  // Generate a setting and control for each social
-  foreach ($socials as $social) {
-    // Add the social's setting to the customizer
-    $wp_customize->add_setting($social['handle'], array(
-      'transport'   => 'refresh',
-      'default' => isset($social['default']) ? $social['default'] : ''
-    ));
-    
-    // Add the social's control to the customizer
-    $wp_customize->add_control(
-      $social['handle'],
-      array(
-        'label' => $social['label'],
-        'section' => 'social_links',
-        'type' => 'url',
-        'input_attrs' => array(
-          'placeholder' => 'https://your-url-here.com/',
-        ),
-      )
-    );
-  }
 }
 
 // Adds Precision options to the customizer
