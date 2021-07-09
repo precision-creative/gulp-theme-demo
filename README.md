@@ -15,3 +15,23 @@ A few things to note:
 
 - You can label the fields whatever you want.
 - Avoid duplicate field names to keep the database safe. For example, don't have two fields name `text` in the site. Have something like `cta_text` and `hero_text` instead.
+
+## Formatting
+
+Use the VSCode Extension "PHP Intelephense" [(Repo)](https://github.com/bmewburn/vscode-intelephense) to format documents. The following settings are used in your VSCode `settings.json`:
+
+```json
+{
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "intelephense.diagnostics.undefinedFunctions": false,
+  "intelephense.diagnostics.undefinedClassConstants": false,
+  "intelephense.diagnostics.undefinedTypes": false,
+  "intelephense.diagnostics.undefinedConstants": true,
+  "intelephense.diagnostics.undefinedMethods": true,
+  "intelephense.diagnostics.undefinedProperties": true,
+  "intelephense.diagnostics.undefinedSymbols": true,
+  "intelephense.diagnostics.undefinedVariables": true
+}
+```

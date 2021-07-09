@@ -6,7 +6,8 @@
  * 
  * @author Grayson Gantek <ggantek@precisioncreative.com>
  */
-class PC_Customizer_Socials {
+class PC_Customizer_Socials
+{
   private $section_slug = 'social_links';
   private $section_title = 'Social Links';
 
@@ -27,12 +28,13 @@ class PC_Customizer_Socials {
       'handle' => 'twitter_url',
       'default' => 'https://twitter.com/'
     ),
-  ); 
+  );
 
   /**
    * Construct function runs when a new instance is initiated
    */
-  function __construct() {
+  function __construct()
+  {
     add_action('customize_register', array($this, 'init'));
   }
 
@@ -41,7 +43,8 @@ class PC_Customizer_Socials {
    * 
    * @param object $wp_customize The customizer instance
    */
-  public function init($wp_customize) {
+  public function init($wp_customize)
+  {
     $this->add_customizer_section($wp_customize);
 
     foreach ($this->socials as $social) {
@@ -55,8 +58,9 @@ class PC_Customizer_Socials {
    * @param object $wp_customize The customizer instance
    * @link https://developer.wordpress.org/themes/customize-api/customizer-objects/#sections
    */
-  private function add_customizer_section($wp_customize) {
-    $wp_customize->add_section($this->section_slug , array(
+  private function add_customizer_section($wp_customize)
+  {
+    $wp_customize->add_section($this->section_slug, array(
       'title'      => $this->section_title,
       'priority'   => 170,
       'description' => 'Allows you to add social links which can be used throughout the site',
@@ -69,7 +73,8 @@ class PC_Customizer_Socials {
    * @param object $wp_customize The customizer instance
    * @param array $social The social link to add
    */
-  private function add_social_control($wp_customize, $social) {
+  private function add_social_control($wp_customize, $social)
+  {
     // Add the social's setting to the customizer
     $wp_customize->add_setting($social['handle'], array(
       'transport'   => 'refresh',

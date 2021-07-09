@@ -6,7 +6,8 @@
  * 
  * @author Grayson Gantek <ggantek@precisioncreative.com>
  */
-class PC_Customizer_Company {
+class PC_Customizer_Company
+{
   private $section_slug = 'company';
   private $section_title = 'Company Information';
 
@@ -37,16 +38,18 @@ class PC_Customizer_Company {
   /**
    * Construct function runs when a new instance is initiated
    */
-  function __construct() {
+  function __construct()
+  {
     add_action('customize_register', array($this, 'init'));
-  }  
+  }
 
   /**
    * Build the settings and controls in the customizer
    * 
    * @param object $wp_customize The customizer instance
    */
-  public function init($wp_customize) {
+  public function init($wp_customize)
+  {
     $this->add_customizer_section($wp_customize);
 
     foreach ($this->controls as $control) {
@@ -59,21 +62,23 @@ class PC_Customizer_Company {
    * 
    * @param object $wp_customize The customizer instance
    */
-  private function add_customizer_section($wp_customize) {
+  private function add_customizer_section($wp_customize)
+  {
     $wp_customize->add_section($this->section_slug, array(
       'title' => $this->section_title,
       'priority' => 160,
       'description' => 'Allows you to customize the company\'s information throughout the site.',
     ));
   }
-  
+
   /**
    * Adds a control to the section
    * 
    * @param object $wp_customize The customizer instance
    * @param array $control The control to add
    */
-  private function add_customizer_control($wp_customize, $control) {
+  private function add_customizer_control($wp_customize, $control)
+  {
     // Add the setting
     $wp_customize->add_setting($control['handle']);
 

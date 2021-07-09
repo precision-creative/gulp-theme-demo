@@ -12,19 +12,19 @@ $includes = array(
 
   // Load the company controls into the customizer
   '/class-pc-customizer-company.php',
-  
+
   // Load custom WordPress nav walker.
   '/class-wp-bootstrap-navwalker.php',
-  
-  // Load custom nav walker
-  '/class-pc-navwalker.php',    
 
-   // Load WooCommerce scripts and hooks 
-  '/class-pc-woocommerce.php',   
-  
   // Load custom nav walker
-  '/pc-posts-navigation.php',    
-   
+  '/class-pc-navwalker.php',
+
+  // Load WooCommerce scripts and hooks 
+  '/class-pc-woocommerce.php',
+
+  // Load custom nav walker
+  '/pc-posts-navigation.php',
+
   // Useful helper functions 
   '/pc-helper-functions.php',
 );
@@ -122,8 +122,8 @@ function theme_enqueue_styles()
 }
 
 // Removes the WP Emoji scripts
-remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
 
 /**
  * Add support for core custom logo.

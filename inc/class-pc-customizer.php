@@ -6,23 +6,26 @@
  * 
  * @author Grayson Gantek <ggantek@precisioncreative.com>
  */
-class PC_Customizer {
+class PC_Customizer
+{
   private $section_slug = 'precision_options';
   private $section_title = 'Precision Options';
 
   /**
    * Construct function runs when a new instance is initiated
    */
-  function __construct() {
+  function __construct()
+  {
     add_action('customize_register', array($this, 'init'));
   }
-  
+
   /**
    * Build the settings and controls in the customizer
    * 
    * @param object $wp_customize The customizer instance
    */
-  public function init($wp_customize) {
+  public function init($wp_customize)
+  {
     $this->add_customizer_section($wp_customize);
     $this->add_container_setting($wp_customize);
     $this->add_mobile_menu_setting($wp_customize);
@@ -35,7 +38,8 @@ class PC_Customizer {
    * 
    * @param object $wp_customize The customizer instance
    */
-  private function add_customizer_section($wp_customize) {
+  private function add_customizer_section($wp_customize)
+  {
     $wp_customize->add_section($this->section_slug, array(
       'title' => $this->section_title,
       'priority' => 150,
@@ -48,7 +52,8 @@ class PC_Customizer {
    * 
    * @param object $wp_customize The customizer instance
    */
-  private function add_container_setting($wp_customize) {
+  private function add_container_setting($wp_customize)
+  {
     $slug = 'container_width';
 
     // Add the setting
@@ -77,7 +82,8 @@ class PC_Customizer {
    * 
    * @param object $wp_customize The customizer instance
    */
-  private function add_mobile_menu_setting($wp_customize) {
+  private function add_mobile_menu_setting($wp_customize)
+  {
     $slug = 'mobile_menu_type';
 
     // Add the setting
@@ -106,7 +112,8 @@ class PC_Customizer {
    * 
    * @param object $wp_customize The customizer instance
    */
-  private function add_desktop_breakpoint_setting($wp_customize) {
+  private function add_desktop_breakpoint_setting($wp_customize)
+  {
     $slug = 'desktop_nav_collapse';
 
     // Add the setting
@@ -137,14 +144,15 @@ class PC_Customizer {
    * 
    * @param object $wp_customize The customizer instance
    */
-  private function add_footer_logo_setting($wp_customize) {
+  private function add_footer_logo_setting($wp_customize)
+  {
     $slug = 'footer_logo';
 
     // Add the setting
     $wp_customize->add_setting($slug);
 
     // Add the control
-    $wp_customize->add_control( 
+    $wp_customize->add_control(
       new WP_Customize_Media_Control(
         $wp_customize,
         $slug,
