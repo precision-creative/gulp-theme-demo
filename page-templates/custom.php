@@ -3,7 +3,7 @@
 /**
  * Template Name: Custom Template
  *
- * This template can be used to override the default template and sidebar setup
+ * This template can be used to override the default template setup
  *
  * @package PrecisionCreative
  */

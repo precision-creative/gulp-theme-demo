@@ -3,7 +3,7 @@
 /**
  * Template Name: Blog Page
  *
- * This template can be used to override the default template and sidebar setup
+ * This template can be used to override the default template setup
  *
  * @package PrecisionCreative
  */
