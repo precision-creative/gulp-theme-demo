@@ -4,11 +4,23 @@ if (!defined('ABSPATH')) {
 }
 
 $includes = array(
-  '/class-pc-customizer-socials.php',    // Load the social controls into the customizer
-  '/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-  '/class-pc-navwalker.php',    // Load custom nav walker.
-  '/class-pc-woocommerce.php',    // Load WooCommerce scripts and hooks.
-  '/pc-posts-navigation.php',    // Load custom nav walker.
+  // Load the social controls into the customizer
+  '/class-pc-customizer-socials.php',
+  
+  // Load custom WordPress nav walker.
+  '/class-wp-bootstrap-navwalker.php',
+  
+  // Load custom nav walker
+  '/class-pc-navwalker.php',    
+
+   // Load WooCommerce scripts and hooks 
+  '/class-pc-woocommerce.php',   
+  
+  // Load custom nav walker
+  '/pc-posts-navigation.php',    
+   
+  // Useful helper functions 
+  '/pc-helper-functions.php',
 );
 
 foreach ($includes as $file) {
@@ -275,17 +287,6 @@ if (!function_exists('posted_on')) {
   function posted_on()
   {
     echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
-  }
-}
-
-/**
- * Adds function for parsing phone numbers
- */
-function parse_phone_number($number)
-{
-  if (preg_match('/^(\d{3})(\d{3})(\d{4})$/', $number,  $matches)) {
-    $result = $matches[1] . ' . ' . $matches[2] . ' . ' . $matches[3];
-    return $result;
   }
 }
 
