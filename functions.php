@@ -74,7 +74,6 @@ function theme_enqueue_styles()
   // wp_enqueue_style( $handle, $src, $deps, $ver, $in_footer);
 
   // Precision Styles
-  wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/style.css');
   wp_enqueue_style('main', get_stylesheet_directory_uri() . '/css/main.css');
 
   // Conditional Enqueueing 
@@ -91,28 +90,34 @@ function theme_enqueue_styles()
     wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/page-single.css');
   }
 
-
-
   // Animate On Scroll (AOS) enqueuing
-  // Add page or post IDs to the array to enqueue AOS to them
+  // Add page IDs or post IDs to the array to enqueue AOS to them
   $aos_page_ids = array(30);
 
   if (in_array(get_the_ID(), $aos_page_ids)) {
-    wp_enqueue_style('aos', get_stylesheet_directory_uri() . '/assets/css/aos.css');
-    wp_enqueue_script('aos', get_stylesheet_directory_uri() . '/assets/js/aos.js', array(), null, true);
+    wp_enqueue_style('aos', get_stylesheet_directory_uri() . '/vendor/css/aos.css');
+    wp_enqueue_script('aos', get_stylesheet_directory_uri() . '/vendor/js/aos.js', array(), null, true);
   }
 
   // Pushy or Accordion
   if (get_theme_mod('mobile_menu_type') === 'pushy') {
     // wp_enqueue_script('jquery');
-    // wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/js/pushy.min.js', array('jquery'), false, true);
+    // wp_enqueue_script('pushy-scripts', get_stylesheet_directory_uri() . '/vendor/js/pushy.min.js', array('jquery'), false, true);
   } else if (get_theme_mod('mobile_menu_type') === 'accordion') {
     wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
   }
 
   // Always enqueue Precision Scripts
   wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/precisioncreative.js', array(), false, true);
+
+  // Dequeue Block Library
+  wp_dequeue_style('wp-block-library');
+  wp_deregister_script('wp-embed');
 }
+
+// Removes the WP Emoji scripts
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 // Adds Precision options to the customizer
 add_action('customize_register', 'precision_customizer_settings');
