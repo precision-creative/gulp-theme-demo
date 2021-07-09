@@ -1,9 +1,16 @@
 <?php
 
+/**
+ * PC_Customizer_Company creates a section in the customizer for 
+ * social media links with settings and controls 
+ * 
+ * @author Grayson Gantek <ggantek@precisioncreative.com>
+ */
 class PC_Customizer_Socials {
   private $section_slug = 'social_links';
   private $section_title = 'Social Links';
 
+  // Modify these to add, change, or remove the controls
   private $socials = array(
     array(
       'label' => 'Facebook',
@@ -23,19 +30,18 @@ class PC_Customizer_Socials {
   ); 
 
   /**
-   * Construct function that adds the customize_register action
+   * Construct function runs when a new instance is initiated
    */
   function __construct() {
-    add_action('customize_register', array($this, 'add_socials_to_customizer'));
+    add_action('customize_register', array($this, 'init'));
   }
 
   /**
-   * Responsible for function calls to 
-   * build the social media links in the customizer
+   * Build the settings and controls in the customizer
    * 
    * @param object $wp_customize The customizer instance
    */
-  public function add_socials_to_customizer($wp_customize) {
+  public function init($wp_customize) {
     $this->add_customizer_section($wp_customize);
 
     foreach ($this->socials as $social) {
@@ -52,7 +58,7 @@ class PC_Customizer_Socials {
   private function add_customizer_section($wp_customize) {
     $wp_customize->add_section($this->section_slug , array(
       'title'      => $this->section_title,
-      'priority'   => 160,
+      'priority'   => 170,
       'description' => 'Allows you to add social links which can be used throughout the site',
     ));
   }

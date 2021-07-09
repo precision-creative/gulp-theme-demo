@@ -4,8 +4,14 @@ if (!defined('ABSPATH')) {
 }
 
 $includes = array(
+  // Load the general controls into the customizer
+  '/class-pc-customizer.php',
+
   // Load the social controls into the customizer
   '/class-pc-customizer-socials.php',
+
+  // Load the company controls into the customizer
+  '/class-pc-customizer-company.php',
   
   // Load custom WordPress nav walker.
   '/class-wp-bootstrap-navwalker.php',
@@ -118,165 +124,6 @@ function theme_enqueue_styles()
 // Removes the WP Emoji scripts
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
-
-// Adds Precision options to the customizer
-add_action('customize_register', 'precision_customizer_settings');
-function precision_customizer_settings($wp_customize)
-{
-  $wp_customize->add_section('precision_options', array(
-    'title'      => 'Precision Options',
-    'priority'   => 150,
-    'description' => 'Allows you to customize various site settings',
-  ));
-
-  // Container Width 
-  $wp_customize->add_setting('container_width', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'container_width',
-      array(
-        'label'      => 'Container Width',
-        'description' => 'Whether or not to contain content on pages that support it',
-        'section'    => 'precision_options',
-        'settings'   => 'container_width',
-        'type'      => 'select',
-        'choices' => array(
-          'container' => 'Box Width',
-          'container-fluid' => 'Full Width',
-        ),
-        'priority' => 10,
-      )
-    )
-  );
-
-  // Mobile Menu Type 
-  $wp_customize->add_setting('mobile_menu_type', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'mobile_menu_type',
-      array(
-        'label'      => __('Mobile Menu Type', ''),
-        'description' => 'Decide what kind of mobile menu a site should have.',
-        'section'    => 'precision_options',
-        'settings'   => 'mobile_menu_type',
-        'type'      => 'select',
-        'choices' => array(
-          'accordion' => 'Accordion',
-          'pushy' => 'Pushy',
-        ),
-        'priority' => 10,
-      )
-    )
-  );
-
-  // Desktop Nav Collapse
-  $wp_customize->add_setting('desktop_nav_collapse', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Control(
-      $wp_customize,
-      'desktop_nav_collapse',
-      array(
-        'label'      => 'Desktop Navbar Collapse',
-        'description' => 'Decide when the desktop navbar should switch to mobile.',
-        'section'    => 'precision_options',
-        'settings'   => 'desktop_nav_collapse',
-        'type'      => 'select',
-        'choices' => array(
-          'xl' => 'Extra Large',
-          'lg' => 'Large',
-          'md' => 'Medium',
-          'sm' => 'Small',
-        ),
-        'priority' => 10,
-      )
-    )
-  );
-
-  // Footer logo
-  $wp_customize->add_setting('footer_logo', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(
-    new WP_Customize_Media_Control(
-      $wp_customize,
-      'footer_logo',
-      array(
-        'label'      => 'Footer Logo',
-        'description' => 'Applied in the footer in cases where the footer logo needs to be a different color or shade',
-        'section'    => 'precision_options',
-        'settings'   => 'footer_logo',
-        'context'    => 'your_setting_context'
-      )
-    )
-  );
-
-  // Main Address
-  $wp_customize->add_setting('address', array(
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'address', array(
-    'label'        => 'Address',
-    'description' => 'Address to be used throughout the site',
-    'section'    => 'precision_options',
-    'settings'   => 'address',
-    'type'   => 'text'
-  )));
-
-  // Phone
-  $wp_customize->add_setting('phone', array(
-    'default'     => '',
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'phone', array(
-    'label'        => 'Phone',
-    'description' => 'Phone number to be used throughout the site (digits only)',
-    'section'    => 'precision_options',
-    'settings'   => 'phone',
-    'type'   => 'text',
-  )));
-
-  // Email
-  $wp_customize->add_setting('email', array(
-    'default'     => '',
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'email', array(
-    'label'        => 'Email',
-    'description' => 'Email address to be used throughout the site',
-    'section'    => 'precision_options',
-    'settings'   => 'email',
-    'type'   => 'text',
-  )));
-
-  // Company Name
-  $wp_customize->add_setting('company', array(
-    'default'     => '',
-    'transport'   => 'refresh',
-  ));
-
-  $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'company', array(
-    'label'        => 'Company Name',
-    'description' => 'Company Name be used throughout the site',
-    'section'    => 'precision_options',
-    'settings'   => 'company',
-    'type'   => 'text',
-  )));
-}
 
 /**
  * Add support for core custom logo.

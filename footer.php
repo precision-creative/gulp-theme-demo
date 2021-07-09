@@ -11,11 +11,7 @@
 // Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-$company = get_theme_mod('company');
-$footer_logo = get_theme_mod('footer_logo');
-$site_logo = get_theme_mod('custom_logo');
-
-$logo = $footer_logo ? $footer_logo : $site_logo;
+$logo = get_theme_mod('footer_logo', get_theme_mod('custom_logo'));
 ?>
 
 <footer class="footer">
@@ -42,7 +38,7 @@ $logo = $footer_logo ? $footer_logo : $site_logo;
   <div class="footer__copyright">
     <div class="footer__container">
       <div class="footer__copyright__flex">
-        <p>&copy; <?php echo date("Y") . ' ' . $company; ?></p>
+        <p>&copy; <?php echo date("Y") . ' ' . get_theme_mod('company_name', 'Company Name'); ?></p>
         <p>All Rights Reserved</p>
         <p>Powered by <a href="https://precisioncreative.com/" target="_blank" rel="noreferrer">Precision Creative</a></p>
       </div>
