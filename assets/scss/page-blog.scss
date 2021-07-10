@@ -24,10 +24,6 @@
 .content {
   background-color: rgba(238, 238, 238, 0.5);
 
-  &__title {
-    @include font-size('lg');
-  }
-
   &__title,
   &__excerpt,
   &__footer {
@@ -36,6 +32,7 @@
   }
 
   &__title {
+    @include font-size('lg');
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

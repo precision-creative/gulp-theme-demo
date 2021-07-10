@@ -22,8 +22,8 @@
   right: 0;
   transform: translateY(-50%);
 
-  @include header($color: color(gray, lightest));
-  @include font-size($size: huge, $reducer: 100px);
+  @include header($color: color('gray', 'lightest'));
+  @include font-size($size: 'huge');
 
   text-align: center;
   z-index: -1;
@@ -33,7 +33,7 @@
   @include header(
     $uppercase: false,
     $size: 2xl,
-    $color: color(red),
+    $color: color('red'),
     $weight: normal
   );
   margin-bottom: 24px;

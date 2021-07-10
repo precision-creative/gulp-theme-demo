@@ -14,7 +14,7 @@
   $weight: bold,
   $spacing: small
 ) {
-  @include font-size($size: $size, $reducer: map-get($font-sizes, $size) * 0.2);
+  @include font-size($size: $size);
 
   font-weight: map-get($font-weights, $weight);
   letter-spacing: map-get($kerning, $spacing);
