@@ -7,7 +7,7 @@
  */
 function pc_custom_excerpt_length($length)
 {
-  return 10;
+  return 25;
 }
 add_filter('excerpt_length', 'pc_custom_excerpt_length', 999);
 

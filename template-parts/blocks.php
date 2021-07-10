@@ -16,13 +16,13 @@ if (have_rows('blocks')) :
     }
 
     // Example text block
-    if (get_row_layout() === 'text') :
+    if ('text' === get_row_layout()) :
       array_push($classes, 'text');
 
       $text = get_sub_field('text');
 ?>
       <section class="<?php echo esc_attr(implode(' ', $classes)); ?>">
-        <div class="container">
+        <div class="text__container">
           <?php echo esc_html($text); ?>
         </div>
       </section>

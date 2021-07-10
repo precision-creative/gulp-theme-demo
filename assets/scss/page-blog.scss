@@ -1,50 +1,48 @@
 @import 'mixins/font-size';
 @import 'mixins/container';
+@import 'mixins/breakpoint';
 
 @import 'components/pagination';
 
-.home-index {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 3rem;
-  gap: 3rem;
+.blog-home {
+  margin-block: 4rem;
 
-  text-align: left;
+  &__container {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-gap: 3rem 2rem;
+
+    @include mq('sm') {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
 }
 
-.home-index__container {
-  @include container;
-  margin-top: 6rem;
-  margin-bottom: 6rem;
-}
+.content {
+  background-color: rgba(238, 238, 238, 0.5);
 
-.home-index .post {
-  outline: 2px solid #eee;
-}
+  &__title {
+    @include font-size('lg');
+  }
 
-.post-preview__thumbnail-wrapper {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  margin-bottom: 2rem;
-}
+  &__title,
+  &__excerpt,
+  &__footer {
+    max-width: 85%;
+    margin-inline: auto;
+  }
 
-.post-preview__text {
-  padding: 6% 8%;
-}
+  &__title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
-.post-preview__header h2 {
-  margin-bottom: 1.25rem;
-  @include font-size($size: lg);
-}
-
-.post-preview__header a {
-  color: inherit;
-}
-
-.post-preview__excerpt {
-}
-
-.post-preview__thumbnail-wrapper + .post-preview__text {
-  margin-top: 2rem;
+  &__footer {
+    text-align: right;
+    padding-block: 2rem;
+  }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template part for displaying page content in page.php
+ * Template part for displaying page content
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,20 +10,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('container'); ?>>
-  <?php if (!is_front_page()) : ?>
-    <header class="entry-header">
-      <?php // get_template_part('template-parts/header/entry-header'); 
-      ?>
+<div class="page-content">
+  <article id="post-<?php the_ID(); ?>" <?php post_class('page-content__container'); ?>>
+    <header class="page-content__header">
+      <?php the_title('<h1 class="page-content__title">', '</h1>'); ?>
       <?php the_post_thumbnail(); ?>
     </header>
-  <?php elseif (has_post_thumbnail()) : ?>
-    <header class="entry-header">
-      <?php the_post_thumbnail(); ?>
-    </header>
-  <?php endif; ?>
-
-  <div class="entry-content">
-    <?php the_content(); ?>
-  </div>
-</article>
+    <main class="page-content__main">
+      <?php the_content(); ?>
+    </main>
+  </article>
+</div>

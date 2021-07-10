@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template part for displaying posts
+ * Template part for displaying post excerpts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,32 +10,15 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-  <header>
-    <?php if (is_singular()) : ?>
-      <?php the_title('<h2>', '</h2>'); ?>
-    <?php else : ?>
-      <?php the_title(sprintf('<h2 class=""><a href="%s">', esc_url(get_permalink())), '</a></h2>'); ?>
-    <?php endif; ?>
-
+<article id="post-<?php the_ID(); ?>" <?php post_class('content'); ?>>
+  <header class="content__header">
     <?php the_post_thumbnail(); ?>
+    <?php the_title('<h2 class="content__title">', '</h2>'); ?>
   </header>
-
-  <div>
-    <?php
-    the_excerpt();
-
-    wp_link_pages(array(
-      'before'   => '<nav class="page-links">',
-      'after'    => '</nav>',
-      'pagelink' => 'Page %',
-    ));
-
-    ?>
+  <div class="content__excerpt">
+    <?php the_excerpt(); ?>
   </div>
-
-  <!-- <footer class="entry-footer default-max-width">
-      <?php // twenty_twenty_one_entry_meta_footer(); 
-      ?>
-    </footer> -->
+  <div class="content__footer">
+    <a href="<?php echo get_the_permalink(); ?>">Read More</a>
+  </div>
 </article>
