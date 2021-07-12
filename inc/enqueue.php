@@ -33,6 +33,11 @@ function pc_enqueues()
   if (is_single()) {
     wp_enqueue_style('single', get_stylesheet_directory_uri() . '/css/page-single.css');
   }
+
+  // Blocks page
+  if ('page-templates/blocks.php' === get_page_template_slug()) {
+    wp_enqueue_style('blocks', get_stylesheet_directory_uri() . '/css/blocks.css');
+  }
 }
 add_action('wp_enqueue_scripts', 'pc_enqueues');
 

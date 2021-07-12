@@ -1,0 +1,7 @@
+@import 'mixins/container';
+
+.text {
+  &__container {
+    @include container();
+  }
+}
