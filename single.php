@@ -7,14 +7,18 @@
  *
  * @package PrecisionCreative
  */
+?>
 
-get_header();
+<?php get_header(); ?>
 
-/* Start the Loop */
-while (have_posts()) :
-  the_post();
-  get_template_part('template-parts/content/content', 'single');
+<?php
 
-endwhile; // End of the loop.
+if (have_posts()) :
+  while (have_posts()) : the_post();
+    get_template_part('template-parts/content', 'single');
+  endwhile;
+endif;
 
-get_footer();
+?>
+
+<?php get_footer(); ?>

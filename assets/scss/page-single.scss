@@ -1,36 +1,36 @@
 @import 'mixins/container';
 @import 'mixins/font-size';
 
-.single__container {
+.content-single__container {
   @include container(sm);
   margin-top: 6rem;
   margin-bottom: 6rem;
 }
 
-.single__article {
+.content-single__article {
 }
 
-.single__header {
+.content-single__header {
 }
 
-.single__date {
+.content-single__date {
   @include font-size($size: xs);
 }
 
-.single__date + .single__thumbnail {
+.content-single__date + .content-single__thumbnail {
   margin-top: 1.5rem;
 }
 
-.single__header + .single__content {
+.content-single__header + .content-single__content {
   margin-top: 3rem;
 }
 
-.single__thumbnail {
+.content-single__thumbnail {
   width: 100%;
   height: auto;
 }
 
-.single__content {
+.content-single__content {
   > * + h2,
   > * + h3,
   > * + h4,

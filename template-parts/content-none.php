@@ -13,20 +13,17 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title">Nothing Found</h1>
+<div class="content-none">
+	<header class="content-none__header">
+		<h1 class="content-none__h1">Nothing Found</h1>
 	</header>
-
-	<div class="page-content">
+	<main class="content-none__body">
 		<?php if (is_search()) : ?>
 			<p>Sorry, but nothing matched your search. Please try again with diffent wording.</p>
-		<?php
-			get_search_form();
-		else : ?>
+			<?php get_search_form(); ?>
+		<?php else : ?>
 			<p>It seems we can't find what you're looking for. Maybe try a search?</p>
-		<?php
-			get_search_form();
-		endif; ?>
-	</div>
-</section>
+			<?php get_search_form(); ?>
+		<?php endif; ?>
+	</main>
+</div>

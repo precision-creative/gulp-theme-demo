@@ -11,7 +11,7 @@
 get_header();
 
 while (have_posts()) : the_post();
-	get_template_part('template-parts/blocks');
+	get_template_part('template-parts/content', 'blocks');
 endwhile;
 
 get_footer();

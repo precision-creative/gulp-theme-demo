@@ -25,10 +25,10 @@ $container = get_theme_mod('container_width');
 		<?php
 			while (have_posts()) {
 				the_post();
-				get_template_part('template-parts/content/content', 'search');
+				get_template_part('template-parts/content', 'search');
 			}
 		} else {
-			get_template_part('template-parts/content/content', 'none');
+			get_template_part('template-parts/content', 'none');
 		} ?>
 	</div>
 </main>
