@@ -11,7 +11,7 @@
 ?>
 
 <div class="content-page">
-  <article id="post-<?php the_ID(); ?>" <?php post_class('content-page__container'); ?>>
+  <article id="post-<?php the_ID(); ?>" <?php post_class(array('content-page__container', 'container')); ?>>
     <header class="content-page__header">
       <?php the_title('<h1 class="content-page__title">', '</h1>'); ?>
       <?php the_post_thumbnail('large', array('class' => 'content-page__thumbnail')); ?>

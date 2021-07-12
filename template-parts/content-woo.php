@@ -11,7 +11,7 @@
 ?>
 
 <div class="woo">
-  <div class="woo__container">
+  <div class="woo__container container">
     <header class="woo__header">
       <h1 class="woo__h1"><?php echo get_the_title(); ?></h1>
     </header>
