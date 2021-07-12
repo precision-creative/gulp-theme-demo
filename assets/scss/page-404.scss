@@ -2,6 +2,7 @@
 @import 'mixins/container';
 @import 'mixins/font-size';
 @import 'mixins/button';
+
 @import 'functions/color';
 
 .not-found__section {
@@ -12,33 +13,32 @@
 }
 
 .not-found__container {
-  @include container;
+  @include container();
 }
 
-.not-found h1 {
+.not-found__h2 {
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
   transform: translateY(-50%);
 
-  @include header($color: color('gray', 'lightest'));
-  @include font-size($size: 'huge');
+  @include header($size: 'huge', $color: color('gray', 'lightest'));
 
   text-align: center;
   z-index: -1;
 }
 
-.not-found h3 {
+.not-found__h1 {
   @include header(
-    $uppercase: false,
     $size: 2xl,
     $color: color('red'),
-    $weight: normal
+    $weight: 'normal',
+    $uppercase: false,
   );
   margin-bottom: 24px;
 }
 
-.not-found a {
+.not-found__button {
   @include button();
 }
