@@ -138,7 +138,7 @@ class PC_Settings
    */
   public function display_company_phone_field()
   {
-    echo '<input type="tel" name="company-phone" id="company-phone" value="' . get_option('company-phone') . '"/>';
+    echo '<input type="tel" name="company-phone" id="company-phone" value="' . get_option('company-phone') . '" pattern="[0-9]{3}[0-9]{3}[0-9]{4}"/>';
   }
 
   /**
