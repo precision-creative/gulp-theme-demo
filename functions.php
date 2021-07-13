@@ -18,8 +18,8 @@ $includes = array(
   // Load the general controls into the customizer
   '/class-pc-customizer.php',
 
-  // Load the social controls settings page
-  '/class-pc-settings-socials.php',
+  // Load the settings pages
+  '/class-pc-settings.php',
 
   // Load custom WordPress nav walker
   '/class-wp-bootstrap-navwalker.php',

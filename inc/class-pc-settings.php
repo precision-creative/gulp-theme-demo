@@ -1,11 +1,11 @@
 <?php
 
 /**
- * PC_Settings_Socials adds social links to the admin sidebar
+ * PC_Settings adds social links to the admin sidebar
  * 
  * @since 1.2.0
  */
-class PC_Settings_Socials
+class PC_Settings
 {
   private $menu_title = 'Precision';
   private $menu_slug = 'precision-options';
@@ -188,5 +188,5 @@ class PC_Settings_Socials
   }
 }
 
-$socials = new PC_Settings_Socials();
+$socials = new PC_Settings();
 $socials->init();
