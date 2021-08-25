@@ -12,6 +12,9 @@ $includes = array(
   // Enqueue proper scripts and styles
   '/enqueue.php',
 
+  // Dequeue not needed scripts and styles
+  '/dequeue.php',
+
   // Register hooks 
   '/hooks.php',
 

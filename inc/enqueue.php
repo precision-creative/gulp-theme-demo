@@ -40,16 +40,3 @@ function pc_enqueues()
   }
 }
 add_action('wp_enqueue_scripts', 'pc_enqueues');
-
-/**
- * Dequeue scripts and styles
- * 
- * @link https://developer.wordpress.org/reference/functions/wp_dequeue_style/
- * @link https://developer.wordpress.org/reference/functions/wp_deregister_script/
- */
-function pc_dequeues()
-{
-  wp_dequeue_style('wp-block-library');
-  wp_deregister_script('wp-embed');
-}
-add_action('wp_enqueue_scripts', 'pc_dequeues');
