@@ -11,35 +11,46 @@
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  padding: 1rem;
-  border-radius: 3px;
-
+  font-family: inherit;
   -webkit-appearance: none;
   -moz-appearance: none;
 
   // Styling
-  padding: 1rem 2rem;
-  background-color: color(red);
-  color: color(white);
+  padding: 0.75em 2em;
+  border-radius: 3px;
+  background-color: color('red');
+  color: color('white');
+  font-size: 1rem;
+  line-height: 1.6;
 
-  transition: background 250ms ease-in-out, transform 150ms ease;
+  // Animation
+  transition: transform 150ms ease;
 
-  &:hover {
-    text-decoration: none;
+  // Interaction
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.75;
   }
 
-  &:hover,
-  &:focus {
-    background: color(red, dark);
+  &:not([disabled]):hover {
+    transform: scale(1.05);
+  }
+
+  &:not([disabled]):active {
+    transform: scale(0.95);
   }
 
   &:focus {
     outline: none;
-
-    box-shadow: 0 0 0 4px color(red, light);
+    box-shadow: 0 0 0 4px color('red', 'dark');
   }
 
-  &:active {
-    transform: scale(0.95);
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 2px solid color('red', 'dark');
   }
 }

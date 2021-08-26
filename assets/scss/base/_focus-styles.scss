@@ -1,17 +1,33 @@
 @import 'functions/color';
 
+/* General fallback focus styles */
 :focus {
-  outline: 1px solid currentColor;
+  outline: 2px solid color('red');
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+/* Will appear on mouse focus for browsers that support focus-visible */
+:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: 0 0 0 2px color(gray, dark);
 }
 
-.pushy a:focus {
-  outline: 1px solid currentColor;
-  outline-offset: 0px;
+/* For hueristics */
+:focus-visible {
+  outline: 2px solid color('red');
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='url'],
+textarea,
+select {
+  &:focus {
+    outline: none;
+    border: 2px solid color('red');
+  }
 }

@@ -1,18 +1,26 @@
 @import 'functions/color';
-@import 'mixins/button';
 
-$outline: 2px dashed color(gray, lighter);
-$outline-offset: 4px;
+@import 'mixins/button';
+@import 'mixins/font-size';
 
 form {
   label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    @include font-size('sm');
   }
 
-  input,
-  select,
-  textarea {
+  input[type='text'],
+  input[type='tel'],
+  input[type='email'],
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='url'],
+  textarea,
+  select {
     // Resets
     background: none;
     border: none;
@@ -21,23 +29,38 @@ form {
     margin: 0;
     padding: 12px 24px;
 
+    background-color: color('white');
+    @include font-size('base');
     line-height: 1.6;
     font-weight: normal;
-    border: 2px solid color(gray, darker);
-    border-radius: 0px;
+    border: 2px solid color('gray', 'darker');
+    border-radius: 4px;
+  }
 
-    &::placeholder {
-      // Firefox Fix
-      opacity: 0.5;
-      color: inherit;
-    }
+  // Removes the glossy background from Safari and add custom arrow
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M10.59.295L6 4.875 1.41.295 0 1.705l6 6 6-6-1.41-1.41z' fill='%23000'/%3E%3C/svg%3E");
+    background-position: top 50% right 10px;
+    background-repeat: no-repeat;
+    background-size: 12px auto;
+    padding-right: 2.5rem;
   }
 
   textarea {
     resize: vertical;
+    min-height: 4rem;
+    max-height: 15rem;
   }
 
-  button {
-    @include button();
+  button,
+  input[type='button'] {
+    @include button;
   }
+}
+
+::placeholder {
+  color: color('gray', 'lighter');
+  opacity: 1;
 }

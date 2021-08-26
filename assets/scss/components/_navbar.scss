@@ -29,8 +29,8 @@
 .navbar__container {
   @include container;
 
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 
   display: flex;
   align-items: center;
@@ -39,6 +39,11 @@
 // Logo
 .navbar__logo {
   margin-right: 1rem;
+}
+
+.navbar__logo a {
+  display: block;
+  padding: 0.5rem;
 }
 
 .navbar__logo img {
@@ -78,7 +83,7 @@
   > .menu-item > a,
   > .menu-item > button {
     margin: 0 0.5rem;
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem;
   }
 }
 
