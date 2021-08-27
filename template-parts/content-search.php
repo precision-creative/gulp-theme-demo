@@ -11,21 +11,20 @@ if (!defined('ABSPATH')) {
 }
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-	<header class="entry-header">
-		<?php
-		the_title('<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>');
+<article <?php post_class('search-result'); ?> id="post-<?php the_ID(); ?>">
+	<a href="<?php echo get_permalink(); ?>" class="search-result__link">
+		<header class="search-result__header">
+			<?php the_title('<h2 class="search-result__title">', '</h2>'); ?>
 
-		if ('post' == get_post_type()) : ?>
-			<div class="entry-meta">
-				<?php posted_on(); ?>
-			</div>
-		<?php
-		endif;
-		?>
-	</header>
+			<?php if ('post' == get_post_type()) : ?>
+				<div class="search-result__meta">
+					<em><?php echo get_the_date('F d, Y'); ?></em>
+				</div>
+			<?php endif; ?>
+		</header>
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div>
+		<div class="search-result__excerpt">
+			<?php the_excerpt(); ?>
+		</div>
+	</a>
 </article>

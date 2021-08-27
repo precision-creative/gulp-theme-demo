@@ -5,16 +5,12 @@
  *
  * @package PrecisionCreative
  */
-
-if (!defined('ABSPATH')) {
-	exit; // Exit if accessed directly.
-}
 ?>
 
-<form method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>" role="search">
-	<label class="sr-only" for="s">Search</label>
-	<div class="input-group">
-		<input class="field form-control" id="s" name="s" type="text" placeholder="Search..." value="<?php the_search_query(); ?>">
-		<input id="searchsubmit" name="submit" type="submit" />
+<form method="get" id="searchform" class="search-form" action="<?php echo home_url(); ?>" role="search">
+	<div class="search-form__group">
+		<label class="search-form__label" for="search">Search</label>
+		<input class="search-form__input" id="search" name="s" type="text" placeholder="Search..." value="<?php the_search_query(); ?>">
+		<button class="search-form__submit">Submit</button>
 	</div>
 </form>

@@ -10,27 +10,32 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-get_header();
-$container = get_theme_mod('container_width');
+global $wp_query;
+$total_results = $wp_query->found_posts;
 ?>
 
-<main id="search">
-	<div class="<?php echo $container; ?>">
-		<?php if (have_posts()) { ?>
+<?php get_header(); ?>
+
+<div class="search-results">
+	<div class="search-results__container container-sm">
+		<p class="search-results__count">Showing <?php echo $total_results; ?> results.</p>
+		<?php if (have_posts()) : ?>
 			<header class="page-header">
 				<h1 class="page-title">
-					Search Results for: <span><?php echo get_search_query(); ?></span>
+					Search Results for "<span><?php echo get_search_query(); ?></span>"
 				</h1>
 			</header>
-		<?php
-			while (have_posts()) {
-				the_post();
-				get_template_part('template-parts/content', 'search');
-			}
-		} else {
+			<div class="search-results__grid">
+				<?php
+				while (have_posts()) : the_post();
+					get_template_part('template-parts/content', 'search');
+				endwhile; ?>
+			</div>
+		<?php else :
 			get_template_part('template-parts/content', 'none');
-		} ?>
+		endif;
+		?>
 	</div>
-</main>
+</div>
 
 <?php get_footer(); ?>

@@ -1,0 +1,13 @@
+@import 'components/search-form';
+@import 'components/search-result';
+
+div.search-results {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.search-results__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-gap: 2rem min(5%, 2rem);
+}
