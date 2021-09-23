@@ -47,3 +47,7 @@ $logo = get_theme_mod('footer_logo', get_theme_mod('custom_logo'));
 </footer>
 
 <?php wp_footer(); ?>
+
+</body>
+
+</html>
