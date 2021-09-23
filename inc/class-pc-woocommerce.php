@@ -127,15 +127,39 @@ class PC_WooCommerce
    */
   public function init_frontend_hooks()
   {
+    // Shop loop
     remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
     remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10);
     remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);
     remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 5);
-
     add_action('woocommerce_shop_loop_item_title', array($this, 'display_product_title_link'), 10);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'display_product_image_link_open'), 9);
     add_action('woocommerce_before_shop_loop_item_title', array($this, 'display_product_image_link_close'), 11);
-    add_action('woocommerce_single_product_summary', 'woocommerce_breadcrumb', 4);
+
+    // Content wrappers
+    remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper');
+    remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end');
+    add_action('woocommerce_before_main_content', array($this, 'display_content_wrapper'));
+    add_action('woocommerce_after_main_content', array($this, 'display_content_wrapper_end'));
+
+    // Disable the sidebar
+    remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar');
+  }
+
+  /**
+   * Display the content wrapper
+   */
+  public function display_content_wrapper()
+  {
+    echo '<div class="woo"><div class="woo__container container">';
+  }
+
+  /**
+   * Echo the content wrapper closing
+   */
+  public function display_content_wrapper_end()
+  {
+    echo '</div></div>';
   }
 
   /**

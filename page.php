@@ -18,8 +18,7 @@ if (have_posts()) :
 		if (
 			function_exists('is_account_page') && is_account_page() ||
 			function_exists('is_cart') && is_cart() ||
-			function_exists('is_checkout') && is_checkout() ||
-			function_exists('is_shop') && is_shop()
+			function_exists('is_checkout') && is_checkout()
 		) {
 			get_template_part('template-parts/content', 'woo');
 		} else {
