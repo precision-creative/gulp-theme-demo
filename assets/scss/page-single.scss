@@ -13,11 +13,16 @@
 .content-single__header {
 }
 
-.content-single__date {
+.content-single__title {
+  margin-bottom: 0;
+}
+
+.content-single__meta {
+  margin-top: 0;
   @include font-size($size: xs);
 }
 
-.content-single__date + .content-single__thumbnail {
+.content-single__meta + .content-single__thumbnail {
   margin-top: 1.5rem;
 }
 

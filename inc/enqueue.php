@@ -25,7 +25,7 @@ function pc_enqueues()
   }
 
   // Blog page (Conditional)
-  if (is_home() && !is_front_page()) {
+  if (is_home() && !is_front_page() || is_category() || is_tag()) {
     wp_enqueue_style('blog', get_stylesheet_directory_uri() . '/css/page-blog.css');
   }
 
