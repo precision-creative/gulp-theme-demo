@@ -61,14 +61,16 @@ $col    = 1;
 
 		<div class="account-address u-column<?php echo $col < 0 ? 1 : 2; ?> col-<?php echo $oldcol < 0 ? 1 : 2; ?> woocommerce-Address">
 			<header class="woocommerce-Address-title title">
-				<h3><?php echo esc_html($address_title); ?></h3>
-				<a href="<?php echo esc_url(wc_get_endpoint_url('edit-address', $name)); ?>" class="edit"><?php echo $address ? esc_html__('Edit', 'woocommerce') : esc_html__('Add', 'woocommerce'); ?></a>
+				<h3 class="account-address__header header-loudish"><?php echo esc_html($address_title); ?></h3>
 			</header>
 			<address>
 				<?php
 				echo $address ? wp_kses_post($address) : esc_html_e('You have not set up this type of address yet.', 'woocommerce');
 				?>
 			</address>
+			<div class="account-address__actions">
+				<a href="<?php echo esc_url(wc_get_endpoint_url('edit-address', $name)); ?>" class="edit button"><?php echo $address ? esc_html__('Edit', 'woocommerce') : esc_html__('Add', 'woocommerce'); ?></a>
+			</div>
 		</div>
 
 	<?php endforeach; ?>

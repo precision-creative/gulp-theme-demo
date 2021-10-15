@@ -27,8 +27,8 @@ do_action('woocommerce_before_customer_login_form'); ?>
 	<div class="customer-login__row" id="customer_login">
 
 		<div class="customer-login__wrapper customer-login__wrapper--login">
-			<h2><?php esc_html_e('Login', 'woocommerce'); ?></h2>
-			<form class="woocommerce-form woocommerce-form-login login" method="post">
+			<h2 class="customer-login__header header-loudish"><?php esc_html_e('Login', 'woocommerce'); ?></h2>
+			<form class="woocommerce-form woocommerce-form-login woo-form login" method="post">
 
 				<?php do_action('woocommerce_login_form_start'); ?>
 
@@ -51,7 +51,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 					<?php wp_nonce_field('woocommerce-login', 'woocommerce-login-nonce'); ?>
 					<button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e('Log in', 'woocommerce'); ?>"><?php esc_html_e('Log in', 'woocommerce'); ?></button>
 				</p>
-				<p class="woocommerce-LostPassword lost_password">
+				<p class="customer-login__lost-pw woocommerce-LostPassword lost_password">
 					<a href="<?php echo esc_url(wp_lostpassword_url()); ?>"><?php esc_html_e('Lost your password?', 'woocommerce'); ?></a>
 				</p>
 
@@ -63,7 +63,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 		<?php if ('yes' === get_option('woocommerce_enable_myaccount_registration')) : ?>
 
 			<div class="customer-login__wrapper customer-login__wrapper--register">
-				<h2><?php esc_html_e('Register', 'woocommerce'); ?></h2>
+				<h2 class="customer-login__header header-loudish"><?php esc_html_e('Register', 'woocommerce'); ?></h2>
 				<form method="post" class="woocommerce-form woocommerce-form-register register" <?php do_action('woocommerce_register_form_tag'); ?>>
 
 					<?php do_action('woocommerce_register_form_start'); ?>

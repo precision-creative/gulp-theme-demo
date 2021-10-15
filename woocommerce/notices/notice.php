@@ -22,12 +22,10 @@ if (!defined('ABSPATH')) {
 
 if (!$notices) {
 	return;
-}
-
-?>
+} ?>
 
 <?php foreach ($notices as $notice) : ?>
-	<div class="woo-notice woo-notice--info" <?php echo wc_get_notice_data_attr($notice); ?>>
+	<div class="woo-notice woo-notice--info" role="alert" <?php echo wc_get_notice_data_attr($notice); ?>>
 		<?php echo wc_kses_notice($notice['notice']); ?>
 	</div>
 <?php endforeach; ?>

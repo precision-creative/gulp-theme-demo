@@ -20,4 +20,4 @@ if (!defined('ABSPATH')) {
 	exit;
 }
 ?>
-<ul class="loop-products" style="--cols: <?php echo esc_attr(wc_get_loop_prop('columns')); ?>">
+<ul class="loop-products" style="--loop-columns: <?php echo esc_attr(wc_get_loop_prop('columns')); ?>;">

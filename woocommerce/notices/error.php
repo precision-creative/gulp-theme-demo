@@ -22,13 +22,10 @@ if (!defined('ABSPATH')) {
 
 if (!$notices) {
 	return;
-}
+} ?>
 
-?>
-<ul class="woo-notice woo-notice--error" role="alert">
-	<?php foreach ($notices as $notice) : ?>
-		<li<?php echo wc_get_notice_data_attr($notice); ?>>
-			<?php echo wc_kses_notice($notice['notice']); ?>
-			</li>
-		<?php endforeach; ?>
-</ul>
+<?php foreach ($notices as $notice) : ?>
+	<div class="woo-notice woo-notice--error" role="alert" <?php echo wc_get_notice_data_attr($notice); ?>>
+		<?php echo wc_kses_notice($notice['notice']); ?>
+	</div>
+<?php endforeach; ?>

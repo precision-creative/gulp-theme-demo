@@ -29,7 +29,6 @@ if (!$short_description) {
 }
 
 ?>
-<div class="single-product__short-desc">
-	<?php echo $short_description; // WPCS: XSS ok. 
-	?>
+<div class="single-product__short-desc content">
+	<?php echo $short_description; ?>
 </div>
