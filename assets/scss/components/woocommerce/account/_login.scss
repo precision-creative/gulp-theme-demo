@@ -1,0 +1,44 @@
+@import 'mixins/fine-print';
+
+.customer-login__row {
+  display: grid;
+  gap: 2rem 4rem;
+}
+
+.customer-login__wrapper {
+  padding: 2rem 3rem;
+  background-color: hsl(var(--clr-white));
+  box-shadow: var(--shadow-md);
+}
+
+.customer-login__wrapper input[type='text'],
+.customer-login__wrapper input[type='email'],
+.customer-login__wrapper input[type='password'] {
+  width: 100%;
+  display: block;
+}
+
+.customer-login__password-to-be-sent,
+.woocommerce-privacy-policy-text {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  @include fine-print();
+}
+
+.customer-login__header {
+  margin-bottom: 1.5rem;
+}
+
+.customer-login__lost-pw {
+  @include fine-print();
+}
+
+.customer-login__lost-pw a {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .customer-login__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

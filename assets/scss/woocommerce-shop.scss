@@ -1,1 +1,37 @@
-@import 'components/woo/global/product-loop';
+@import 'components/woocommerce/global/product-loop';
+
+@import 'mixins/fine-print';
+
+.woo-shop-header {
+  margin-bottom: 3rem;
+}
+
+.woo-shop-header__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.woo-shop-header__right {
+  font-size: var(--fs-sm);
+}
+
+.woo-shop-header .term-description {
+  font-size: var(--fs-sm);
+  margin-top: 1em;
+}
+
+.woo-shop-header .woocommerce-result-count {
+  margin-bottom: 0.5em;
+  @include fine-print();
+}
+
+@media (min-width: 768px) {
+  .woo-shop-header__grid {
+    grid-template-columns: 1fr 300px;
+  }
+
+  .woo-shop-header__right {
+    justify-self: end;
+    text-align: right;
+  }
+}

@@ -1,5 +1,53 @@
-@import 'components/woo/checkout/layout';
-@import 'components/woo/checkout/thankyou';
-@import 'components/woo/global/forms';
-@import 'components/woo/global/table';
-@import 'components/woo/global/notices';
+@import 'components/woocommerce/checkout/order';
+
+.checkout__row {
+  display: grid;
+  gap: 2rem min(10vw, 6rem);
+}
+
+.checkout__col--review {
+  background-color: hsl(var(--clr-white));
+  box-shadow: var(--shadow-md);
+  padding: 1rem;
+  align-self: start;
+}
+
+.woocommerce-additional-fields {
+  margin-top: 1.5rem;
+}
+
+.woocommerce-checkout-payment {
+  padding-top: 1.5rem;
+  font-size: var(--fs-sm);
+}
+
+.woocommerce-checkout-payment ul {
+  margin-left: 1.5em;
+}
+
+.woocommerce-checkout-payment .woocommerce-notice--info {
+  font-size: var(--fs-xs);
+}
+
+.woocommerce-terms-and-conditions-wrapper {
+  margin-bottom: 1rem;
+}
+
+.place-order {
+  margin-top: 1.5rem;
+}
+
+.place-order .button {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .checkout__row {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .checkout__col--review {
+    position: sticky;
+    top: 1.5rem;
+  }
+}

@@ -1,0 +1,34 @@
+.account-addresses__row {
+  margin-top: 2rem;
+  display: grid;
+  gap: 3rem 1rem;
+}
+
+.woocommerce-address-fields .button {
+  margin-top: 1.5rem;
+}
+
+.account-address__header {
+  margin-bottom: 1rem;
+}
+
+.account-address__actions {
+  margin-top: 1.5rem;
+}
+
+address {
+  background-color: hsl(var(--clr-gray-100));
+  padding: 1rem;
+  font-size: var(--fs-xs);
+  margin-top: 1rem;
+}
+
+.account-content__wrapper p a {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .account-addresses__row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

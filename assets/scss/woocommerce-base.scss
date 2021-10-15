@@ -1,17 +1,9 @@
-@import 'mixins/button';
-@import 'mixins/container';
+@import 'base/woocommerce/forms';
+@import 'base/woocommerce/tables';
+@import 'components/woocommerce/global/notices';
+@import 'components/woocommerce/global/breadcrumb';
 
-@import 'components/woo/global/notices';
-@import 'components/woo/global/forms';
-@import 'components/woo/global/table';
-@import 'components/woo/global/breadcrumb';
-
-.woo__container {
-  @include container;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-}
-
-a.button {
-  @include button;
+.content-woo__header,
+.woo__header {
+  margin-bottom: 1.5rem;
 }

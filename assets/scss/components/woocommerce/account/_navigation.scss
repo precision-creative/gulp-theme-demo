@@ -1,11 +1,5 @@
-@import '../../../functions/color';
-
-@import '../../../mixins/breakpoint';
-
 .account-nav__wrapper {
-  @include mq {
-    border-right: 1px solid color(gray);
-  }
+  --borders: 1px solid hsl(var(--clr-gray-200));
 }
 
 .account-nav__list {
@@ -21,16 +15,18 @@
     position: absolute;
     top: 0;
     right: -1px;
-    width: 3px;
+    width: 4px;
     height: 100%;
-    background-color: color(red);
+    background-color: hsl(var(--clr-accent));
     opacity: 0;
+    transform-origin: right;
+    transform: scaleX(0%);
 
-    transition: opacity 300ms ease;
+    transition: opacity 300ms ease, transform 300ms ease;
   }
 
   & + & {
-    border-top: 1px solid color(gray);
+    border-top: var(--borders);
   }
 }
 
@@ -42,21 +38,16 @@
   &:hover {
     text-decoration: none;
   }
-
-  &:focus {
-    outline: none;
-    background-color: rgba(0, 0, 0, 0.05);
-  }
 }
 
 .account-nav__list-item.is-active .account-nav__list-link {
   font-weight: bold;
-  color: color(red);
+  color: hsl(var(--clr-accent));
 }
 
-// Handle hovers
 .account-nav__list-item.is-active::after {
   opacity: 1;
+  transform: scaleX(100%);
 }
 
 .account-nav__list:hover {
@@ -66,5 +57,12 @@
 
   .account-nav__list-item:hover::after {
     opacity: 1;
+    transform: scaleX(100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .account-nav__wrapper {
+    border-right: var(--borders);
   }
 }

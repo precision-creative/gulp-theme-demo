@@ -1,0 +1,25 @@
+.woo-notice {
+  --accent-color: var(--clr-info);
+
+  padding: 1em;
+  margin-bottom: 1rem;
+  font-size: var(--fs-sm);
+  border-left: 5px solid hsl(var(--accent-color));
+  background-color: hsla(var(--accent-color) / 0.25);
+}
+
+.woo-notice .button {
+  margin-right: 1em;
+}
+
+.woo-notice--error {
+  --accent-color: var(--clr-danger);
+}
+
+.woo-notice--success {
+  --accent-color: var(--clr-success);
+}
+
+.woo-notice a:not(.button) {
+  text-decoration: underline;
+}

@@ -1,7 +1,8 @@
-@import 'components/woo/global/forms';
-@import 'components/woo/global/address';
+@import 'components/woocommerce/account/layout';
+@import 'components/woocommerce/account/navigation';
+@import 'components/woocommerce/account/addresses';
+@import 'components/woocommerce/account/login';
 
-@import 'components/woo/account/layout';
-@import 'components/woo/account/navigation';
-@import 'components/woo/account/addresses-overview';
-@import 'components/woo/account/login-forms';
+p:not([class]) + p:not([class]) {
+  margin-top: 1.5em;
+}

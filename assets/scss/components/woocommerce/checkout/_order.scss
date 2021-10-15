@@ -1,0 +1,21 @@
+address {
+  background-color: hsl(var(--clr-gray-100));
+  padding: 1rem;
+  font-size: var(--fs-xs);
+  margin-top: 1rem;
+}
+
+.order__row {
+  display: grid;
+  gap: 2rem;
+}
+
+* + .order__row {
+  margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .order__row {
+    grid-template-columns: 8fr 4fr;
+  }
+}

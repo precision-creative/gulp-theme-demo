@@ -1,0 +1,74 @@
+@import 'mixins/button';
+@import 'mixins/fine-print';
+
+.single-product__tabs-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.single-product__tab-link {
+  display: inline-block;
+  padding: 0.5em 1em;
+}
+
+.single-product__tab.active .single-product__tab-link {
+  border-bottom: 4px solid hsl(var(--clr-accent));
+}
+
+.woocommerce-Tabs-panel {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid hsl(var(--clr-gray-200));
+  border-bottom: 1px solid hsl(var(--clr-gray-200));
+}
+
+.woocommerce-noreviews {
+  @include fine-print();
+}
+
+.comment-respond {
+  margin-top: 1.5rem;
+}
+
+.comment-form input[type='submit'] {
+  @include button();
+}
+
+.stars span {
+  --size: 32px;
+
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: repeat(5, var(--size));
+  grid-template-rows: var(--size);
+}
+
+.stars span a {
+  text-align: center;
+  line-height: var(--size);
+  background-color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
+}
+
+.stars span a.active ~ a {
+  background-color: hsl(var(--clr-gray-200));
+  color: hsl(var(--clr-gray-900));
+}
+
+.commentlist {
+  margin-top: 1.5rem;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.commentlist .review {
+  background-color: hsl(var(--clr-white));
+  padding: 1rem;
+  box-shadow: var(--shadow-md);
+}
+
+.commentlist .review .star-rating {
+  @include fine-print();
+}

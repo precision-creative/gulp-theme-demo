@@ -1,7 +1,9 @@
-.woo-form {
+.woo-form,
+#commentform {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  font-size: var(--fs-sm);
 
   .form-row {
     grid-column: span 2;
@@ -21,10 +23,6 @@
     display: block;
   }
 
-  button[type='submit'] {
-    margin-top: 1rem;
-  }
-
   .clear {
     display: none;
   }
@@ -32,4 +30,8 @@
   * + p {
     margin-top: 0;
   }
+}
+
+#commentform {
+  grid-template-columns: auto;
 }
