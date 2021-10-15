@@ -1,0 +1,13 @@
+:focus {
+  outline: var(--focus-outline-width, 2px) solid hsla(var(--clr-accent));
+  outline-offset: var(--focus-outline-offset, 0.25em);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: var(--focus-outline-width, 2px) solid hsla(var(--clr-accent));
+  outline-offset: var(--focus-outline-offset, 0.25em);
+}

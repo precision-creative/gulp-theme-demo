@@ -1,46 +1,24 @@
-@import 'mixins/font-size';
-@import 'mixins/container';
-@import 'mixins/breakpoint';
+@import 'components/content-card';
 
-@import 'components/pagination';
-
-.blog-home,
-.archives {
-  margin-block: 4rem;
-
-  &__container {
-    @include container;
-  }
-
-  &__grid {
-    display: grid;
-    grid-gap: 3rem 2rem;
-
-    @include mq('sm') {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
+.home {
+  margin-top: min(4rem, 15vh);
+  margin-bottom: min(6rem, 15vh);
 }
 
-.content {
-  background-color: rgba(238, 238, 238, 0.5);
+.home__grid,
+.archive__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
 
-  &__title,
-  &__excerpt,
-  &__footer {
-    max-width: 85%;
-    margin-inline: auto;
-  }
+.home__title {
+  margin-bottom: 1em;
+}
 
-  &__title {
-    @include font-size('lg');
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-
-  &__footer {
-    text-align: right;
-    padding-block: 2rem;
+@media screen and (min-width: 768px) {
+  .home__grid,
+  .archive__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -1,0 +1,36 @@
+:root {
+  --clr-accent: 11 64% 48%;
+  --clr-gray-900: 228 9% 14%;
+  --clr-gray-700: 228 11% 24%;
+  --clr-gray-200: 248 2% 84%;
+  --clr-gray-100: 0 0% 94%;
+  --clr-white: 0 0% 100%;
+  --clr-black: 0 0% 0%;
+
+  --clr-danger: 10 70% 50%;
+  --clr-success: 120 60% 50%;
+  --clr-info: 220 60% 50%;
+
+  --fs-xs: 0.875rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+
+  --hdr-loudish: 1.875rem;
+  --hdr-loud: 2.5rem;
+  --hdr-louder: 2.8125rem;
+
+  --shadow-sm: 0 0 4px hsla(var(--clr-black) / 0.25);
+  --shadow-md: 0 4px 4px hsla(var(--clr-black) / 0.25),
+    0 0 8px hsla(var(--clr-black) / 0.15);
+  --shadow-lg: 0 0 4px hsla(var(--clr-black) / 0.25),
+    0 0 8px hsla(var(--clr-black) / 0.15),
+    0 0 16px hsla(var(--clr-black) / 0.15);
+
+  @media (min-width: 768px) {
+    --fs-xs: 0.875rem;
+    --fs-sm: 0.9375rem;
+    --fs-md: 1.125rem;
+    --fs-lg: 1.25rem;
+  }
+}

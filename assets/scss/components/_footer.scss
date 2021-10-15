@@ -1,90 +1,57 @@
-@import 'abstracts/typography';
-@import 'mixins/container';
-@import 'mixins/breakpoint';
-
 .footer {
-  padding-top: 1rem;
+  padding-top: 3rem;
   text-align: center;
-  color: color(white);
-  background-color: color(gray, darker);
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-gray-700));
 }
 
-.footer ul {
+.footer__links {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-.footer a {
-  text-decoration: none;
-  color: inherit;
+.footer__grid {
+  display: grid;
+  gap: 1rem 2rem;
+  align-items: center;
 }
 
-.footer__container {
-  @include container;
+.footer__company {
+  text-align: left;
 }
 
-.footer__logo {
-  margin-bottom: 1em;
+.footer__company .socials {
+  margin-top: 1rem;
 }
 
-.footer__logo a {
+.footer__home-link {
   display: inline-block;
-  padding: 0.5rem;
-  vertical-align: bottom;
 }
 
-.footer__logo img {
-  margin-inline: auto;
-  vertical-align: bottom;
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
 }
 
-.footer__links li {
-  margin: 0;
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 300px 1fr;
+  }
 }
 
-.footer__links a {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-}
-
-.footer__links li + li {
-  margin-top: 0.5rem;
-}
-
-.footer__copyright {
-  background-color: color(gray, darkest);
-  color: color(gray, lightest);
-  font-size: map-get($font-sizes, sm);
-}
-
-.footer__copyright__flex {
-  margin-top: 1.5rem;
+/// Copyright
+.copyright {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  margin-top: 3rem;
+  font-size: var(--fs-sm);
+  color: hsla(var(--clr-white) / 60%);
+  background-color: hsl(var(--clr-gray-900));
+}
 
-  p {
-    margin: 0;
-  }
-
-  a {
-    font-weight: bold;
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-style: dashed;
-    }
-  }
-
-  @include mq {
+@media (min-width: 768px) {
+  .copyright__flex {
     display: flex;
-
-    p + p {
-      margin-left: 1rem;
-
-      &:last-child {
-        margin-left: auto;
-      }
-    }
+    justify-content: space-between;
   }
 }

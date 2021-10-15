@@ -1,28 +1,39 @@
-@import 'functions/color';
-
+.woocommerce-pagination,
 .pagination {
   margin-top: 2rem;
 }
 
-.pagination a {
-  color: rgba(color(black), 0.5);
-
-  text-decoration: none;
-}
-
+.woocommerce-pagination ul,
 .pagination ul {
   display: flex;
+  gap: 1em;
   justify-content: center;
-
   list-style: none;
 }
 
-.pagination ul li {
-  + li {
-    margin-left: 0.5rem;
-  }
+.woocommerce-pagination a,
+.pagination a {
+  text-decoration: none;
 }
 
-.pagination ul li.active a {
-  color: color(black);
+.woocommerce-pagination a,
+.woocommerce-pagination span,
+.pagination a,
+.pagination span {
+  --size: 32px;
+
+  display: inline-block;
+  width: var(--size, 32px);
+  height: var(--size, 32px);
+  color: hsla(var(--clr-black) / 0.5);
+  background-color: hsl(var(--clr-gray-100));
+  border-radius: calc(var(--size, 32px) / 2);
+  text-align: center;
+  line-height: var(--size, 32px);
+}
+
+.woocommerce-pagination span,
+.pagination .active a {
+  background-color: hsl(var(--clr-accent));
+  color: hsl(var(--clr-white));
 }

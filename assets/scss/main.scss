@@ -1,13 +1,23 @@
-// Base Styles
-@import 'base/normalize';
+// Base
+@import 'base/fonts';
+@import 'base/variables';
 @import 'base/resets';
 @import 'base/typography';
+@import 'base/focus';
+@import 'base/layout';
 @import 'base/inputs';
-@import 'base/containers';
-@import 'base/focus-styles';
 
-// Site-wide components
+// Utils
+@import 'utils/buttons';
+@import 'utils/containers';
+@import 'utils/headers';
+@import 'utils/text';
+
+// Components
 @import 'components/navbar';
 @import 'components/pushy';
 @import 'components/accordion';
 @import 'components/footer';
+@import 'components/forminator';
+@import 'components/pagination';
+@import 'components/shortcode-socials';

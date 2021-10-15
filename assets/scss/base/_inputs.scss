@@ -1,66 +1,67 @@
-@import 'functions/color';
-
+@import 'mixins/button-reset';
 @import 'mixins/button';
-@import 'mixins/font-size';
 
 form {
-  label {
-    display: block;
-    margin-bottom: 0.25rem;
-    @include font-size('sm');
-  }
-
-  input[type='text'],
-  input[type='tel'],
-  input[type='email'],
-  input[type='date'],
-  input[type='datetime-local'],
-  input[type='number'],
-  input[type='password'],
-  input[type='search'],
-  input[type='url'],
-  textarea,
-  select {
-    // Resets
-    background: none;
-    border: none;
-
-    // Styles
-    margin: 0;
-    padding: 12px 24px;
-
-    background-color: color('white');
-    @include font-size('base');
-    line-height: 1.6;
-    font-weight: normal;
-    border: 2px solid color('gray', 'darker');
-    border-radius: 4px;
-  }
-
-  // Removes the glossy background from Safari and add custom arrow
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M10.59.295L6 4.875 1.41.295 0 1.705l6 6 6-6-1.41-1.41z' fill='%23000'/%3E%3C/svg%3E");
-    background-position: top 50% right 10px;
-    background-repeat: no-repeat;
-    background-size: 12px auto;
-    padding-right: 2.5rem;
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 4rem;
-    max-height: 15rem;
-  }
-
-  button,
-  input[type='button'] {
-    @include button;
-  }
+  text-align: left;
 }
 
-::placeholder {
-  color: color('gray', 'lighter');
-  opacity: 1;
+form label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+form input[type='text'],
+form input[type='tel'],
+form input[type='email'],
+form input[type='date'],
+form input[type='datetime-local'],
+form input[type='number'],
+form input[type='password'],
+form input[type='search'],
+form input[type='url'],
+form textarea,
+form select {
+  background: none;
+  border: none;
+  border-radius: 0px;
+
+  margin: 0;
+  padding: 0.5em 1em;
+
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.6;
+  font-weight: normal;
+  background-color: hsl(var(--clr-gray-100));
+}
+
+form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M10.59.295L6 4.875 1.41.295 0 1.705l6 6 6-6-1.41-1.41z' fill='%23000'/%3E%3C/svg%3E");
+  background-position: top 50% right 10px;
+  background-repeat: no-repeat;
+  background-size: 12px auto;
+  padding-right: 2em;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 4rem;
+  max-height: 15rem;
+}
+
+form button {
+  @include button-reset;
+}
+
+form input[type='button'] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+form button,
+form input[type='button'] {
+  @include button;
 }

@@ -1,162 +1,97 @@
-@import 'abstracts/shadows';
-
-@import 'functions/color';
-
-$width: 232px;
+@import 'mixins/button-reset';
 
 .pushy {
+  --width: 14rem;
+  --border: 2px solid hsla(var(--clr-white) / 15%);
+  --focus-outline-offset: -2px;
+
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1025;
-
-  width: $width;
+  z-index: 100000;
+  display: flex;
+  flex-flow: column wrap;
+  width: var(--width);
   max-width: 90vw;
   height: 100%;
-
-  display: flex;
-  flex-flow: column nowrap;
   overflow: hidden;
-
-  color: color(gray, darkest);
-  background-color: color(white);
-  box-shadow: map-get($shadows, sm);
-
+  color: hsl(var(--clr-white));
+  background-color: hsl(var(--clr-gray-700));
+  box-shadow: var(--shadow-lg);
   visibility: hidden;
 
-  transform: translate3d($width, 0, 0);
+  transform: translate3d(var(--width), 0, 0);
   transition: transform 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99);
+
+  button {
+    @include button-reset();
+  }
+
+  a {
+    display: block;
+  }
 
   &[aria-hidden='false'] {
     visibility: visible;
-
     transform: translate3d(0, 0, 0);
   }
 }
 
-.pushy ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.pushy li {
-  margin: 0;
-}
-
-.pushy__menu a,
-.pushy__menu button {
-  padding: 0;
-  margin: 0;
-  display: block;
-  width: 100%;
-  color: inherit;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-// Header
 .pushy__header {
   display: flex;
-  padding: 0.5rem;
-  border-bottom: 2px solid color(gray, lightest);
+  padding: 0.25rem;
+  border-bottom: var(--border);
 }
 
 .pushy__close {
-  display: inline-block;
-  margin: 0;
-  border: none;
-  background: none;
-  text-align: center;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  padding: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
 }
 
-// Menu
-.pushy__menu {
-  overflow-y: auto;
-  flex-grow: 1;
-}
+.pushy__links {
+  list-style: none;
 
-.pushy__menu button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  border: none;
-  background: transparent;
-  border-radius: 0;
-  appearance: none;
-  width: 100%;
-  text-align: left;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.pushy__menu button svg {
-  margin-left: 0.5rem;
-}
-
-.pushy__menu .pushy__links > li > a,
-.pushy__menu .pushy__links > li > button {
-  // First-level links
-
-  padding: 0.75rem 0.75rem;
-}
-
-.pushy__menu .pushy__links ul > li > a {
-  // Second-level links
-
-  padding: 0.5rem 0.75rem 0.5rem 1.5rem;
-}
-
-.pushy__menu .menu-item-has-children .sub-menu {
-  background-color: rgba(color(gray), 0.1);
-  transition: height 300ms ease-in-out;
-  overflow: hidden;
-
-  visibility: hidden;
-  display: none;
-
-  &[aria-hidden='false'] {
-    visibility: visible;
-    display: block;
+  a,
+  button {
+    padding: 0.25rem 0.75rem;
   }
-}
 
-.pushy__menu .menu-item-has-children > a {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-}
-
-.pushy__menu .menu-item-has-children svg {
-  transition: transform 300ms ease-in-out;
-}
-
-.pushy__menu button[aria-expanded='true'] svg {
-  transform: rotate(-180deg);
-}
-
-// Footer
-.pushy__footer {
-  text-align: center;
-  letter-spacing: 2rem;
-  padding: 1rem 0.5rem;
-  border-top: 2px solid color(gray, lightest);
-
-  a {
-    display: inline-block;
-    color: color(red);
+  button {
+    width: 100%;
+    justify-content: space-between;
+    text-align: left;
   }
 
   svg {
-    vertical-align: bottom;
+    transition: transform 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99);
+  }
 
-    path {
-      fill: currentColor;
+  button[aria-expanded='true'] svg {
+    transform: rotate(-180deg);
+  }
+
+  .menu-item-has-children .sub-menu {
+    background-color: hsl(var(--clr-gray-900));
+    overflow: hidden;
+    visibility: hidden;
+    display: none;
+    transition: height 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99);
+
+    &[aria-hidden='false'] {
+      visibility: visible;
+      display: block;
     }
   }
+}
+
+.pushy__footer {
+  --focus-outline-offset: 2px;
+
+  padding: 0.5rem;
+  margin-top: auto;
+  border-top: var(--border);
+}
+
+.pushy__footer .socials__flex {
+  justify-content: space-evenly;
 }

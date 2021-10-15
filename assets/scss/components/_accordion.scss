@@ -1,15 +1,15 @@
-#accordion {
+.accordion {
+  text-align: center;
   transition: height 200ms ease-in-out;
   overflow: hidden;
-}
-
-.accordion--closed {
   height: 0;
 }
 
-.accordion--open {
+.accordion__menu {
+  padding-top: 1rem;
 }
 
-#accordion .menu-item {
-  margin-bottom: 1em;
+.accordion__menu a {
+  display: block;
+  padding: 0.25rem 0;
 }

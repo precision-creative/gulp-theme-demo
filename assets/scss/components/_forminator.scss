@@ -1,0 +1,91 @@
+@import 'mixins/fine-print';
+
+.forminator {
+}
+
+.forminator-title {
+}
+
+.forminator-subtitle {
+}
+
+.forminator-label {
+}
+
+.forminator-description {
+}
+
+.forminator-required {
+  color: hsl(var(--clr-danger));
+}
+
+.forminator-description {
+  @include fine-print();
+}
+
+.forminator-phone {
+  width: 100%;
+}
+
+.forminator-input,
+.forminator-select--field,
+.forminator-textarea,
+.forminator-field--phone {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.forminator-error-message {
+  display: block;
+  margin-top: 0.5em;
+  font-size: var(--fs-xs);
+  color: hsl(var(--clr-danger));
+}
+
+.forminator-checkbox,
+.forminator-radio {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  input[type='radio'],
+  input[type='checkbox'] {
+    flex-shrink: 0;
+  }
+}
+
+.forminator-has_error:not(:focus-within) {
+  background-color: hsla(var(--clr-danger) / 0.2);
+  outline: 0.5rem solid hsla(var(--clr-danger) / 0.2);
+}
+
+.forminator-response-message {
+  padding: 1em;
+  margin-bottom: 2rem;
+  font-size: var(--fs-sm);
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+}
+
+.forminator-response-message ul {
+  margin-top: 0;
+  margin-left: 1.5em;
+}
+
+.forminator-response-message.forminator-error {
+  color: hsl(var(--clr-danger));
+  background-color: hsla(var(--clr-danger) / 0.25);
+  outline: 0.5rem solid hsla(var(--clr-danger) / 0.25);
+}
+
+.forminator-response-message.forminator-success {
+  color: hsl(var(--clr-success));
+  background-color: hsla(var(--clr-success) / 0.15);
+}
+
+fieldset.forminator-field {
+  border: none;
+}

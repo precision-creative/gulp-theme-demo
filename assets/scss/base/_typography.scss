@@ -1,47 +1,84 @@
-@import 'abstracts/typography';
-@import 'functions/color';
-@import 'mixins/font-size';
-@import 'mixins/header';
-
 body {
-  @include font-size();
-  font-family: map-get($font-families, sans);
-  font-weight: map-get($font-weights, normal);
-  line-height: map-get($leading, base);
-  letter-spacing: map-get($kerning, none);
-  color: color(gray, darkest);
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  color: hsl(var(--clr-gray-900));
 }
 
-a {
-  color: color(red);
-  text-decoration: none;
+:is(h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.content p,
+.content ul,
+.content ol,
+.content blockquote {
+  margin-top: 1.25em;
+}
+
+.content ul,
+.content ol {
+  margin-left: 1.5em;
+}
+
+.content * + h1,
+.content * + h2,
+.content * + h3,
+.content * + h4,
+.content * + h5,
+.content * + h6 {
+  margin-top: 1em;
+}
+
+.content h1 {
+  font-size: var(--hdr-louder);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.content h2 {
+  font-size: var(--hdr-loud);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  font-size: var(--hdr-loudish);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.content a {
+  color: hsl(var(--clr-accent));
 
   &:hover {
     text-decoration: underline;
   }
 }
 
-* + p,
-* + ol,
-* + ul {
-  margin-top: 1rem;
+.content blockquote {
+  padding: 1em;
+  background-color: hsla(0 0% 0% / 0.05);
+  border-left: 10px solid currentColor;
 }
 
-li {
-  margin-top: 1rem;
-  margin-left: 1.25rem;
-  margin-bottom: -0.5rem;
+.content blockquote p:first-of-type {
+  margin-top: 0;
 }
 
-// Generate default heading fonts
-// Feel free to remove this if it gets in the way
-@for $i from 1 through 6 {
-  h#{$i} {
-    @include header($weight: normal, $color: color(red), $uppercase: false);
-    margin-bottom: 1rem;
-  }
+.content blockquote p:first-of-type::before {
+  content: open-quote;
+}
 
-  * + h#{$i} {
-    margin-top: 3rem;
-  }
+.content blockquote p:last-of-type::after {
+  content: close-quote;
+}
+
+.content blockquote cite {
+  font-size: var(--fs-sm);
 }

@@ -1,171 +1,102 @@
-@import 'abstracts/shadows';
+@import 'mixins/button-reset';
 
-@import 'mixins/container';
-@import 'mixins/breakpoint';
-
-@import 'functions/color';
-
-// Base styling
 .navbar {
-  color: hsl(0, 0%, 80%);
-  background-color: color(white);
-  color: color(gray, darkest);
-  box-shadow: map-get($shadows, sm);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  color: hsl(var(--clr-white));
+  font-size: var(--fs-sm);
+  background-color: hsl(var(--clr-gray-700));
+
+  button {
+    @include button-reset();
+  }
+
+  ul {
+    list-style: none;
+  }
 }
 
-.navbar ul {
-  list-style: none;
-}
-
-.navbar li {
-  margin: 0;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.navbar__container {
-  @include container;
-
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-
+.navbar__flex {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
-// Logo
-.navbar__logo {
-  margin-right: 1rem;
-}
-
-.navbar__logo a {
-  display: block;
-  padding: 0.5rem;
-}
-
-.navbar__logo img {
-  vertical-align: bottom;
-}
-
-// Menu
 .navbar__menu {
   display: none;
-  margin-left: auto;
+}
+
+.navbar__home-link {
+  display: block;
 }
 
 .navbar__links {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   white-space: nowrap;
 
-  // Menu-wide link styling
   a,
   button {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+    margin: 0 0.375rem;
+    padding: 0.25rem 0.375rem;
   }
 
-  // Menu button styling
-  button {
-    background: none;
-    border: none;
-    appearance: none;
-    border-radius: 0;
-    line-height: inherit;
-    cursor: pointer;
-  }
-
-  // Top-level links and buttons
-  > .menu-item > a,
-  > .menu-item > button {
-    margin: 0 0.5rem;
-    padding: 0.25rem 0.5rem;
-  }
-}
-
-.navbar__links.no-js .menu-item-has-children:hover > .sub-menu,
-.navbar__links.no-js .menu-item-has-children:focus-within > .sub-menu {
-  // No Javascript Fallback
-  visibility: visible;
-}
-
-.navbar__links .menu-item-has-children {
-  position: relative;
-}
-
-.navbar__links .sub-menu {
-  visibility: hidden;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  width: 180px;
-  background-color: color(white);
-  box-shadow: map-get($shadows, sm);
-
-  &[aria-hidden='false'] {
+  &.no-js .menu-item-has-children:hover .sub-menu,
+  &.no-js .menu-item-has-children:focus-within .sub-menu {
     visibility: visible;
   }
-}
 
-.navbar__links .sub-menu a {
-  // Submenu links
-  display: block;
-  padding: 0.25rem 0.5rem;
+  .menu-item-has-children {
+    position: relative;
 
-  + a {
-    margin-bottom: 0.25rem;
-  }
-
-  &:hover {
-    background-color: rgba(color(black), 0.05);
-  }
-}
-
-.navbar__links .menu-item-has-children svg {
-  margin-left: 0.5rem;
-
-  transition: transform 300ms ease;
-}
-
-.navbar__links .menu-item-has-children button[aria-expanded='true'] svg {
-  transform: rotate(-180deg);
-}
-
-// Hamburger
-.navbar__hamburger {
-  margin-left: auto;
-}
-
-.navbar__hamburger button {
-  padding: 0.75rem;
-  border: none;
-  width: auto;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.navbar__hamburger svg {
-  vertical-align: bottom;
-}
-
-// Create customizable mobile breakpoints for customizer
-$breakpoints: ('sm', 'md', 'lg', 'xl');
-
-@each $break in $breakpoints {
-  .navbar-expand-#{$break} {
-    @include mq(#{$break}) {
-      .navbar__hamburger {
-        display: none;
-      }
-
-      .navbar__menu {
-        display: block;
-      }
+    svg {
+      margin-left: 0.5rem;
     }
+
+    button[aria-expanded='true'] svg {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .sub-menu {
+    --size: 180px;
+    --focus-outline-offset: -2px;
+
+    display: grid;
+    gap: 0.125rem;
+    visibility: hidden;
+    position: absolute;
+    z-index: 50;
+    top: 100%;
+    left: 0;
+    width: var(--size);
+    white-space: normal;
+    background-color: hsl(var(--clr-gray-900));
+    box-shadow: var(--shadow-lg);
+
+    &[aria-hidden='false'] {
+      visibility: visible;
+    }
+
+    a {
+      display: block;
+      margin: 0;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+}
+
+.hamburger__button {
+  padding: 0.75rem;
+}
+
+@media (min-width: 992px) {
+  .hamburger {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: block;
   }
 }

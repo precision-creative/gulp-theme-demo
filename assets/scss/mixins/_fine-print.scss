@@ -1,0 +1,9 @@
+/// Outputs CSS for fine-print texts
+/// @param {Boolean} $italic [true] - If the mixin should add an italic ruleset
+@mixin fine-print($italic: true) {
+  font-size: var(--fs-xs);
+  @if $italic == true {
+    font-style: italic;
+  }
+  color: hsla(var(--clr-gray-900) / 0.75);
+}

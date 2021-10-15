@@ -1,57 +1,21 @@
-@import 'mixins/container';
-@import 'mixins/font-size';
-
-.content-single__container {
-  @include container(sm);
-  margin-top: 6rem;
-  margin-bottom: 6rem;
-}
-
-.content-single__article {
-}
-
 .content-single__header {
-}
-
-.content-single__title {
-  margin-bottom: 0;
+  margin-bottom: 2.25rem;
 }
 
 .content-single__meta {
-  margin-top: 0;
-  @include font-size($size: xs);
+  margin-top: 0.5em;
+  font-size: var(--fs-xs);
 }
 
-.content-single__meta + .content-single__thumbnail {
-  margin-top: 1.5rem;
-}
-
-.content-single__header + .content-single__content {
-  margin-top: 3rem;
+.content-single__author,
+.content-single__date {
+  margin-top: 0.5em;
+  color: hsl(var(--clr-navy));
+  font-size: var(--fs-sm);
 }
 
 .content-single__thumbnail {
   width: 100%;
   height: auto;
-}
-
-.content-single__content {
-  > * + h2,
-  > * + h3,
-  > * + h4,
-  > * + h5,
-  > * + h6 {
-    margin-top: 3rem;
-  }
-
-  > * + p,
-  > * + ol,
-  > * + ul {
-    margin-top: 1.5rem;
-  }
-
-  > ul,
-  > ol {
-    padding-left: 1.5rem;
-  }
+  margin-top: 1em;
 }

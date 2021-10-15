@@ -1,16 +1,10 @@
 @import 'mixins/visually-hidden';
 
-.search-form {
-}
-
-.search-form .search-form__group {
+.search-form__group {
+  margin-top: 1em;
   display: flex;
 }
 
-.search-form .search-form__label {
-  @include visually-hidden;
-}
-
-.search-form .search-form__input {
-  margin-right: 1rem;
+.search-form__label {
+  @include visually-hidden();
 }

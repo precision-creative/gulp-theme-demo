@@ -1,0 +1,25 @@
+.pc-site-wrapper {
+  --offset-top: 0px;
+
+  min-height: calc(100vh - var(--offset-top));
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr auto;
+}
+
+/// Admin bar fix
+.admin-bar .pc-site-wrapper {
+  --offset-top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  .admin-bar .pc-site-wrapper {
+    --offset-top: 46px;
+  }
+}
+
+/// Page spacing
+.pc-site-wrapper > main:not(.blocks) {
+  margin-top: min(4rem, 15vh);
+  margin-bottom: min(6rem, 15vh);
+}

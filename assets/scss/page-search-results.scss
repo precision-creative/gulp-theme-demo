@@ -1,13 +1,15 @@
 @import 'components/search-form';
-@import 'components/search-result';
-
-div.search-results {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-}
+@import 'components/content-card';
 
 .search-results__grid {
+  margin-top: 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  grid-gap: 2rem min(5%, 2rem);
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .search-results__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -1,0 +1,13 @@
+/// Resets a <button> element
+@mixin button-reset() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

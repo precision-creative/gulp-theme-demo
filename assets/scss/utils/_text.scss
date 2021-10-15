@@ -1,0 +1,45 @@
+@import 'mixins/fine-print';
+
+.color-navy {
+  color: hsl(var(--clr-accent));
+}
+
+.text-xs {
+  font-size: var(--fs-xs);
+}
+
+.text-sm {
+  font-size: var(--fs-sm);
+}
+
+.text-md {
+  font-size: var(--fs-md);
+}
+
+.text-lg {
+  font-size: var(--fs-lg);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.weight-400 {
+  font-weight: 400;
+}
+
+.weight-700 {
+  font-weight: 700;
+}
+
+.text-fine {
+  @include fine-print();
+}

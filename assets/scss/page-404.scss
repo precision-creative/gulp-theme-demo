@@ -1,44 +1,8 @@
-@import 'mixins/header';
-@import 'mixins/container';
-@import 'mixins/font-size';
-@import 'mixins/button';
-
-@import 'functions/color';
-
-.not-found__section {
-  position: relative;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-  text-align: center;
+.not-found {
+  margin-top: min(15vh, 6rem);
+  margin-bottom: min(15vh, 6rem);
 }
 
-.not-found__container {
-  @include container();
-}
-
-.not-found__h2 {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-
-  @include header($size: 'huge', $color: color('gray', 'lightest'));
-
-  text-align: center;
-  z-index: -1;
-}
-
-.not-found__h1 {
-  @include header(
-    $size: 2xl,
-    $color: color('red'),
-    $weight: 'normal',
-    $uppercase: false,
-  );
-  margin-bottom: 24px;
-}
-
-.not-found__button {
-  @include button();
+.not-found__buttons {
+  margin-top: 2rem;
 }
