@@ -19,7 +19,7 @@ $instagram_url = get_option('instagram');
 $email = get_option('company-email');
 
 if ($mobile_menu_type === 'pushy') {
-  $hamburger_class = 'hamburger hamburger--pushy';
+  $hamburger_class = 'hamburger__button hamburger--pushy';
 } else if ($mobile_menu_type === 'accordion') {
   $hamburger_class = 'accordion__hamburger';
 }
