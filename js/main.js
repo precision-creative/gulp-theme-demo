@@ -200,9 +200,66 @@ const PushyMenu = function (hamburger) {
 
 const hamburgers = document.querySelectorAll('.hamburger--pushy')
 
-hamburgers.forEach(hamburger => {
+hamburgers.forEach((hamburger) => {
   const hamburgerInstance = new PushyMenu(hamburger)
   hamburgerInstance.init()
+})
+
+/* 
+This code is responsible for the accordion menu
+*/
+
+const AccordionMenu = function(hamburger) {
+  const accordion = document.getElementById('accordion')
+
+  this.init = function() {
+    setupAria()
+    eventListeners()
+  }
+
+  function closeAccordion() {
+    hamburger.setAttribute('aria-expanded', 'false')
+    accordion.setAttribute('aria-hidden', 'true')
+
+    accordion.style.height = '0px'
+  }
+
+  function openAccordion() {
+    const height = accordion.children[0].offsetHeight
+
+    hamburger.setAttribute('aria-expanded', 'true')
+    accordion.setAttribute('aria-hidden', 'false')
+
+    accordion.style.height = `${height}px`
+  }
+
+  function toggleAccordion() {
+    if (hamburger.getAttribute('aria-expanded') === 'true') {
+      closeAccordion()
+    } else {
+      openAccordion()
+    }
+  }
+
+  // Setup functions
+
+  function eventListeners() {
+    hamburger.addEventListener('click', toggleAccordion)
+  }
+
+  function setupAria() {
+    hamburger.setAttribute('aria-controls', `#${accordion.id}`)
+    hamburger.setAttribute('aria-expanded', 'false')
+
+    accordion.setAttribute('aria-hidden', 'true')
+  }
+}
+
+const accordionHamburgers = document.querySelectorAll('.accordion__hamburger')
+
+accordionHamburgers.forEach((hamburger) => {
+  const accordionInstance = new AccordionMenu(hamburger)
+  accordionInstance.init()
 })
 
 // Yell at Grayson if this code stops working

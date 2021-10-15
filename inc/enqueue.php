@@ -14,11 +14,6 @@ function pc_enqueues()
   wp_enqueue_style('main', get_stylesheet_directory_uri() . '/css/main.css');
   wp_enqueue_script('precision', get_stylesheet_directory_uri() . '/js/main.js', array(), false, true);
 
-  // Accordion Scripts (Conditional)
-  if (get_theme_mod('mobile_menu_type') === 'accordion') {
-    wp_enqueue_script('menu-dropdown-scripts', get_stylesheet_directory_uri() . '/js/accordion.js', array(), false, true);
-  }
-
   // 404 Page (Conditional)
   if (is_404()) {
     wp_enqueue_style('not-found', get_stylesheet_directory_uri() . '/css/page-404.css');
