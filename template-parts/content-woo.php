@@ -10,11 +10,11 @@
 
 ?>
 
-<div class="woo">
-  <div class="woo__container container">
-    <header class="woo__header">
-      <h1 class="woo__h1"><?php echo get_the_title(); ?></h1>
+<main class="content-woo">
+  <div class="container">
+    <header class="content-woo__header">
+      <h1 class="content-woo__title header-louder"><?php echo get_the_title(); ?></h1>
     </header>
     <?php the_content(); ?>
   </div>
-</div>
+</main>

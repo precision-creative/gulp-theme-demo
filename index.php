@@ -16,20 +16,18 @@
 
 <?php get_header(); ?>
 
-<div class="container">
-	<?php
+<main class="index">
+	<div class="container">
+		<?php if (have_posts()) :
+			while (have_posts()) : the_post();
+				get_template_part('template-parts/content', get_post_format());
+			endwhile;
 
-	if (have_posts()) :
-		while (have_posts()) : the_post();
-			get_template_part('template-parts/content', get_post_format());
-		endwhile;
-
-		pc_posts_naviation();
-	else :
-		get_template_part('template-parts/content', 'none');
-	endif;
-
-	?>
-</div>
+			pc_posts_naviation();
+		else :
+			get_template_part('template-parts/content', 'none');
+		endif; ?>
+	</div>
+</main>
 
 <?php get_footer(); ?>

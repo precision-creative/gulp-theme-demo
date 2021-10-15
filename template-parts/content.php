@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template part for displaying post excerpts
+ * Template part for displaying generic content
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,15 +10,20 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('content'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('content__article'); ?>>
   <header class="content__header">
+    <?php if (is_singular()) : ?>
+      <?php the_title('<h1 class="content__title">', '</h1>'); ?>
+    <?php else : ?>
+      <?php the_title(sprintf('<h2 class="content__title"><a href="%s">', esc_url(get_permalink())), '</a></h2>'); ?>
+    <?php endif; ?>
+
     <?php the_post_thumbnail(); ?>
-    <?php the_title('<h2 class="content__title">', '</h2>'); ?>
   </header>
-  <div class="content__excerpt">
-    <?php the_excerpt(); ?>
+  <div class="content__body content">
+    <?php the_content('Read More'); ?>
   </div>
   <div class="content__footer">
-    <a href="<?php echo get_the_permalink(); ?>">Read More</a>
+    Footer
   </div>
 </article>

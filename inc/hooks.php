@@ -30,3 +30,21 @@ add_filter('excerpt_more', 'pc_excerpt_more');
  */
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
+
+/**
+ * Adds opening div for site wrapper
+ */
+function pc_site_wrapper_open()
+{
+  echo '<div class="pc-site-wrapper">';
+}
+add_action('pc_site_wrapper_open', 'pc_site_wrapper_open');
+
+/**
+ * Adds closing div for site wrapper
+ */
+function pc_site_wrapper_close()
+{
+  echo '</div>';
+}
+add_action('wp_footer', 'pc_site_wrapper_close');

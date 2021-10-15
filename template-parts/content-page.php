@@ -10,14 +10,16 @@
 
 ?>
 
-<div class="content-page">
-  <article id="post-<?php the_ID(); ?>" <?php post_class(array('content-page__container', 'container')); ?>>
-    <header class="content-page__header">
-      <?php the_title('<h1 class="content-page__title">', '</h1>'); ?>
-      <?php the_post_thumbnail('large', array('class' => 'content-page__thumbnail')); ?>
-    </header>
-    <main class="content-page__main">
-      <?php the_content(); ?>
-    </main>
-  </article>
-</div>
+<main class="content-page">
+  <div class="container">
+    <article id="post-<?php the_ID(); ?>" <?php post_class(array('content-page__article')); ?>>
+      <header class="content-page__header">
+        <?php the_title('<h1 class="content-page__title header-louder">', '</h1>'); ?>
+        <?php the_post_thumbnail('container', array('class' => 'content-page__thumbnail')); ?>
+      </header>
+      <div class="content-page__content content">
+        <?php the_content(); ?>
+      </div>
+    </article>
+  </div>
+</main>

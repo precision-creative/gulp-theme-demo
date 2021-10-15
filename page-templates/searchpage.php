@@ -14,11 +14,11 @@
 
 <?php get_header(); ?>
 
-<div class="search">
-  <div class="search__container container-sm">
-    <h1 class="search__title">Search <?php echo get_bloginfo('name'); ?></h1>
+<main class="search">
+  <div class="container">
+    <h1 class="search__title header-loudish">Search <?php echo get_bloginfo('name'); ?></h1>
     <?php get_search_form(); ?>
   </div>
-</div>
+</main>
 
 <?php get_footer(); ?>

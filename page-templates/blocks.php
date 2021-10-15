@@ -8,10 +8,14 @@
  * @package PrecisionCreative
  */
 
-get_header();
+get_header(); ?>
 
-while (have_posts()) : the_post();
-	get_template_part('template-parts/content', 'blocks');
-endwhile;
+<?php if (have_posts()) : ?>
+	<main class="blocks">
+		<?php while (have_posts()) : the_post();
+			get_template_part('template-parts/content', 'blocks');
+		endwhile; ?>
+	</main>
+<?php endif; ?>
 
-get_footer();
+<?php get_footer(); ?>

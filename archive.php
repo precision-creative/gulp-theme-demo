@@ -10,18 +10,17 @@
 
 get_header(); ?>
 
-<main id="archive" class="archives">
-	<div class="archives__container">
-
+<main class="archive">
+	<div class="container">
 		<?php if (have_posts()) : ?>
-			<div class="archives__grid">
-				<?php while (have_posts()) : the_post();
-					get_template_part('template-parts/content', get_post_format());
-				endwhile; ?>
+			<div class="archive__grid">
+				<?php while (have_posts()) : the_post(); ?>
+					<?php get_template_part('template-parts/content', 'card'); ?>
+				<?php endwhile; ?>
 			</div>
-		<?php else :
-			get_template_part('template-parts/content', 'none');
-		endif; ?>
+		<?php else : ?>
+			<?php get_template_part('template-parts/content', 'none'); ?>
+		<?php endif; ?>
 	</div>
 </main>
 

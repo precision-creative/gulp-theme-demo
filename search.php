@@ -16,26 +16,24 @@ $total_results = $wp_query->found_posts;
 
 <?php get_header(); ?>
 
-<div class="search-results">
-	<div class="search-results__container container-sm">
+<main class="search-results">
+	<div class="container">
 		<p class="search-results__count">Showing <?php echo $total_results; ?> results.</p>
 		<?php if (have_posts()) : ?>
-			<header class="page-header">
-				<h1 class="page-title">
-					Search Results for "<span><?php echo get_search_query(); ?></span>"
+			<header class="search-results__header">
+				<h1 class="search-results__title header-loud">
+					Search Results for "<span class="search-results__query"><?php echo get_search_query(); ?></span>"
 				</h1>
 			</header>
 			<div class="search-results__grid">
-				<?php
-				while (have_posts()) : the_post();
-					get_template_part('template-parts/content', 'search');
-				endwhile; ?>
+				<?php while (have_posts()) : the_post(); ?>
+					<?php get_template_part('template-parts/content', 'card'); ?>
+				<?php endwhile; ?>
 			</div>
-		<?php else :
-			get_template_part('template-parts/content', 'none');
-		endif;
-		?>
+		<?php else : ?>
+			<?php get_template_part('template-parts/content', 'none'); ?>
+		<?php endif; ?>
 	</div>
-</div>
+</main>
 
 <?php get_footer(); ?>

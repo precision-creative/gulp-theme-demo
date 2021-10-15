@@ -25,7 +25,7 @@ if (!function_exists('have_rows')) {
         $text = get_sub_field('text');
 ?>
         <section class="<?php echo esc_attr(implode(' ', $classes)); ?>">
-          <div class="text__container">
+          <div class="container">
             <?php echo esc_html($text); ?>
           </div>
         </section>
