@@ -14,11 +14,11 @@
 This code is responsible for the desktop and pushy clicky menus
 */
 
-const Menu = function (menu) {
+const Menu = function(menu) {
   let currentMenuButton,
     container = menu.parentElement
 
-  this.init = function () {
+  this.init = function() {
     menuSetup()
 
     document.addEventListener('click', closeOpenMenu)
@@ -74,7 +74,7 @@ const Menu = function (menu) {
   function menuSetup() {
     menu.classList.remove('no-js')
 
-    menu.querySelectorAll('ul').forEach(submenu => {
+    menu.querySelectorAll('ul').forEach((submenu) => {
       const submenuParent = submenu.parentElement
       let button = convertLinkToButton(submenuParent)
 
@@ -115,8 +115,10 @@ const Menu = function (menu) {
 
     if (null === submenuID) {
       id =
-        button.textContent.trim().replace(/\s+/g, '-').toLowerCase() +
-        '-submenu'
+        button.textContent
+          .trim()
+          .replace(/\s+/g, '-')
+          .toLowerCase() + '-submenu'
     } else {
       id = submenuID + '-submenu'
     }
@@ -135,7 +137,7 @@ const Menu = function (menu) {
 
 const menus = document.querySelectorAll('.navbar__links, .pushy__links')
 
-menus.forEach(menu => {
+menus.forEach((menu) => {
   const menuInstance = new Menu(menu)
 
   menuInstance.init()
@@ -145,11 +147,11 @@ menus.forEach(menu => {
 This code is responsible for the pushy menu
 */
 
-const PushyMenu = function (hamburger) {
+const PushyMenu = function(hamburger) {
   const pushy = document.getElementById('pushy'),
     closePushy = pushy.querySelector('.pushy__close')
 
-  this.init = function () {
+  this.init = function() {
     pushySetup()
     setupAria()
 
@@ -165,6 +167,7 @@ const PushyMenu = function (hamburger) {
     } else {
       hamburger.setAttribute('aria-expanded', true)
       pushy.setAttribute('aria-hidden', false)
+      pushy.focus()
     }
   }
 
