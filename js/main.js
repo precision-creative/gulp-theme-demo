@@ -10,11 +10,6 @@
  * Created: September 23, 2020
  */
 
-// Init Animate On Scroll (if it exists)
-if (window.AOS) {
-  AOS.init()
-}
-
 /*
 This code is responsible for the desktop and pushy clicky menus
 */
