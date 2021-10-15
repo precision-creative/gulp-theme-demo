@@ -30,6 +30,9 @@ $includes = array(
   // Load custom nav walker
   '/class-pc-navwalker.php',
 
+  // Shortcodes 
+  '/class-pc-shortcodes.php',
+
   // Load WooCommerce scripts and hooks (disabled by default)
   // '/class-pc-woocommerce.php',
 

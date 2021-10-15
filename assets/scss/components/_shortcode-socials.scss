@@ -1,0 +1,12 @@
+.socials__flex {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials__flex a {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
