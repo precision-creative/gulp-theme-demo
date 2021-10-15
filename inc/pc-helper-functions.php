@@ -77,3 +77,21 @@ function posted_on()
 {
   echo '<p class="entry__date">' . date('M d, Y', get_the_date('c')) . '</p>';
 }
+
+/**
+ * Get the author's full name or display name
+ * 
+ * @return Array the author's name
+ */
+function pc_get_author_name()
+{
+  $author_first = get_the_author_meta('first_name');
+  $author_last = get_the_author_meta('last_name');
+  $author_name = $author_first . ' ' . $author_last;
+
+  if ('' === $author_first && '' === $author_last) {
+    $author_name = get_the_author_meta('display_name');
+  }
+
+  return $author_name;
+}
