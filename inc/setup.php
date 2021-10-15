@@ -23,5 +23,13 @@ function pc_setup()
     'mobile_menu' => 'Mobile',
     'footer_menu' => 'Footer',
   ));
+
+  /**
+   * Register custom image sizes for the blogs
+   * 
+   * @see https://developer.wordpress.org/reference/functions/add_image_size/
+   */
+  add_image_size('archives', 960, 640, true);
+  add_image_size('container', 1100);
 }
 add_action('after_setup_theme', 'pc_setup');
