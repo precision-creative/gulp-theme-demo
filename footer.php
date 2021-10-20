@@ -40,8 +40,8 @@ if (!$logo) $logo = get_theme_mod('custom_logo');
   <div class="copyright">
     <div class="container">
       <div class="copyright__flex">
-        <p>&copy; <?php echo date("Y") . ' ' . get_option('company-name', 'Company Name'); ?></p>
-        <p>Powered by <a href="https://precisioncreative.com/" target="_blank" rel="noreferrer">Precision Creative</a></p>
+        <p translate="no">&copy; <?php echo date("Y") . ' ' . get_option('company-name', 'Company Name'); ?></p>
+        <p>Powered by <a href="https://precisioncreative.com/" target="_blank" rel="noreferrer" translate="no">Precision Creative</a></p>
       </div>
     </div>
   </div>
