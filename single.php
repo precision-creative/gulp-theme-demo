@@ -4,12 +4,10 @@
  * The template for displaying all single posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package PrecisionCreative
  */
-?>
 
-<?php get_header(); ?>
+get_header();
+?>
 
 <main class="single">
   <div class="container">
@@ -21,4 +19,5 @@
   </div>
 </main>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

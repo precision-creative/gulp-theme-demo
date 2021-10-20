@@ -5,11 +5,12 @@
  * 
  * This is often used for the blog index page rather than the homepage...
  * Think of it as the blog posts "home" page
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  */
 
+get_header();
 ?>
-
-<?php get_header(); ?>
 
 <main class="home">
   <div class="container">
@@ -28,4 +29,5 @@
   </div>
 </main>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

@@ -3,9 +3,9 @@
 /**
  * The header for our theme.
  *
- * Displays all of the <head> section and loads navbar and mobile menu
- *
- * @package PrecisionCreative
+ * Displays all of the <head> section and loads navbar and mobile menus
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  */
 
 $mobile_menu_type = get_theme_mod('mobile_menu_type', 'pushy');

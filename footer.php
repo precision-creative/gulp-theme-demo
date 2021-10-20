@@ -1,15 +1,10 @@
 <?php
 
 /**
- * The template for displaying the footer.
- *
- * Contains the closing of the #content div and all content after
- *
- * @package PrecisionCreative
+ * The template for displaying the footer
+ * 
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials 
  */
-
-// Exit if accessed directly.
-defined('ABSPATH') || exit;
 
 $logo = get_theme_mod('footer_logo');
 if (!$logo) $logo = get_theme_mod('custom_logo');
