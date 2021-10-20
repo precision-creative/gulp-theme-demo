@@ -1,19 +1,18 @@
 /**
- * Copyright (c) 2020
- *
  * Common JavaScript functions for the PrecisionCreative WordPress theme.
  * This file should be called in the footer of the theme.
+ * Yell at Grayson if this code stops working.
  *
- * @summary Precision common JavaScript functions
+ * @summary Precision Creative Theme common JavaScript functions
  * @author Precision Creative Dev Team
  *
  * Created: September 23, 2020
  */
 
-/*
-This code is responsible for the desktop and pushy clicky menus
-*/
-
+/**
+ * Transforms navwalker menus into clicky sub-menus
+ * @param {HTMLElement} menu The menu element that contains submenus
+ */
 const Menu = function(menu) {
   let currentMenuButton,
     container = menu.parentElement
@@ -135,18 +134,10 @@ const Menu = function(menu) {
   }
 }
 
-const menus = document.querySelectorAll('.navbar__links, .pushy__links')
-
-menus.forEach((menu) => {
-  const menuInstance = new Menu(menu)
-
-  menuInstance.init()
-})
-
-/*
-This code is responsible for the pushy menu
-*/
-
+/**
+ * The logic for handling the pushy menu
+ * @param {HTMLElement} hamburger The hamburger button that opens the pushy menu
+ */
 const PushyMenu = function(hamburger) {
   const pushy = document.getElementById('pushy'),
     closePushy = pushy.querySelector('.pushy__close')
@@ -196,17 +187,10 @@ const PushyMenu = function(hamburger) {
   }
 }
 
-const hamburgers = document.querySelectorAll('.hamburger--pushy')
-
-hamburgers.forEach((hamburger) => {
-  const hamburgerInstance = new PushyMenu(hamburger)
-  hamburgerInstance.init()
-})
-
-/* 
-This code is responsible for the accordion menu
-*/
-
+/**
+ * The logic for handling the accordion menu
+ * @param {HTMLElement} hamburger The hamburger button that opens the accordion menu
+ */
 const AccordionMenu = function(hamburger) {
   const accordion = document.getElementById('accordion')
 
@@ -253,11 +237,26 @@ const AccordionMenu = function(hamburger) {
   }
 }
 
-const accordionHamburgers = document.querySelectorAll('.hamburger--accordion')
+/**
+ * On DOMContentLoaded, initialize the menus for the site
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const menus = document.querySelectorAll('.navbar__links, .pushy__links')
+  const accordionHamburgers = document.querySelectorAll('.hamburger--accordion')
+  const pushyHamburgers = document.querySelectorAll('.hamburger--pushy')
 
-accordionHamburgers.forEach((hamburger) => {
-  const accordionInstance = new AccordionMenu(hamburger)
-  accordionInstance.init()
+  accordionHamburgers.forEach((hamburger) => {
+    const accordionInstance = new AccordionMenu(hamburger)
+    accordionInstance.init()
+  })
+
+  pushyHamburgers.forEach((hamburger) => {
+    const hamburgerInstance = new PushyMenu(hamburger)
+    hamburgerInstance.init()
+  })
+
+  menus.forEach((menu) => {
+    const menuInstance = new Menu(menu)
+    menuInstance.init()
+  })
 })
-
-// Yell at Grayson if this code stops working
