@@ -253,7 +253,7 @@ const AccordionMenu = function(hamburger) {
   }
 }
 
-const accordionHamburgers = document.querySelectorAll('.accordion__hamburger')
+const accordionHamburgers = document.querySelectorAll('.hamburger--accordion')
 
 accordionHamburgers.forEach((hamburger) => {
   const accordionInstance = new AccordionMenu(hamburger)
