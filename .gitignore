@@ -1,6 +1,3 @@
 .DS_Store
-
-# These CSS files will be generated with WP-SCSS
-css/*.css
-css/*.css.map
-assets/scss/*.log
+node_modules/
+*.log
