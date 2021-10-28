@@ -1,0 +1,1 @@
+.cart__row{display:grid;grid-gap:2rem min(10vw,6rem)}.wc-proceed-to-checkout{margin-top:1rem}.wc-proceed-to-checkout .button{width:100%}.cart-collaterals{background-color:hsl(var(--clr-white));box-shadow:var(--shadow-md);padding:1rem}@media (min-width:768px){.cart__row{grid-template-columns:2fr 1fr}}
