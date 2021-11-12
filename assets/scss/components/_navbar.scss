@@ -5,7 +5,7 @@
   padding-bottom: 1.5rem;
   color: hsl(var(--clr-white));
   font-size: var(--fs-sm);
-  background-color: hsl(var(--clr-gray-700));
+  background-color: purple;
 
   button {
     @include button-reset();
