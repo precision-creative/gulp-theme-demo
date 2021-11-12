@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Precision Creative's theme development boilerplate",
   "scripts": {
-    "build": "gulp --prod=true && git add dist/* && git commit -m 'gulp build'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp --prod=true && git add dist/* && git commit -m 'gulp build'"
   },
   "repository": {
     "type": "git",
